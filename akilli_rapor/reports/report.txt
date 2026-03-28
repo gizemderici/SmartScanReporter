@@ -1,0 +1,98 @@
+##################################################
+GENEL AG OZETI
+##################################################
+Analiz Modu: Red Team
+Mod Sorusu: Bu ag nasil hacklenir?
+Toplam Aktif Host Sayisi: 1
+Yuksek Riskli Host Sayisi: 1
+Orta Riskli Host Sayisi: 0
+Dusuk Riskli Host Sayisi: 0
+Bilinen CVE Bulunan Host Sayisi: 1
+Toplam Eslesen CVE Sayisi: 2
+Firewall Belirtisi Olan Host Sayisi: 0
+Toplam Filtered Port Sayisi: 0
+Brute-Force Riski Olan Host Sayisi: 1
+Saldiri Senaryosu Uretilen Host Sayisi: 1
+Toplam Saldiri Senaryosu: 1
+Toplam Senaryo Etki Skoru: 7
+MITRE ATT&CK Teknik Sayisi: 2
+CVE Veri Kaynagi: Yerel eşleme
+En Riskli Host: 192.168.1.106 (Skor: 6, Açık Port: 4)
+Red Team Ozet: 1 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.
+MITRE ATT&CK: 2 farkli MITRE ATT&CK teknigi ile iliskilendirildi.
+Onceki Tarama: 2026-03-28T14:53:19-07:00
+Yeni Acilan Port Sayisi: 0
+Kapanan Port Sayisi: 0
+Risk Artisi Gorulen Host Sayisi: 0
+
+HOST LISTESI
+- 192.168.1.106 | OS: Linux 5.0 - 5.14 | Risk: Yüksek | Acik Port: 4 | Filtered: 0 | Firewall: Hayir | CVE: 2 | Skor: 6
+
+==================================================
+Host: 192.168.1.106
+==================================================
+Tespit Edilen Isletim Sistemi: Linux 5.0 - 5.14
+Toplam Acik Port Sayisi: 4
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 2
+Saldiri Senaryosu Sayisi: 1
+Senaryo Etki Skoru: 7
+Genel Risk Seviyesi: Yüksek
+Risk Skoru: 6
+
+Red Team Ozeti: En olasi istismar yolu: Kimlik Bilgisi Zorlama Senaryosu (Yuksek / 7/10).
+SALDIRI SENARYOSU SIMULASYONU
+Senaryo: Kimlik Bilgisi Zorlama Senaryosu
+Siddet: Yuksek | Etki Skoru: 7/10
+1. Brute-force acisindan hassas servisler acik: tcpwrapped:22, tcpwrapped:3389.
+2. Zayif parola veya varsayilan kimlik bilgileri varsa otomatik parola denemeleri yapilabilir.
+3. Elde edilen hesaplarla uzaktan oturum acilarak kalicilik saglanabilir.
+Sonuc: Yetkisiz erisim elde edilebilir.
+Etki: Sunucu yonetimi ele gecirilebilir, veri sizdirma ve yanal hareket mumkun olabilir.
+MITRE ATT&CK ESMELEMELERI
+- Credential Access | T1110 | Brute Force
+- Initial Access | T1078 | Valid Accounts
+
+ACIK PORTLAR VE ANALIZ
+
+Port: 22/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Uzak Erişim
+Risk: Yüksek
+OS Etkisi: Linux sistemlerde bu servis yanlış yapılandırılırsa uzaktan erişim riski artabilir.
+Brute-Force Riski: SSH servisi açık olduğu için brute-force saldırı riski vardır.
+CVE: CVE-2018-15473 - OpenSSH User Enumeration | Kaynak: Yerel servis kuralı | Siddet: Bilinmiyor | Eslesme Nedeni: SSH servisi tespit edildiği için bu CVE yerel servis kuralından önerildi. | Aciklama: Bazı OpenSSH sürümlerinde kullanıcı adı doğrulama davranışı bilgi sızdırabilir.
+Oneri: SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır.
+
+Port: 3389/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Uzak Erişim
+Risk: Yüksek
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: RDP servisi açık olduğu için brute-force saldırı riski vardır.
+CVE: CVE-2019-0708 - BlueKeep / RDP | Kaynak: Yerel servis kuralı | Siddet: Bilinmiyor | Eslesme Nedeni: RDP servisi tespit edildiği için bu CVE yerel servis kuralından önerildi. | Aciklama: Eski RDP servislerinde kimlik doğrulama öncesi kritik uzaktan kod çalıştırma açığı bulunabilir.
+Oneri: RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır.
+
+Port: 5432/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Bilinmiyor
+Risk: Bilinmiyor
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.
+
+Port: 8086/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Bilinmiyor
+Risk: Bilinmiyor
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.
+

@@ -1,0 +1,12 @@
+{
+  "target": "192168.1.106",
+  "captured_at": "2026-03-28T14:42:23-07:00",
+  "network_summary": {
+    "total_hosts": 0,
+    "high_risk_hosts": 0,
+    "medium_risk_hosts": 0,
+    "low_risk_hosts": 0,
+    "total_known_cves": 0
+  },
+  "hosts": []
+}

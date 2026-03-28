@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ag Tarama Raporu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+        h1, h2, h3 {
+            color: #1f3b5b;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e9eef5;
+        }
+        .high {
+            color: #b00020;
+            font-weight: bold;
+        }
+        .medium {
+            color: #c77700;
+            font-weight: bold;
+        }
+        .low {
+            color: #1a7f37;
+            font-weight: bold;
+        }
+        .unknown {
+            color: #555;
+            font-weight: bold;
+        }
+        .cve-list, .action-list {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .cve-list li, .action-list li {
+            margin-bottom: 6px;
+        }
+        .mode-card {
+            border-left: 6px solid #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ag Tarama Sonuclari Icin Akilli Raporlama Sistemi</h1>
+
+    <div class="card">
+        <h2>Genel Ag Ozeti</h2>
+        <p><strong>Analiz Modu:</strong> Red Team</p>
+        <p><strong>Mod Sorusu:</strong> Bu ag nasil hacklenir?</p>
+        <p><strong>Toplam Aktif Host Sayisi:</strong> 1</p>
+        <p><strong>Yuksek Riskli Host Sayisi:</strong> 1</p>
+        <p><strong>Orta Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Dusuk Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Bilinen CVE Bulunan Host Sayisi:</strong> 1</p>
+        <p><strong>Toplam Eslesen CVE Sayisi:</strong> 2</p>
+        <p><strong>Firewall Belirtisi Olan Host Sayisi:</strong> 0</p>
+        <p><strong>Toplam Filtered Port Sayisi:</strong> 0</p>
+        <p><strong>Brute-Force Riski Olan Host Sayisi:</strong> 1</p>
+        <p><strong>Saldiri Senaryosu Uretilen Host Sayisi:</strong> 1</p>
+        <p><strong>Toplam Saldiri Senaryosu:</strong> 1</p>
+        <p><strong>Toplam Senaryo Etki Skoru:</strong> 7</p>
+        <p><strong>MITRE ATT&CK Teknik Sayisi:</strong> 2</p>
+        <p><strong>CVE Veri Kaynagi:</strong> Yerel eşleme</p>
+        <p><strong>En Riskli Host:</strong> 192.168.1.106 (Skor: 6, Açık Port: 4)</p>
+    </div>
+
+    <div class="card mode-card">
+        <h2>Red Team Modu</h2>
+        <p><strong>Soru:</strong> Bu ag nasil hacklenir?</p>
+        <p>1 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.</p>
+        <p><strong>MITRE ATT&CK:</strong> 2 farkli MITRE ATT&CK teknigi ile iliskilendirildi.</p>
+    </div>
+
+    <div class="card">
+        <h2>Host Listesi</h2>
+        <table>
+            <tr>
+                <th>IP</th>
+                <th>Isletim Sistemi</th>
+                <th>Genel Risk</th>
+                <th>Acik Port Sayisi</th>
+                <th>Filtered</th>
+                <th>Firewall</th>
+                <th>CVE Sayisi</th>
+                <th>Risk Skoru</th>
+            </tr>
+    
+            <tr>
+                <td>192.168.1.106</td>
+                <td>Linux 5.0 - 5.14</td>
+                <td class="high">Yüksek</td>
+                <td>4</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>2</td>
+                <td>6</td>
+            </tr>
+        
+        </table>
+    </div>
+    
+        <div class="card">
+            <h2>Zaman Karsilastirmasi</h2>
+            <p><strong>Onceki Tarama:</strong> 2026-03-28T14:53:19-07:00</p>
+            <p><strong>Yeni Acilan Port Sayisi:</strong> 0</p>
+            <p><strong>Kapanan Port Sayisi:</strong> 0</p>
+            <p><strong>Risk Artisi Gorulen Host Sayisi:</strong> 0</p>
+        </div>
+        
+        <div class="card">
+            <h2>Host: 192.168.1.106</h2>
+            <p><strong>Tespit Edilen Isletim Sistemi:</strong> Linux 5.0 - 5.14</p>
+            <p><strong>Toplam Acik Port Sayisi:</strong> 4</p>
+            <p><strong>Filtered Port Sayisi:</strong> 0</p>
+            <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+            <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 2</p>
+            <p><strong>Saldiri Senaryosu Sayisi:</strong> 1</p>
+            <p><strong>Senaryo Etki Skoru:</strong> 7</p>
+            <p><strong>Genel Risk Seviyesi:</strong> <span class="high">Yüksek</span></p>
+            <p><strong>Risk Skoru:</strong> 6</p>
+        <p><strong>Red Team Ozeti:</strong> En olasi istismar yolu: Kimlik Bilgisi Zorlama Senaryosu (Yuksek / 7/10).</p><h3>Saldiri Senaryosu Simulasyonu</h3>
+                    <div style="margin-bottom: 16px; padding: 14px; border: 1px solid #ddd; border-radius: 8px;">
+                        <p><strong>Senaryo:</strong> Kimlik Bilgisi Zorlama Senaryosu</p>
+                        <p><strong>Siddet:</strong> Yuksek | <strong>Etki Skoru:</strong> 7/10</p>
+                        <ol>
+                    <li>Brute-force acisindan hassas servisler acik: tcpwrapped:22, tcpwrapped:3389.</li><li>Zayif parola veya varsayilan kimlik bilgileri varsa otomatik parola denemeleri yapilabilir.</li><li>Elde edilen hesaplarla uzaktan oturum acilarak kalicilik saglanabilir.</li>
+                        </ol>
+                        <p><strong>Sonuc:</strong> Yetkisiz erisim elde edilebilir.</p>
+                        <p><strong>Etki:</strong> Sunucu yonetimi ele gecirilebilir, veri sizdirma ve yanal hareket mumkun olabilir.</p>
+                    <p><strong>MITRE ATT&CK Eslesmeleri:</strong></p><ul class="action-list"><li>Credential Access - T1110 - Brute Force</li><li>Initial Access - T1078 - Valid Accounts</li></ul></div>
+            <h3>Acik Portlar ve Analiz</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+                <tr>
+                    <td>22</td>
+                    <td>tcp</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Uzak Erişim</td>
+                    <td class="high">Yüksek</td>
+                    <td>Linux sistemlerde bu servis yanlış yapılandırılırsa uzaktan erişim riski artabilir.</td>
+                    <td>SSH servisi açık olduğu için brute-force saldırı riski vardır.</td>
+                    <td><ul class="cve-list"><li><strong>CVE-2018-15473</strong> - OpenSSH User Enumeration<br><small>Kaynak: Yerel servis kuralı | Siddet: Bilinmiyor</small><br><small>Eslesme Nedeni: SSH servisi tespit edildiği için bu CVE yerel servis kuralından önerildi.</small><br><small>Bazı OpenSSH sürümlerinde kullanıcı adı doğrulama davranışı bilgi sızdırabilir.</small></li></ul></td>
+                    <td>SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır.</td>
+                </tr>
+            
+                <tr>
+                    <td>3389</td>
+                    <td>tcp</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Uzak Erişim</td>
+                    <td class="high">Yüksek</td>
+                    <td>OS etkisi yok</td>
+                    <td>RDP servisi açık olduğu için brute-force saldırı riski vardır.</td>
+                    <td><ul class="cve-list"><li><strong>CVE-2019-0708</strong> - BlueKeep / RDP<br><small>Kaynak: Yerel servis kuralı | Siddet: Bilinmiyor</small><br><small>Eslesme Nedeni: RDP servisi tespit edildiği için bu CVE yerel servis kuralından önerildi.</small><br><small>Eski RDP servislerinde kimlik doğrulama öncesi kritik uzaktan kod çalıştırma açığı bulunabilir.</small></li></ul></td>
+                    <td>RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır.</td>
+                </tr>
+            
+                <tr>
+                    <td>5432</td>
+                    <td>tcp</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Bilinmiyor</td>
+                    <td class="unknown">Bilinmiyor</td>
+                    <td>OS etkisi yok</td>
+                    <td>Belirgin brute-force riski tespit edilmedi.</td>
+                    <td>Bilinen eslesme yok</td>
+                    <td>Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.</td>
+                </tr>
+            
+                <tr>
+                    <td>8086</td>
+                    <td>tcp</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Bilinmiyor</td>
+                    <td class="unknown">Bilinmiyor</td>
+                    <td>OS etkisi yok</td>
+                    <td>Belirgin brute-force riski tespit edilmedi.</td>
+                    <td>Bilinen eslesme yok</td>
+                    <td>Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.</td>
+                </tr>
+            
+            </table>
+        </div>
+        
+</body>
+</html>
+    
