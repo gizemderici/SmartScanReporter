@@ -27,13 +27,17 @@ def main():
         print(f"Nmap hatasi: {stderr}")
         return
 
-    network_summary, host_reports = parse_results()
-    enrich_reports_with_online_cves(network_summary, host_reports)
-    generate_attack_scenarios(network_summary, host_reports)
-    apply_team_mode_analysis(network_summary, host_reports)
-    comparison = record_and_compare_scan(target, network_summary, host_reports)
-    generate_risk_chart(network_summary)
-    generate_reports(network_summary, host_reports, comparison, mode=selected_mode)
+    try:
+        network_summary, host_reports = parse_results()
+        enrich_reports_with_online_cves(network_summary, host_reports)
+        generate_attack_scenarios(network_summary, host_reports)
+        apply_team_mode_analysis(network_summary, host_reports)
+        comparison = record_and_compare_scan(target, network_summary, host_reports)
+        generate_risk_chart(network_summary)
+        generate_reports(network_summary, host_reports, comparison, mode=selected_mode)
+    except ValueError as parse_error:
+        print(f"Analiz hatasi: {parse_error}")
+        return
 
     if comparison["has_previous"]:
         print(f"\nOnceki tarama zamani: {comparison['previous_scan_time']}")

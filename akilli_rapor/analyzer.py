@@ -282,9 +282,36 @@ def build_service_version(service):
     return service_name, product or "Bilinmiyor", detected
 
 
+def _load_xml_root():
+    try:
+        tree = ET.parse(XML_DOSYASI)
+        return tree.getroot()
+    except ET.ParseError:
+        if not XML_DOSYASI or not ET:
+            raise
+
+    try:
+        with open(XML_DOSYASI, "r", encoding="utf-8", errors="ignore") as file:
+            raw_xml = file.read()
+    except OSError as error:
+        raise ValueError(f"XML dosyasi okunamadi: {error}") from error
+
+    cleaned_xml = raw_xml.lstrip("\ufeff")
+    closing_tag = "</nmaprun>"
+    closing_index = cleaned_xml.rfind(closing_tag)
+    if closing_index != -1:
+        cleaned_xml = cleaned_xml[: closing_index + len(closing_tag)]
+
+    try:
+        return ET.fromstring(cleaned_xml)
+    except ET.ParseError as error:
+        raise ValueError(
+            "Nmap XML cikti dosyasi bozuk veya eksik. Tarama yeniden calistirilmali."
+        ) from error
+
+
 def parse_results():
-    tree = ET.parse(XML_DOSYASI)
-    root = tree.getroot()
+    root = _load_xml_root()
 
     all_hosts_summary = []
     host_reports = []

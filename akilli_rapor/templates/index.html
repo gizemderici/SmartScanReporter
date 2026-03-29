@@ -81,6 +81,9 @@
         .badge.change { background: var(--accent); color: #031019; border: none; }
         .muted { color: var(--muted); }
         .toolbar, .quick, .host-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+        .toolbar {
+            align-items: stretch;
+        }
         .tool, .primary {
             min-height: 50px; border-radius: 16px; padding: 0 16px; cursor: pointer;
             border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,.05);
@@ -91,11 +94,12 @@
         }
         .tool:hover, .primary:hover { transform: translateY(-1px); }
         .panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 20px; }
-        .form-grid, .stats-grid, .feature-grid, .host-stats { display: grid; gap: 12px; }
+        .form-grid, .stats-grid, .feature-grid, .host-stats, .filter-grid { display: grid; gap: 12px; }
         .form-grid { grid-template-columns: 1.7fr .9fr auto; align-items: end; }
         .stats-grid { grid-template-columns: repeat(4, 1fr); }
         .feature-grid { grid-template-columns: 1.15fr 1.15fr .9fr; }
         .host-stats { grid-template-columns: repeat(4, 1fr); margin: 16px 0; }
+        .filter-grid { grid-template-columns: 1.35fr repeat(4, .7fr) auto; align-items: end; }
         label { display: block; margin-bottom: 8px; color: var(--muted); font-size: .9rem; }
         input[type="text"], select {
             width: 100%; min-height: 52px; border-radius: 16px; border: 1px solid var(--line);
@@ -138,14 +142,54 @@
         .medium { color: var(--warn); font-weight: 700; }
         .low { color: var(--ok); font-weight: 700; }
         .error { color: var(--bad); font-weight: 700; margin-top: 14px; }
+        .filter-summary {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .filter-note {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+        .export-center {
+            min-width: 290px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+        }
+        .export-title {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .09em;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .export-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .export-link {
+            display: block;
+        }
+        .export-link .tool {
+            width: 100%;
+        }
+        .host-card.is-hidden {
+            display: none;
+        }
         a { text-decoration: none; }
         @media (max-width: 1180px) {
-            .hero-grid, .feature-grid, .visuals, .content-grid { grid-template-columns: 1fr; }
+            .hero-grid, .feature-grid, .visuals, .content-grid, .filter-grid { grid-template-columns: 1fr; }
             .stats-grid, .host-stats { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 760px) {
             .shell { padding: 16px; }
-            .topbar, .form-grid, .stats-grid, .host-stats, .section-head, .host-top { grid-template-columns: 1fr; }
+            .topbar, .form-grid, .stats-grid, .host-stats, .section-head, .host-top, .filter-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -164,8 +208,16 @@
                 <div class="toolbar">
                     <button type="button" id="theme-toggle" class="tool">Light Mode</button>
                     {% if network_summary %}
-                        <a href="/report" target="_blank"><button type="button" class="tool">HTML Rapor</button></a>
-                        <a href="/report/pdf" target="_blank"><button type="button" class="tool">PDF Rapor</button></a>
+                        <div class="export-center">
+                            <div class="export-title">Export Merkezi</div>
+                            <h4>Raporlari tek yerden ac veya indir</h4>
+                            <p class="muted" style="margin-top:6px;">HTML, PDF ve TXT ciktilarini bu panelden yonetebilirsin.</p>
+                            <div class="export-buttons">
+                                <a href="/report" target="_blank" class="export-link"><button type="button" class="tool">HTML</button></a>
+                                <a href="/report/pdf" target="_blank" class="export-link"><button type="button" class="tool">PDF</button></a>
+                                <a href="/report/txt" target="_blank" class="export-link"><button type="button" class="tool">TXT</button></a>
+                            </div>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -319,9 +371,74 @@
             <div class="section-head">
                 <div><h2>Host Merkezli Inceleme</h2><p class="muted">Her host kendi risk karti ve port tablosu ile sunulur.</p></div>
             </div>
-            <div class="host-list">
+            <div class="card" style="padding:22px; margin-bottom:18px;">
+                <h3>Filtre ve Arama</h3>
+                <p class="muted" style="margin:8px 0 14px;">IP, port, servis veya CVE ID ile canli arama yapabilir; risk, OS, CVE ve firewall durumuna gore filtreleyebilirsin.</p>
+                <div class="filter-grid">
+                    <div>
+                        <label for="host-search">Arama kutusu</label>
+                        <input type="text" id="host-search" placeholder="Orn: 192.168.1.10, 445, ssh, CVE-2017-0144">
+                    </div>
+                    <div>
+                        <label for="risk-filter">Risk seviyesi</label>
+                        <select id="risk-filter">
+                            <option value="">Tum riskler</option>
+                            <option value="yüksek">Yuksek</option>
+                            <option value="orta">Orta</option>
+                            <option value="düşük">Dusuk</option>
+                            <option value="dÃ¼ÅŸÃ¼k">Dusuk</option>
+                            <option value="dusuk">Dusuk</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="os-filter">OS tipi</label>
+                        <select id="os-filter">
+                            <option value="">Tum OS tipleri</option>
+                            <option value="windows">Windows</option>
+                            <option value="linux">Linux</option>
+                            <option value="router">Router</option>
+                            <option value="network">Ag cihazi</option>
+                            <option value="bilinmiyor">Bilinmiyor</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="cve-filter">CVE durumu</label>
+                        <select id="cve-filter">
+                            <option value="">Tum hostlar</option>
+                            <option value="yes">CVE var</option>
+                            <option value="no">CVE yok</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="firewall-filter">Firewall durumu</label>
+                        <select id="firewall-filter">
+                            <option value="">Tum hostlar</option>
+                            <option value="yes">Firewall var</option>
+                            <option value="no">Firewall yok</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="reset-filters">Filtreler</label>
+                        <button type="button" id="reset-filters" class="tool" style="width:100%;">Temizle</button>
+                    </div>
+                </div>
+                <div class="filter-summary">
+                    <span class="pill accent" id="host-results-pill">Tum hostlar gosteriliyor</span>
+                    <span class="filter-note" id="host-filter-note">Canli filtreleme hazir.</span>
+                </div>
+            </div>
+
+            <div class="host-list" id="host-list">
                 {% for host in host_reports %}
-                <article class="host-card">
+                <article
+                    class="host-card"
+                    data-ip="{{ host.ip|lower }}"
+                    data-risk="{{ host.general_risk|lower }}"
+                    data-os="{{ host.detected_os|lower }}"
+                    data-has-cve="{% if host.known_cve_count > 0 %}yes{% else %}no{% endif %}"
+                    data-firewall="{% if host.firewall_detected %}yes{% else %}no{% endif %}"
+                    data-search="{{ host.ip }} {{ host.detected_os }} {{ host.general_risk }} {% for port in host.open_ports_data %} {{ port.port }} {{ port.protocol }} {{ port.service }} {{ port.service_version }} {{ port.category }} {{ port.risk }} {{ port.os_risk_note }} {{ port.brute_force_note }} {{ port.recommendation }} {% for cve in port.cves %} {{ cve.cve_id }} {{ cve.title }} {{ cve.description }} {% endfor %} {% endfor %}"
+                >
                     <div class="host-top">
                         <div>
                             <div class="host-ip">{{ host.ip }}</div>
@@ -469,6 +586,121 @@
                     applyTheme(nextTheme);
                 });
             }
+        })();
+
+        (function () {
+            const searchInput = document.getElementById('host-search');
+            const riskFilter = document.getElementById('risk-filter');
+            const osFilter = document.getElementById('os-filter');
+            const cveFilter = document.getElementById('cve-filter');
+            const firewallFilter = document.getElementById('firewall-filter');
+            const resetButton = document.getElementById('reset-filters');
+            const resultPill = document.getElementById('host-results-pill');
+            const resultNote = document.getElementById('host-filter-note');
+            const hostCards = Array.from(document.querySelectorAll('.host-card'));
+
+            if (!hostCards.length) {
+                return;
+            }
+
+            function normalize(text) {
+                return (text || '')
+                    .toString()
+                    .toLowerCase()
+                    .replaceAll('ı', 'i')
+                    .replaceAll('İ', 'i')
+                    .replaceAll('ü', 'u')
+                    .replaceAll('Ü', 'u')
+                    .replaceAll('ö', 'o')
+                    .replaceAll('Ö', 'o')
+                    .replaceAll('ş', 's')
+                    .replaceAll('Ş', 's')
+                    .replaceAll('ç', 'c')
+                    .replaceAll('Ç', 'c')
+                    .replaceAll('ğ', 'g')
+                    .replaceAll('Ğ', 'g');
+            }
+
+            function matchesFilter(card) {
+                const query = normalize(searchInput ? searchInput.value : '');
+                const selectedRisk = normalize(riskFilter ? riskFilter.value : '');
+                const selectedOs = normalize(osFilter ? osFilter.value : '');
+                const selectedCve = normalize(cveFilter ? cveFilter.value : '');
+                const selectedFirewall = normalize(firewallFilter ? firewallFilter.value : '');
+
+                const cardSearch = normalize(card.dataset.search);
+                const cardRisk = normalize(card.dataset.risk);
+                const cardOs = normalize(card.dataset.os);
+                const cardCve = normalize(card.dataset.hasCve);
+                const cardFirewall = normalize(card.dataset.firewall);
+
+                const queryMatch = !query || cardSearch.includes(query);
+                const riskMatch = !selectedRisk || cardRisk.includes(selectedRisk);
+                const osMatch = !selectedOs || cardOs.includes(selectedOs);
+                const cveMatch = !selectedCve || cardCve === selectedCve;
+                const firewallMatch = !selectedFirewall || cardFirewall === selectedFirewall;
+
+                return queryMatch && riskMatch && osMatch && cveMatch && firewallMatch;
+            }
+
+            function renderFilterState() {
+                let visibleCount = 0;
+                hostCards.forEach(function (card) {
+                    const matched = matchesFilter(card);
+                    card.classList.toggle('is-hidden', !matched);
+                    if (matched) {
+                        visibleCount += 1;
+                    }
+                });
+
+                if (resultPill) {
+                    resultPill.textContent = visibleCount + ' host gosteriliyor';
+                }
+
+                if (resultNote) {
+                    const parts = [];
+                    if (searchInput && searchInput.value.trim()) {
+                        parts.push('arama: ' + searchInput.value.trim());
+                    }
+                    if (riskFilter && riskFilter.value) {
+                        parts.push('risk: ' + riskFilter.options[riskFilter.selectedIndex].text);
+                    }
+                    if (osFilter && osFilter.value) {
+                        parts.push('os: ' + osFilter.options[osFilter.selectedIndex].text);
+                    }
+                    if (cveFilter && cveFilter.value) {
+                        parts.push('cve: ' + cveFilter.options[cveFilter.selectedIndex].text);
+                    }
+                    if (firewallFilter && firewallFilter.value) {
+                        parts.push('firewall: ' + firewallFilter.options[firewallFilter.selectedIndex].text);
+                    }
+
+                    resultNote.textContent = parts.length
+                        ? 'Aktif filtreler -> ' + parts.join(' | ')
+                        : 'Canli filtreleme hazir.';
+                }
+            }
+
+            [searchInput, riskFilter, osFilter, cveFilter, firewallFilter].forEach(function (element) {
+                if (!element) {
+                    return;
+                }
+                element.addEventListener('input', renderFilterState);
+                element.addEventListener('change', renderFilterState);
+            });
+
+            if (resetButton) {
+                resetButton.addEventListener('click', function () {
+                    if (searchInput) searchInput.value = '';
+                    if (riskFilter) riskFilter.value = '';
+                    if (osFilter) osFilter.value = '';
+                    if (cveFilter) cveFilter.value = '';
+                    if (firewallFilter) firewallFilter.value = '';
+                    renderFilterState();
+                });
+            }
+
+            renderFilterState();
         })();
     </script>
 </body>

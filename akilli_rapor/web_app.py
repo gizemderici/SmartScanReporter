@@ -10,6 +10,7 @@ from history_tracker import record_and_compare_scan
 from reporter import (
     HTML_RAPOR_DOSYASI,
     PDF_RAPOR_DOSYASI,
+    TXT_RAPOR_DOSYASI,
     build_printable_report_html,
     can_generate_pdf,
     generate_reports,
@@ -44,15 +45,18 @@ def index():
         else:
             success, stderr = run_nmap_scan(target)
             if success:
-                network_summary, host_reports = parse_results()
-                enrich_reports_with_online_cves(network_summary, host_reports)
-                generate_attack_scenarios(network_summary, host_reports)
-                apply_team_mode_analysis(network_summary, host_reports)
-                comparison = record_and_compare_scan(target, network_summary, host_reports)
-                generate_risk_chart(network_summary)
-                generate_os_chart(network_summary)
-                generate_network_topology(target, network_summary)
-                generate_reports(network_summary, host_reports, comparison, mode=team_mode)
+                try:
+                    network_summary, host_reports = parse_results()
+                    enrich_reports_with_online_cves(network_summary, host_reports)
+                    generate_attack_scenarios(network_summary, host_reports)
+                    apply_team_mode_analysis(network_summary, host_reports)
+                    comparison = record_and_compare_scan(target, network_summary, host_reports)
+                    generate_risk_chart(network_summary)
+                    generate_os_chart(network_summary)
+                    generate_network_topology(target, network_summary)
+                    generate_reports(network_summary, host_reports, comparison, mode=team_mode)
+                except ValueError as parse_error:
+                    error = str(parse_error)
             else:
                 error = f"Nmap hatası: {stderr}"
 
@@ -72,10 +76,20 @@ def download_report():
     return send_file(HTML_RAPOR_DOSYASI)
 
 
+@app.route("/report/txt")
+def download_text_report():
+    return send_file(TXT_RAPOR_DOSYASI, mimetype="text/plain; charset=utf-8")
+
+
 @app.route("/report/pdf")
 def printable_report():
     if can_generate_pdf() and os.path.exists(PDF_RAPOR_DOSYASI):
-        return send_file(PDF_RAPOR_DOSYASI, mimetype="application/pdf")
+        return send_file(
+            PDF_RAPOR_DOSYASI,
+            mimetype="application/pdf",
+            as_attachment=True,
+            download_name="report.pdf",
+        )
 
     html = build_printable_report_html()
     if html is None:
@@ -85,4 +99,6 @@ def printable_report():
 
 if __name__ == "__main__":
     os.makedirs(os.path.join(app.root_path, "static"), exist_ok=True)
-    app.run(debug=True)
+    # Tarama sonrasi uretilen rapor/gorsel dosyalari Flask reloader'ini tetikleyip
+    # gelistirme sunucusunun yeniden baslamasina neden olabiliyor.
+    app.run(debug=True, use_reloader=False)

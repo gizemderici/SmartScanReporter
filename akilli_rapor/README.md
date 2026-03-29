@@ -397,7 +397,9 @@ Mevcut tasarim ozellikleri:
 - gorsel paneller
 - host bazli kart yapisi
 - dark mode / light mode
-- PDF / HTML arac cubugu
+- export merkezi
+- HTML / PDF / TXT ciktilarinin tek alanda toplanmasi
+- canli filtre ve arama paneli
 - Red Team / Blue Team odakli yerlesim
 
 Bu tasarim, projeyi teknik ama ayni zamanda sunuma uygun hale getirir.
@@ -412,12 +414,75 @@ Bu tasarim, projeyi teknik ama ayni zamanda sunuma uygun hale getirir.
 - HTML rapor
 - PDF rapor
 
+Web arayuzunde tum ciktilar tek bir `Export Merkezi` panelinde toplanmistir.
+
 PDF akisi hibrit calisir:
 
 - `reportlab` varsa gercek PDF dosyasi olusturulur
 - yoksa yazdirilabilir HTML fallback kullanilir
 
+Ek olarak:
+
+- TXT raporu ayrica indirilebilir
+- HTML raporu tarayicida acilabilir
+- gercek PDF uretilmisse dosya dogrudan indirilebilir
+
 Boylece proje bagimlilik durumuna gore esnek davranir.
+
+---
+
+## Arayuzde Son Eklenen Gelistirmeler
+
+Projeye son asamada su arayuz gelistirmeleri eklenmistir:
+
+### 1. Export Merkezi
+
+Ust arac cubugunda tum rapor ciktilari tek bir panelde toplanmistir:
+
+- HTML
+- PDF
+- TXT
+
+Bu sayede kullanici farkli rapor formatlarina tek noktadan erisebilir.
+
+### 2. Canli filtreleme ve arama
+
+Host inceleme bolumune canli filtre ve arama paneli eklenmistir.
+
+Filtreler:
+
+- risk seviyesi
+- OS tipi
+- CVE var / yok
+- firewall var / yok
+
+Canli arama ile asagidaki alanlarda anlik filtreleme yapilabilir:
+
+- IP adresi
+- port numarasi
+- servis adi
+- CVE ID
+
+### 3. Daha modern dashboard duzeni
+
+Arayuz yeniden tasarlanarak daha kurumsal bir guvenlik paneli gorunumu elde edilmistir.
+
+Eklenen duzen ogeleri:
+
+- hero alan
+- ozet KPI kartlari
+- gorsel dashboard kartlari
+- host bazli risk kartlari
+- modern koyu tema
+- light mode gecisi
+
+### 4. Uygulama kararliligi iyilestirmeleri
+
+Arayuz tarafinda deneyimi bozan teknik sorunlara karsi da iyilestirme yapilmistir:
+
+- Flask reloader kapatilmis, boylece tarama sonrasi dosya olusumu nedeniyle sunucunun yeniden baslamasi engellenmistir.
+- Bozuk veya eksik XML ciktilari icin hata yakalama eklenmistir.
+- XML parse hatalarinda uygulama dusmek yerine kullaniciya anlasilir hata mesaji gosterilir.
 
 ---
 
@@ -588,7 +653,8 @@ Ana sayfada su alanlar bulunur:
 - modern hero panel
 - tarama formu
 - Red Team / Blue Team secimi
-- HTML ve PDF rapor butonlari
+- export merkezi
+- HTML, PDF ve TXT rapor butonlari
 - dark mode / light mode
 - KPI kartlari
 - genel ag ozeti
@@ -596,6 +662,7 @@ Ana sayfada su alanlar bulunur:
 - OS dagilimi
 - ag topolojisi
 - zaman karsilastirmasi
+- canli filtre ve arama paneli
 - host kartlari
 - saldiri senaryolari
 - savunma onerileri
@@ -669,6 +736,8 @@ Bu projede asagidaki gelistirmeler uygulanmistir:
 
 - HTML raporu ac butonu
 - PDF raporu ac butonu
+- TXT raporu indirme route'u
+- export merkezi
 - loading mesaji
 - risk badge sistemi
 - grafik uretimi
@@ -696,6 +765,10 @@ Bu projede asagidaki gelistirmeler uygulanmistir:
 - onceliklendirilmis aksiyon plani
 - MITRE ATT&CK eslestirmesi
 - modern dashboard arayuzu
+- canli filtreleme ve arama
+- indirilebilir PDF cikisi
+- XML parse hatasina karsi koruma
+- reloader kaynakli sayfa kapanma sorununun giderilmesi
 
 ---
 

@@ -1,8 +1,8 @@
 ##################################################
 GENEL AG OZETI
 ##################################################
-Analiz Modu: Red Team
-Mod Sorusu: Bu ag nasil hacklenir?
+Analiz Modu: Blue Team
+Mod Sorusu: Bu ag nasil korunur?
 Toplam Aktif Host Sayisi: 1
 Yuksek Riskli Host Sayisi: 1
 Orta Riskli Host Sayisi: 0
@@ -18,20 +18,28 @@ Toplam Senaryo Etki Skoru: 7
 MITRE ATT&CK Teknik Sayisi: 2
 CVE Veri Kaynagi: Yerel eşleme
 En Riskli Host: 192.168.1.106 (Skor: 6, Açık Port: 4)
-Red Team Ozet: 1 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.
-MITRE ATT&CK: 2 farkli MITRE ATT&CK teknigi ile iliskilendirildi.
-Onceki Tarama: 2026-03-28T14:53:19-07:00
-Yeni Acilan Port Sayisi: 0
+Blue Team Ozet: 1 host savunma acisindan oncelikli; yamalama, firewall kisitlamasi ve servis kapatma onerileri hazir.
+ONCELIKLENDIRILMIS AKSIYON PLANI
+1. 192.168.1.106 uzerindeki 22/ssh servisini yamala | OpenSSH 10.0p2 Debian 7 protocol 2.0 icin CVE-2018-15473 eslesmesi bulundu. | Oncelik Puani: 90
+2. 192.168.1.106 uzerindeki 3389/ms-wbt-server servisini yamala | Microsoft Terminal Service icin CVE-2019-0708 eslesmesi bulundu. | Oncelik Puani: 90
+3. 192.168.1.106 uzerindeki 22/ssh servisini gozden gecir | SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır. | Oncelik Puani: 85
+4. 192.168.1.106 uzerindeki 3389/ms-wbt-server servisini gozden gecir | RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır. | Oncelik Puani: 85
+5. 192.168.1.106 uzerindeki 22/ssh icin erisim korumasi ekle | VPN, MFA, hesap kilitleme ve izinli IP sinirlamasi uygulanmalidir. | Oncelik Puani: 80
+6. 192.168.1.106 uzerindeki 3389/ms-wbt-server icin erisim korumasi ekle | VPN, MFA, hesap kilitleme ve izinli IP sinirlamasi uygulanmalidir. | Oncelik Puani: 80
+7. 192.168.1.106 hostunu daha dar bir ag segmentine tasi | Yuksek riskli hostlarda yanal hareketi azaltmak icin ag segmentasyonu uygulanmalidir. | Oncelik Puani: 75
+8. 192.168.1.106 icin temel firewall politikasi uygula | Host onunde yalnizca gerekli portlari acik birakan bir ACL veya firewall kural seti tanimlanmalidir. | Oncelik Puani: 70
+Onceki Tarama: 2026-03-29T05:54:04-07:00
+Yeni Acilan Port Sayisi: 4
 Kapanan Port Sayisi: 0
-Risk Artisi Gorulen Host Sayisi: 0
+Risk Artisi Gorulen Host Sayisi: 1
 
 HOST LISTESI
-- 192.168.1.106 | OS: Linux 5.0 - 5.14 | Risk: Yüksek | Acik Port: 4 | Filtered: 0 | Firewall: Hayir | CVE: 2 | Skor: 6
+- 192.168.1.106 | OS: Linux 5.15 | Risk: Yüksek | Acik Port: 4 | Filtered: 0 | Firewall: Hayir | CVE: 2 | Skor: 6
 
 ==================================================
 Host: 192.168.1.106
 ==================================================
-Tespit Edilen Isletim Sistemi: Linux 5.0 - 5.14
+Tespit Edilen Isletim Sistemi: Linux 5.15
 Toplam Acik Port Sayisi: 4
 Filtered Port Sayisi: 0
 Firewall Tespiti: Belirgin firewall gostergesi yok.
@@ -41,24 +49,30 @@ Senaryo Etki Skoru: 7
 Genel Risk Seviyesi: Yüksek
 Risk Skoru: 6
 
-Red Team Ozeti: En olasi istismar yolu: Kimlik Bilgisi Zorlama Senaryosu (Yuksek / 7/10).
-SALDIRI SENARYOSU SIMULASYONU
-Senaryo: Kimlik Bilgisi Zorlama Senaryosu
-Siddet: Yuksek | Etki Skoru: 7/10
-1. Brute-force acisindan hassas servisler acik: tcpwrapped:22, tcpwrapped:3389.
-2. Zayif parola veya varsayilan kimlik bilgileri varsa otomatik parola denemeleri yapilabilir.
-3. Elde edilen hesaplarla uzaktan oturum acilarak kalicilik saglanabilir.
-Sonuc: Yetkisiz erisim elde edilebilir.
-Etki: Sunucu yonetimi ele gecirilebilir, veri sizdirma ve yanal hareket mumkun olabilir.
-MITRE ATT&CK ESMELEMELERI
-- Credential Access | T1110 | Brute Force
-- Initial Access | T1078 | Valid Accounts
+Blue Team Onceligi: Yuksek
+HOST ICIN SIRALI AKSIYONLAR
+1. 192.168.1.106 uzerindeki 22/ssh servisini yamala | OpenSSH 10.0p2 Debian 7 protocol 2.0 icin CVE-2018-15473 eslesmesi bulundu. | Oncelik Puani: 90
+2. 192.168.1.106 uzerindeki 3389/ms-wbt-server servisini yamala | Microsoft Terminal Service icin CVE-2019-0708 eslesmesi bulundu. | Oncelik Puani: 90
+3. 192.168.1.106 uzerindeki 22/ssh servisini gozden gecir | SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır. | Oncelik Puani: 85
+4. 192.168.1.106 uzerindeki 3389/ms-wbt-server servisini gozden gecir | RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır. | Oncelik Puani: 85
+SAVUNMA ONERILERI
+- Tespit edilen servisler icin yamalari ve guvenlik guncellemelerini oncelikli uygulayin.
+- SSH, FTP ve RDP gibi uzak erisim servislerinde MFA, hesap kilitleme ve guclu parola politikasi uygulayin.
+- Host onunde firewall veya ACL kullanarak yalnizca gerekli servisleri acik birakin.
+- Bu host icin segmentasyon uygulayin ve gerekmedikce internetten dogrudan erisimi kapatin.
+- SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır.
+- 22/ssh servisini VPN arkasi veya izinli IP listesi ile sinirlandirin.
+- 22/ssh icin servis gerekliligini dogrulayin; gereksizse kapatin.
+- RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır.
+- 3389/ms-wbt-server servisini VPN arkasi veya izinli IP listesi ile sinirlandirin.
+- 3389/ms-wbt-server icin servis gerekliligini dogrulayin; gereksizse kapatin.
+- Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.
 
 ACIK PORTLAR VE ANALIZ
 
 Port: 22/tcp
-Servis: tcpwrapped
-Surum Tespiti: tcpwrapped
+Servis: ssh
+Surum Tespiti: OpenSSH 10.0p2 Debian 7 protocol 2.0
 Kategori: Uzak Erişim
 Risk: Yüksek
 OS Etkisi: Linux sistemlerde bu servis yanlış yapılandırılırsa uzaktan erişim riski artabilir.
@@ -67,8 +81,8 @@ CVE: CVE-2018-15473 - OpenSSH User Enumeration | Kaynak: Yerel servis kuralı | 
 Oneri: SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır.
 
 Port: 3389/tcp
-Servis: tcpwrapped
-Surum Tespiti: tcpwrapped
+Servis: ms-wbt-server
+Surum Tespiti: Microsoft Terminal Service
 Kategori: Uzak Erişim
 Risk: Yüksek
 OS Etkisi: OS etkisi yok
@@ -77,8 +91,8 @@ CVE: CVE-2019-0708 - BlueKeep / RDP | Kaynak: Yerel servis kuralı | Siddet: Bil
 Oneri: RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır.
 
 Port: 5432/tcp
-Servis: tcpwrapped
-Surum Tespiti: tcpwrapped
+Servis: postgresql
+Surum Tespiti: PostgreSQL DB 16.11 - 16.12
 Kategori: Bilinmiyor
 Risk: Bilinmiyor
 OS Etkisi: OS etkisi yok
@@ -87,8 +101,8 @@ CVE: Bilinen eslesme yok
 Oneri: Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.
 
 Port: 8086/tcp
-Servis: tcpwrapped
-Surum Tespiti: tcpwrapped
+Servis: http
+Surum Tespiti: InfluxDB http admin 2.8.0
 Kategori: Bilinmiyor
 Risk: Bilinmiyor
 OS Etkisi: OS etkisi yok

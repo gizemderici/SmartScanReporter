@@ -59,7 +59,7 @@
             margin-bottom: 6px;
         }
         .mode-card {
-            border-left: 6px solid #d9534f;
+            border-left: 6px solid #2563eb;
         }
     </style>
 </head>
@@ -68,8 +68,8 @@
 
     <div class="card">
         <h2>Genel Ag Ozeti</h2>
-        <p><strong>Analiz Modu:</strong> Red Team</p>
-        <p><strong>Mod Sorusu:</strong> Bu ag nasil hacklenir?</p>
+        <p><strong>Analiz Modu:</strong> Blue Team</p>
+        <p><strong>Mod Sorusu:</strong> Bu ag nasil korunur?</p>
         <p><strong>Toplam Aktif Host Sayisi:</strong> 1</p>
         <p><strong>Yuksek Riskli Host Sayisi:</strong> 1</p>
         <p><strong>Orta Riskli Host Sayisi:</strong> 0</p>
@@ -88,9 +88,9 @@
     </div>
 
     <div class="card mode-card">
-        <h2>Red Team Modu</h2>
-        <p><strong>Soru:</strong> Bu ag nasil hacklenir?</p>
-        <p>1 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.</p>
+        <h2>Blue Team Modu</h2>
+        <p><strong>Soru:</strong> Bu ag nasil korunur?</p>
+        <p>1 host savunma acisindan oncelikli; yamalama, firewall kisitlamasi ve servis kapatma onerileri hazir.</p>
         <p><strong>MITRE ATT&CK:</strong> 2 farkli MITRE ATT&CK teknigi ile iliskilendirildi.</p>
     </div>
 
@@ -110,7 +110,7 @@
     
             <tr>
                 <td>192.168.1.106</td>
-                <td>Linux 5.0 - 5.14</td>
+                <td>Linux 5.15</td>
                 <td class="high">Yüksek</td>
                 <td>4</td>
                 <td>0</td>
@@ -123,16 +123,23 @@
     </div>
     
         <div class="card">
+            <h2>Onceliklendirilmis Aksiyon Plani</h2>
+            <ol>
+        <li><strong>192.168.1.106 uzerindeki 22/ssh servisini yamala</strong><br><small>OpenSSH 10.0p2 Debian 7 protocol 2.0 icin CVE-2018-15473 eslesmesi bulundu. | Oncelik Puani: 90</small></li><li><strong>192.168.1.106 uzerindeki 3389/ms-wbt-server servisini yamala</strong><br><small>Microsoft Terminal Service icin CVE-2019-0708 eslesmesi bulundu. | Oncelik Puani: 90</small></li><li><strong>192.168.1.106 uzerindeki 22/ssh servisini gozden gecir</strong><br><small>SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır. | Oncelik Puani: 85</small></li><li><strong>192.168.1.106 uzerindeki 3389/ms-wbt-server servisini gozden gecir</strong><br><small>RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır. | Oncelik Puani: 85</small></li><li><strong>192.168.1.106 uzerindeki 22/ssh icin erisim korumasi ekle</strong><br><small>VPN, MFA, hesap kilitleme ve izinli IP sinirlamasi uygulanmalidir. | Oncelik Puani: 80</small></li><li><strong>192.168.1.106 uzerindeki 3389/ms-wbt-server icin erisim korumasi ekle</strong><br><small>VPN, MFA, hesap kilitleme ve izinli IP sinirlamasi uygulanmalidir. | Oncelik Puani: 80</small></li><li><strong>192.168.1.106 hostunu daha dar bir ag segmentine tasi</strong><br><small>Yuksek riskli hostlarda yanal hareketi azaltmak icin ag segmentasyonu uygulanmalidir. | Oncelik Puani: 75</small></li><li><strong>192.168.1.106 icin temel firewall politikasi uygula</strong><br><small>Host onunde yalnizca gerekli portlari acik birakan bir ACL veya firewall kural seti tanimlanmalidir. | Oncelik Puani: 70</small></li>
+            </ol>
+        </div>
+        
+        <div class="card">
             <h2>Zaman Karsilastirmasi</h2>
-            <p><strong>Onceki Tarama:</strong> 2026-03-28T14:53:19-07:00</p>
-            <p><strong>Yeni Acilan Port Sayisi:</strong> 0</p>
+            <p><strong>Onceki Tarama:</strong> 2026-03-29T05:54:04-07:00</p>
+            <p><strong>Yeni Acilan Port Sayisi:</strong> 4</p>
             <p><strong>Kapanan Port Sayisi:</strong> 0</p>
-            <p><strong>Risk Artisi Gorulen Host Sayisi:</strong> 0</p>
+            <p><strong>Risk Artisi Gorulen Host Sayisi:</strong> 1</p>
         </div>
         
         <div class="card">
             <h2>Host: 192.168.1.106</h2>
-            <p><strong>Tespit Edilen Isletim Sistemi:</strong> Linux 5.0 - 5.14</p>
+            <p><strong>Tespit Edilen Isletim Sistemi:</strong> Linux 5.15</p>
             <p><strong>Toplam Acik Port Sayisi:</strong> 4</p>
             <p><strong>Filtered Port Sayisi:</strong> 0</p>
             <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
@@ -141,16 +148,7 @@
             <p><strong>Senaryo Etki Skoru:</strong> 7</p>
             <p><strong>Genel Risk Seviyesi:</strong> <span class="high">Yüksek</span></p>
             <p><strong>Risk Skoru:</strong> 6</p>
-        <p><strong>Red Team Ozeti:</strong> En olasi istismar yolu: Kimlik Bilgisi Zorlama Senaryosu (Yuksek / 7/10).</p><h3>Saldiri Senaryosu Simulasyonu</h3>
-                    <div style="margin-bottom: 16px; padding: 14px; border: 1px solid #ddd; border-radius: 8px;">
-                        <p><strong>Senaryo:</strong> Kimlik Bilgisi Zorlama Senaryosu</p>
-                        <p><strong>Siddet:</strong> Yuksek | <strong>Etki Skoru:</strong> 7/10</p>
-                        <ol>
-                    <li>Brute-force acisindan hassas servisler acik: tcpwrapped:22, tcpwrapped:3389.</li><li>Zayif parola veya varsayilan kimlik bilgileri varsa otomatik parola denemeleri yapilabilir.</li><li>Elde edilen hesaplarla uzaktan oturum acilarak kalicilik saglanabilir.</li>
-                        </ol>
-                        <p><strong>Sonuc:</strong> Yetkisiz erisim elde edilebilir.</p>
-                        <p><strong>Etki:</strong> Sunucu yonetimi ele gecirilebilir, veri sizdirma ve yanal hareket mumkun olabilir.</p>
-                    <p><strong>MITRE ATT&CK Eslesmeleri:</strong></p><ul class="action-list"><li>Credential Access - T1110 - Brute Force</li><li>Initial Access - T1078 - Valid Accounts</li></ul></div>
+        <p><strong>Blue Team Onceligi:</strong> Yuksek</p><h3>Host Icin Sirali Aksiyonlar</h3><ol><li><strong>192.168.1.106 uzerindeki 22/ssh servisini yamala</strong><br><small>OpenSSH 10.0p2 Debian 7 protocol 2.0 icin CVE-2018-15473 eslesmesi bulundu. | Oncelik Puani: 90</small></li><li><strong>192.168.1.106 uzerindeki 3389/ms-wbt-server servisini yamala</strong><br><small>Microsoft Terminal Service icin CVE-2019-0708 eslesmesi bulundu. | Oncelik Puani: 90</small></li><li><strong>192.168.1.106 uzerindeki 22/ssh servisini gozden gecir</strong><br><small>SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır. | Oncelik Puani: 85</small></li><li><strong>192.168.1.106 uzerindeki 3389/ms-wbt-server servisini gozden gecir</strong><br><small>RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır. | Oncelik Puani: 85</small></li></ol><h3>Savunma Onerileri</h3><ul class="action-list"><li>Tespit edilen servisler icin yamalari ve guvenlik guncellemelerini oncelikli uygulayin.</li><li>SSH, FTP ve RDP gibi uzak erisim servislerinde MFA, hesap kilitleme ve guclu parola politikasi uygulayin.</li><li>Host onunde firewall veya ACL kullanarak yalnizca gerekli servisleri acik birakin.</li><li>Bu host icin segmentasyon uygulayin ve gerekmedikce internetten dogrudan erisimi kapatin.</li><li>SSH erişimi güçlü parola ve mümkünse anahtar tabanlı kimlik doğrulama ile korunmalıdır.</li><li>22/ssh servisini VPN arkasi veya izinli IP listesi ile sinirlandirin.</li><li>22/ssh icin servis gerekliligini dogrulayin; gereksizse kapatin.</li><li>RDP erişimi VPN arkasına alınmalı ve firewall ile korunmalıdır.</li><li>3389/ms-wbt-server servisini VPN arkasi veya izinli IP listesi ile sinirlandirin.</li><li>3389/ms-wbt-server icin servis gerekliligini dogrulayin; gereksizse kapatin.</li><li>Bu servis için manuel güvenlik değerlendirmesi yapılmalıdır.</li></ul>
             <h3>Acik Portlar ve Analiz</h3>
             <table>
                 <tr>
@@ -169,8 +167,8 @@
                 <tr>
                     <td>22</td>
                     <td>tcp</td>
-                    <td>tcpwrapped</td>
-                    <td>tcpwrapped</td>
+                    <td>ssh</td>
+                    <td>OpenSSH 10.0p2 Debian 7 protocol 2.0</td>
                     <td>Uzak Erişim</td>
                     <td class="high">Yüksek</td>
                     <td>Linux sistemlerde bu servis yanlış yapılandırılırsa uzaktan erişim riski artabilir.</td>
@@ -182,8 +180,8 @@
                 <tr>
                     <td>3389</td>
                     <td>tcp</td>
-                    <td>tcpwrapped</td>
-                    <td>tcpwrapped</td>
+                    <td>ms-wbt-server</td>
+                    <td>Microsoft Terminal Service</td>
                     <td>Uzak Erişim</td>
                     <td class="high">Yüksek</td>
                     <td>OS etkisi yok</td>
@@ -195,8 +193,8 @@
                 <tr>
                     <td>5432</td>
                     <td>tcp</td>
-                    <td>tcpwrapped</td>
-                    <td>tcpwrapped</td>
+                    <td>postgresql</td>
+                    <td>PostgreSQL DB 16.11 - 16.12</td>
                     <td>Bilinmiyor</td>
                     <td class="unknown">Bilinmiyor</td>
                     <td>OS etkisi yok</td>
@@ -208,8 +206,8 @@
                 <tr>
                     <td>8086</td>
                     <td>tcp</td>
-                    <td>tcpwrapped</td>
-                    <td>tcpwrapped</td>
+                    <td>http</td>
+                    <td>InfluxDB http admin 2.8.0</td>
                     <td>Bilinmiyor</td>
                     <td class="unknown">Bilinmiyor</td>
                     <td>OS etkisi yok</td>
