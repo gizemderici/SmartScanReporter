@@ -1,0 +1,55 @@
+{
+  "target": "192.168.1.1",
+  "captured_at": "2026-04-26T23:16:24+03:00",
+  "network_summary": {
+    "total_hosts": 1,
+    "high_risk_hosts": 1,
+    "medium_risk_hosts": 0,
+    "low_risk_hosts": 0,
+    "total_known_cves": 2
+  },
+  "hosts": [
+    {
+      "ip": "192.168.1.1",
+      "general_risk": "Yuksek",
+      "host_score": 8,
+      "open_ports": [
+        {
+          "port": 22,
+          "protocol": "tcp",
+          "service": "ssh",
+          "service_version": "ssh",
+          "risk": "Orta"
+        },
+        {
+          "port": 23,
+          "protocol": "tcp",
+          "service": "telnet",
+          "service_version": "telnet",
+          "risk": "Yuksek"
+        },
+        {
+          "port": 53,
+          "protocol": "tcp",
+          "service": "domain",
+          "service_version": "domain",
+          "risk": "Orta"
+        },
+        {
+          "port": 80,
+          "protocol": "tcp",
+          "service": "http",
+          "service_version": "http",
+          "risk": "Dusuk"
+        },
+        {
+          "port": 1900,
+          "protocol": "tcp",
+          "service": "upnp",
+          "service_version": "upnp",
+          "risk": "Bilinmiyor"
+        }
+      ]
+    }
+  ]
+}

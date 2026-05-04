@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Discovery</title>
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg2: #0b1830;
+            --panel: rgba(10, 21, 38, 0.82);
+            --card: rgba(14, 28, 48, 0.88);
+            --line: rgba(148, 163, 184, 0.16);
+            --text: #e8eef8;
+            --muted: #8ea4c2;
+            --heading: #f7fbff;
+            --accent: #35d0ff;
+            --ok: #31d39b;
+            --warn: #ffb54a;
+            --bad: #ff6177;
+            --shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(53,208,255,.16), transparent 25%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+            color: var(--text);
+        }
+        .shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        .hero, .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+        }
+        .hero {
+            padding: 26px;
+            margin-bottom: 20px;
+        }
+        .topbar, .stats, .device-grid {
+            display: grid;
+            gap: 16px;
+        }
+        .topbar {
+            grid-template-columns: 1fr auto;
+            align-items: start;
+        }
+        .stats {
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 18px;
+        }
+        .device-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .visual img {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            margin-top: 14px;
+        }
+        .tag, .pill, .tool, .primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: .84rem;
+            border: 1px solid var(--line);
+        }
+        .tag {
+            color: var(--accent);
+            background: rgba(53,208,255,.10);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 12px;
+        }
+        .pill {
+            background: rgba(255,255,255,.05);
+            color: var(--text);
+        }
+        .tool, .primary {
+            min-height: 48px;
+            padding: 0 16px;
+            cursor: pointer;
+            color: var(--text);
+            background: rgba(255,255,255,.05);
+            text-decoration: none;
+        }
+        .primary {
+            border: none;
+            background: linear-gradient(135deg, #73ecff, #35d0ff);
+            color: #031018;
+            font-weight: 700;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            color: var(--heading);
+        }
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1;
+            letter-spacing: -.04em;
+        }
+        p {
+            margin: 0;
+            line-height: 1.65;
+        }
+        .muted {
+            color: var(--muted);
+        }
+        .panel {
+            margin-top: 18px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 20px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1.4fr auto;
+            gap: 12px;
+            align-items: end;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+        input[type="text"] {
+            width: 100%;
+            min-height: 52px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.04);
+            color: var(--text);
+            padding: 0 16px;
+            outline: none;
+        }
+        .stat, .card {
+            padding: 20px;
+        }
+        .stat-value {
+            margin-top: 12px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--heading);
+        }
+        .error {
+            color: var(--bad);
+            font-weight: 700;
+            margin-top: 14px;
+        }
+        .device-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 18px;
+        }
+        .device-card.is-new {
+            border-color: rgba(49,211,155,.38);
+            box-shadow: 0 0 0 1px rgba(49,211,155,.18) inset;
+        }
+        .device-ip {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--heading);
+        }
+        .device-top {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .device-meta {
+            display: grid;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .device-meta div {
+            color: var(--muted);
+        }
+        .device-meta strong {
+            color: var(--heading);
+        }
+        @media (max-width: 900px) {
+            .topbar, .form-grid, .stats, .device-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <section class="hero">
+            <div class="topbar">
+                <div>
+                    <div class="tag">Network Discovery</div>
+                    <h1>Agdaki aktif cihazlari tek ekranda kesfet.</h1>
+                    <p class="muted" style="margin-top:14px; max-width:760px;">
+                        Bu ekran subnet girerek yalnizca canli cihazlari bulur. Port analizi yapmaz; agda kimler var sorusuna hizli cevap verir.
+                    </p>
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <a href="/" class="tool">Ana Panele Don</a>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Ag Tarama</h2>
+                <p class="muted" style="margin:8px 0 14px;">Ornek subnet: 192.168.1.0/24</p>
+                <form method="POST">
+                    <div class="form-grid">
+                        <div>
+                            <label for="target">Subnet veya ag araligi</label>
+                            <input type="text" id="target" name="target" value="{{ target }}" placeholder="Orn: 192.168.1.0/24">
+                        </div>
+                        <button type="submit" class="primary">Cihazlari Bul</button>
+                    </div>
+                </form>
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+                    <span class="pill">Profil: Ping Scan</span>
+                    <span class="pill">Komut: nmap -sn</span>
+                    <span class="pill">Amac: Network Discovery</span>
+                </div>
+                {% if error %}
+                    <div class="error">{{ error }}</div>
+                {% endif %}
+            </div>
+        </section>
+
+        {% if discovery_result %}
+        <section class="stats">
+            <div class="card stat">
+                <h3>Bulunan Cihaz</h3>
+                <div class="stat-value">{{ discovery_result.device_count }}</div>
+                <p class="muted">Aktif gorunen toplam host</p>
+            </div>
+            <div class="card stat">
+                <h3>Taranan Hedef</h3>
+                <div class="stat-value" style="font-size:1.4rem;">{{ discovery_result.target }}</div>
+                <p class="muted">Kullanici tarafindan girilen subnet</p>
+            </div>
+            <div class="card stat">
+                <h3>Kullanim Amaci</h3>
+                <div class="stat-value" style="font-size:1.4rem;">Discovery</div>
+                <p class="muted">Agdaki canli cihazlari hizli bulma</p>
+            </div>
+            <div class="card stat">
+                <h3>Yeni Cihaz</h3>
+                <div class="stat-value">{{ discovery_comparison.summary.new_device_count if discovery_comparison else 0 }}</div>
+                <p class="muted">Bir onceki taramaya gore yeni gorunen host</p>
+            </div>
+        </section>
+
+        <section style="margin-top:20px;">
+            <div class="card visual" style="margin-bottom:20px;">
+                <h2>Discovery Topolojisi</h2>
+                <p class="muted" style="margin-top:8px;">Tarayan sistem, subnet ve bulunan cihazlar tek gorselde ozetlenir.</p>
+                <img src="{{ url_for('static', filename='discovery_topology.png') }}" alt="Discovery Topolojisi">
+            </div>
+
+            <div class="card">
+                <h2>{{ discovery_result.device_count }} cihaz bulundu</h2>
+                <p class="muted" style="margin-top:8px;">IP, hostname, MAC ve vendor bilgileri burada listelenir.</p>
+                {% if discovery_comparison and discovery_comparison.has_previous %}
+                    <p class="muted" style="margin-top:8px;">
+                        Onceki discovery zamani: {{ discovery_comparison.previous_scan_time }} |
+                        Yeni cihaz: {{ discovery_comparison.summary.new_device_count }} |
+                        Artik gorunmeyen cihaz: {{ discovery_comparison.summary.missing_device_count }}
+                    </p>
+                {% else %}
+                    <p class="muted" style="margin-top:8px;">Ilk discovery kaydi alindi. Ayni subnet tekrar tarandiginda yeni cihazlar isaretlenecek.</p>
+                {% endif %}
+                <div class="device-grid" style="margin-top:18px;">
+                    {% for device in discovery_result.devices %}
+                    <article class="device-card {% if device.is_new %}is-new{% endif %}">
+                        <div class="device-top">
+                            <div class="device-ip">{{ device.ip }}</div>
+                            {% if device.is_new %}
+                                <span class="pill" style="border-color: rgba(49,211,155,.32); color: var(--ok);">Yeni Cihaz</span>
+                            {% endif %}
+                        </div>
+                        <div class="device-meta">
+                            <div><strong>Hostname:</strong> {{ device.hostname }}</div>
+                            <div><strong>MAC:</strong> {{ device.mac }}</div>
+                            <div><strong>Vendor:</strong> {{ device.vendor }}</div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</body>
+</html>

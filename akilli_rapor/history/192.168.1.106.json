@@ -1,32 +1,34 @@
 {
   "target": "192.168.1.106",
-  "captured_at": "2026-03-28T15:02:26-07:00",
+  "captured_at": "2026-05-03T20:50:08+03:00",
   "network_summary": {
     "total_hosts": 1,
     "high_risk_hosts": 1,
     "medium_risk_hosts": 0,
     "low_risk_hosts": 0,
-    "total_known_cves": 2
+    "total_known_cves": 2,
+    "timed_out_hosts": 0
   },
   "hosts": [
     {
       "ip": "192.168.1.106",
-      "general_risk": "Yüksek",
+      "general_risk": "Yuksek",
       "host_score": 6,
+      "scan_timed_out": false,
       "open_ports": [
         {
           "port": 22,
           "protocol": "tcp",
           "service": "tcpwrapped",
           "service_version": "tcpwrapped",
-          "risk": "Yüksek"
+          "risk": "Yuksek"
         },
         {
           "port": 3389,
           "protocol": "tcp",
           "service": "tcpwrapped",
           "service_version": "tcpwrapped",
-          "risk": "Yüksek"
+          "risk": "Yuksek"
         },
         {
           "port": 5432,

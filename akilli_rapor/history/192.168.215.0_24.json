@@ -1,0 +1,19 @@
+{
+  "target": "192.168.215.0/24",
+  "captured_at": "2026-04-27T20:49:04+03:00",
+  "network_summary": {
+    "total_hosts": 1,
+    "high_risk_hosts": 0,
+    "medium_risk_hosts": 0,
+    "low_risk_hosts": 0,
+    "total_known_cves": 0
+  },
+  "hosts": [
+    {
+      "ip": "192.168.215.2",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "open_ports": []
+    }
+  ]
+}

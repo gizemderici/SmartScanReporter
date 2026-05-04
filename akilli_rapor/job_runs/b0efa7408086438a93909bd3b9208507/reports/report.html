@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ag Tarama Raporu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+        h1, h2, h3 {
+            color: #1f3b5b;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e9eef5;
+        }
+        .high {
+            color: #b00020;
+            font-weight: bold;
+        }
+        .medium {
+            color: #c77700;
+            font-weight: bold;
+        }
+        .low {
+            color: #1a7f37;
+            font-weight: bold;
+        }
+        .unknown {
+            color: #555;
+            font-weight: bold;
+        }
+        .state-pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid #d7deea;
+            font-size: 0.82rem;
+            font-weight: bold;
+        }
+        .state-open {
+            color: #1a7f37;
+            background: rgba(26, 127, 55, 0.12);
+            border-color: rgba(26, 127, 55, 0.24);
+        }
+        .state-filtered {
+            color: #c77700;
+            background: rgba(199, 119, 0, 0.12);
+            border-color: rgba(199, 119, 0, 0.22);
+        }
+        .state-closed {
+            color: #b00020;
+            background: rgba(176, 0, 32, 0.1);
+            border-color: rgba(176, 0, 32, 0.18);
+        }
+        .cve-list, .action-list {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .cve-list li, .action-list li {
+            margin-bottom: 6px;
+        }
+        .mode-card {
+            border-left: 6px solid #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; background: linear-gradient(135deg, #1f3b5b, #2563eb); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
+        <h1 style="margin: 0; font-size: 2.5em;">Akilli Ag Tarama Raporlama Sistemi</h1>
+        <p style="margin: 10px 0 0 0; font-size: 1.1em; opacity: 0.9;">Guvenlik analizi ve raporlama icin kapsamli cozum</p>
+        <p style="margin: 10px 0 0 0; font-size: 1.1em; opacity: 0.9;">Rapor Olusturulma Tarihi: 2026-05-03 21:37:52 | Mod: Red Team</p>
+    </div>
+
+    <div class="card">
+        <h2>Rapor Hakkinda</h2>
+        <p>Bu rapor, ag tarama sonuclarini detayli olarak analiz eder ve guvenlik ekipleri icin yorumlanabilir bir cikti uretir.</p>
+        <p><strong>Tarama Metodolojisi:</strong> Nmap port taramasi, servis surum tespiti ve isletim sistemi fingerprinting</p>
+        <p><strong>Risk Degerlendirme:</strong> Acik portlar, servis surumleri ve bilinen CVE kayitlari baz alinarak yapilir.</p>
+        <p><strong>Analiz Modlari:</strong> Red Team (saldirgan perspektifi) ve Blue Team (savunma perspektifi)</p>
+    </div>
+
+    <div class="card">
+        <h2>Genel Ag Ozeti</h2>
+        <p><strong>Analiz Modu:</strong> Red Team</p>
+        <p><strong>Mod Sorusu:</strong> Bu ag nasil hacklenir?</p>
+        <p><strong>Toplam Aktif Host Sayisi:</strong> 1</p>
+        <p><strong>Yuksek Riskli Host Sayisi:</strong> 1</p>
+        <p><strong>Orta Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Dusuk Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Bilinen CVE Bulunan Host Sayisi:</strong> 1</p>
+        <p><strong>Toplam Eslesen CVE Sayisi:</strong> 2</p>
+        <p><strong>Firewall Belirtisi Olan Host Sayisi:</strong> 0</p>
+        <p><strong>Toplam Filtered Port Sayisi:</strong> 0</p>
+        
+        <p><strong>Brute-Force Riski Olan Host Sayisi:</strong> 1</p>
+        <p><strong>Saldiri Senaryosu Uretilen Host Sayisi:</strong> 1</p>
+        <p><strong>Toplam Saldiri Senaryosu:</strong> 1</p>
+        <p><strong>Toplam Senaryo Etki Skoru:</strong> 7</p>
+        <p><strong>MITRE ATT&CK Teknik Sayisi:</strong> 2</p>
+        <p><strong>CVE Veri Kaynagi:</strong> Yerel eşleme</p>
+        <p><strong>En Riskli Host:</strong> 192.168.1.106 (Skor: 6, Acik Port: 4)</p>
+        <p><strong>Ortalama Exploitability Skoru:</strong> 65.0/100</p>
+        <p><strong>En Yuksek Exploitability:</strong> 192.168.1.106 | 65/100 | Yuksek</p>
+    </div>
+    
+    <div class="card">
+        <h2>NSE Script Bulgulari</h2>
+        <p><strong>Toplam NSE Bulgusu:</strong> 1</p>
+        <p><strong>NSE Bulgusu Olan Host Sayisi:</strong> 1</p>
+        <ul class="action-list">
+            <li><strong>192.168.1.106</strong> - 22/tcp - ERROR: Script execution failed (use -d to debug) <small>(ssh-hostkey)</small></li>
+        </ul>
+    </div>
+        
+    <div class="card mode-card">
+        <h2>Red Team Modu</h2>
+        <p><strong>Soru:</strong> Bu ag nasil hacklenir?</p>
+        <p>1 host icin senaryo uretildi. En yuksek istismar edilebilirlik: 192.168.1.106 (65/100, Yuksek).</p>
+        <p><strong>MITRE ATT&CK:</strong> 2 farkli MITRE ATT&amp;CK teknigi ile iliskilendirildi.</p>
+        
+    </div>
+
+    <div class="card">
+        <h2>Host Listesi</h2>
+        <table>
+            <tr>
+                <th>IP</th>
+                <th>Isletim Sistemi</th>
+                <th>Genel Risk</th>
+                <th>Acik Port Sayisi</th>
+                <th>Filtered</th>
+                <th>Firewall</th>
+                <th>CVE Sayisi</th>
+                <th>Risk Skoru</th>
+            </tr>
+    
+            <tr>
+                <td>192.168.1.106</td>
+                <td>Linux 5.0 - 5.14</td>
+                <td class="high">Yuksek</td>
+                <td>4</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>2</td>
+                <td>6</td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div class="card">
+        <h2>Grafiksel Analiz ve Aciklamalar</h2>
+        <p>Bu bolumde ag tarama sonuclarinin gorsel temsilleri ve kisa aciklamalari yer alir.</p>
+
+        <h3>Risk Dagilimi Grafigi</h3>
+        <p>Hostlarin risk seviyelerine gore dagilimini gosterir.</p>
+        <img src="/job-artifact/b0efa7408086438a93909bd3b9208507/risk_chart.png" alt="Risk Dagilimi Grafigi" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+        <h3>Isletim Sistemi Dagilimi</h3>
+        <p>Ortamda tespit edilen platformlarin genel dagilimini gosterir.</p>
+        <img src="/job-artifact/b0efa7408086438a93909bd3b9208507/os_distribution.png" alt="OS Dagilim Grafigi" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+        <h3>Ag Topolojisi</h3>
+        <p>Tarayan sistem, hedef ag ve bulunan hostlar arasindaki baglantilari ozetler.</p>
+        <img src="/job-artifact/b0efa7408086438a93909bd3b9208507/network_topology.png" alt="Ag Topolojisi" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+        <div style="background: #e9eef5; padding: 15px; border-radius: 8px; margin-top: 20px;">
+            <h4>Renk Kodlamasi</h4>
+            <ul>
+                <li><span style="color: #d9534f; font-weight: bold;">Kirmizi:</span> Yuksek risk</li>
+                <li><span style="color: #f0ad4e; font-weight: bold;">Turuncu:</span> Orta risk</li>
+                <li><span style="color: #5cb85c; font-weight: bold;">Yesil:</span> Dusuk risk</li>
+                <li><span style="color: #94a3b8; font-weight: bold;">Gri:</span> Bilinmiyor</li>
+            </ul>
+        </div>
+    </div>
+    
+        <div class="card">
+            <h2>Zaman Karsilastirmasi</h2>
+            <p><strong>Onceki Tarama:</strong> 2026-05-03T21:33:20+03:00</p>
+            <p><strong>Yeni Acilan Port Sayisi:</strong> 0</p>
+            <p><strong>Kapanan Port Sayisi:</strong> 0</p>
+            <p><strong>Risk Artisi Gorulen Host Sayisi:</strong> 0</p>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.106</h2>
+            <p>Bu bolumde 192.168.1.106 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Linux 5.0 - 5.14</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 4</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 2</p>
+                <p><strong>Exploitability:</strong> 65/100 (Yuksek)</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="high">Yuksek</span></p>
+                
+            </div>
+        <p><strong>Red Team Ozeti:</strong> En olasi istismar yolu: Kimlik Bilgisi Zorlama Senaryosu | Istismar Edilebilirlik: Yuksek (65/100).</p><h3>One Cikanlar</h3><ul class="action-list"><li>2 CVE eslesmesi</li><li>2 brute-force yuzeyi</li><li>Oncelikli senaryo: Kimlik Bilgisi Zorlama Senaryosu</li></ul><h3>Saldiri Senaryosu Simulasyonu</h3>
+                    <div style="margin-bottom: 16px; padding: 14px; border: 1px solid #ddd; border-radius: 8px; background: #fef2f2;">
+                        <p><strong>Senaryo Basligi:</strong> Kimlik Bilgisi Zorlama Senaryosu</p>
+                        <p><strong>Siddet Seviyesi:</strong> Yuksek | <strong>Etki Skoru:</strong> 7/10</p>
+                        <p><strong>Saldiri Adimlari:</strong></p>
+                        <ol>
+                    <li>Brute-force acisindan hassas servisler acik: tcpwrapped:22, tcpwrapped:3389.</li><li>Zayif parola, tekrar kullanilan parola veya varsayilan kimlik bilgileri hedeflenir.</li><li>Basarili bir parola tahmini sonrasi uzaktan oturum acilir.</li><li>Elde edilen hesaplarla kalicilik, veri toplama veya ek hostlara gecis denenir.</li>
+                        </ol>
+                        <p><strong>Beklenen Sonuc:</strong> Yetkisiz erisim elde edilebilir.</p>
+                        <p><strong>Potansiyel Etki:</strong> Sunucu yonetimi ele gecirilebilir, veri sizdirma ve yanal hareket mumkun olabilir.</p>
+                    <p><strong>MITRE ATT&CK Eslesmeleri:</strong></p><ul class="action-list"><li><strong>Credential Access</strong> - T1110: Brute Force</li><li><strong>Initial Access</strong> - T1078: Valid Accounts</li></ul></div>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+                <tr>
+                    <td>22</td>
+                    <td>tcp</td>
+                    <td><span class="state-pill state-open">Open</span></td>
+                    <td>Bu port aktif ve baglanti kabul ediyor.</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Uzak Erisim</td>
+                    <td class="high">Yuksek</td>
+                    <td>Linux sistemlerde bu servis yanlis yapilandirilirsa uzaktan erisim riski artabilir.</td>
+                    <td>SSH servisi acik oldugu icin brute-force saldiri riski vardir.</td>
+                    <td><ul class="cve-list"><li><strong>ssh-hostkey</strong> - ERROR: Script execution failed (use -d to debug)<br><small>ERROR: Script execution failed (use -d to debug)</small></li></ul></td>
+                    <td><ul class="cve-list"><li><strong>CVE-2018-15473</strong> - OpenSSH User Enumeration<br><small>Kaynak: Yerel servis kurali | Siddet: Bilinmiyor</small><br><small>Eslesme Nedeni: SSH servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi.</small><br><small>Bazi OpenSSH surumlerinde kullanici adi dogrulama davranisi bilgi sizdirabilir.</small></li></ul></td>
+                    <td>SSH erisimi guclu parola ve mumkunse anahtar tabanli kimlik dogrulama ile korunmalidir.</td>
+                </tr>
+            
+                <tr>
+                    <td>3000</td>
+                    <td>tcp</td>
+                    <td><span class="state-pill state-closed">Closed</span></td>
+                    <td>Bu port kapali; servis su anda baglanti kabul etmiyor.</td>
+                    <td>ppp</td>
+                    <td>ppp</td>
+                    <td>-</td>
+                    <td class="unknown">-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Script bulgusu yok</td>
+                    <td>Bilinen eslesme yok</td>
+                    <td>Bu port kapali; servis su anda baglanti kabul etmiyor.</td>
+                </tr>
+            
+                <tr>
+                    <td>3389</td>
+                    <td>tcp</td>
+                    <td><span class="state-pill state-open">Open</span></td>
+                    <td>Bu port aktif ve baglanti kabul ediyor.</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Uzak Erisim</td>
+                    <td class="high">Yuksek</td>
+                    <td>OS etkisi yok</td>
+                    <td>RDP servisi acik oldugu icin brute-force saldiri riski vardir.</td>
+                    <td>Script bulgusu yok</td>
+                    <td><ul class="cve-list"><li><strong>CVE-2019-0708</strong> - BlueKeep / RDP<br><small>Kaynak: Yerel servis kurali | Siddet: Bilinmiyor</small><br><small>Eslesme Nedeni: RDP servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi.</small><br><small>Eski RDP servislerinde kimlik dogrulama oncesi kritik uzaktan kod calistirma acigi bulunabilir.</small></li></ul></td>
+                    <td>RDP erisimi VPN arkasina alinmali ve firewall ile korunmalidir.</td>
+                </tr>
+            
+                <tr>
+                    <td>5432</td>
+                    <td>tcp</td>
+                    <td><span class="state-pill state-open">Open</span></td>
+                    <td>Bu port aktif ve baglanti kabul ediyor.</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Bilinmiyor</td>
+                    <td class="unknown">Bilinmiyor</td>
+                    <td>OS etkisi yok</td>
+                    <td>Belirgin brute-force riski tespit edilmedi.</td>
+                    <td>Script bulgusu yok</td>
+                    <td>Bilinen eslesme yok</td>
+                    <td>Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.</td>
+                </tr>
+            
+                <tr>
+                    <td>8082</td>
+                    <td>tcp</td>
+                    <td><span class="state-pill state-closed">Closed</span></td>
+                    <td>Bu port kapali; servis su anda baglanti kabul etmiyor.</td>
+                    <td>blackice-alerts</td>
+                    <td>blackice-alerts</td>
+                    <td>-</td>
+                    <td class="unknown">-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Script bulgusu yok</td>
+                    <td>Bilinen eslesme yok</td>
+                    <td>Bu port kapali; servis su anda baglanti kabul etmiyor.</td>
+                </tr>
+            
+                <tr>
+                    <td>8086</td>
+                    <td>tcp</td>
+                    <td><span class="state-pill state-open">Open</span></td>
+                    <td>Bu port aktif ve baglanti kabul ediyor.</td>
+                    <td>tcpwrapped</td>
+                    <td>tcpwrapped</td>
+                    <td>Bilinmiyor</td>
+                    <td class="unknown">Bilinmiyor</td>
+                    <td>OS etkisi yok</td>
+                    <td>Belirgin brute-force riski tespit edilmedi.</td>
+                    <td>Script bulgusu yok</td>
+                    <td>Bilinen eslesme yok</td>
+                    <td>Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.</td>
+                </tr>
+            
+            </table>
+        </div>
+        
+    <div class="card" style="text-align: center; background: #e9eef5; border-top: 4px solid #1f3b5b;">
+        <h2>Rapor Tamamlandi</h2>
+        <p>Bu rapor Akilli Ag Tarama Raporlama Sistemi tarafindan otomatik olarak olusturulmustur.</p>
+        <p><strong>Onemli Not:</strong> Bu rapor guvenlik degerlendirmesi icin bir aractir. Profesyonel destek gereken senaryolarda uzman dogrulamasi onerilir.</p>
+    </div>
+</body>
+</html>
+    

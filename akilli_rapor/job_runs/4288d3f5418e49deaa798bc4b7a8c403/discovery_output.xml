@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///C:/Program Files (x86)/Nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Tue Apr 28 13:40:29 2026 as: nmap -sn -R -oX C:\\SmartScanReporter\\akilli_rapor\\job_runs\\4288d3f5418e49deaa798bc4b7a8c403\\discovery_output.xml 192.168.1.0/24 -->
+<nmaprun scanner="nmap" args="nmap -sn -R -oX C:\\SmartScanReporter\\akilli_rapor\\job_runs\\4288d3f5418e49deaa798bc4b7a8c403\\discovery_output.xml 192.168.1.0/24" start="1777372829" startstr="Tue Apr 28 13:40:29 2026" version="7.99" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.0" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="84000" rttvar="84000" to="420000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.1" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="37000" rttvar="37000" to="185000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.2" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="28000" rttvar="28000" to="140000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.3" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="30000" rttvar="30000" to="150000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.4" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="60000" rttvar="60000" to="300000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.5" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="80000" rttvar="80000" to="400000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.6" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="79000" rttvar="79000" to="395000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.7" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="55000" rttvar="55000" to="275000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.8" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="54000" rttvar="54000" to="270000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.9" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="52000" rttvar="52000" to="260000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.10" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="51000" rttvar="51000" to="255000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.11" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="74000" rttvar="74000" to="370000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.12" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="46000" rttvar="46000" to="230000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.13" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="70000" rttvar="70000" to="350000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.14" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="48000" rttvar="48000" to="240000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.15" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="52000" rttvar="52000" to="260000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.16" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="46000" rttvar="46000" to="230000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.17" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="49000" rttvar="49000" to="245000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.18" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="47000" rttvar="47000" to="235000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.19" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="43000" rttvar="43000" to="215000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.20" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="45000" rttvar="45000" to="225000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.21" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="45000" rttvar="45000" to="225000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.22" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="43000" rttvar="43000" to="215000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.23" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="27000" rttvar="27000" to="135000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.24" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="72000" rttvar="72000" to="360000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.25" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="70000" rttvar="70000" to="350000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.26" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="69000" rttvar="69000" to="345000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.27" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="75000" rttvar="75000" to="375000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.28" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="73000" rttvar="73000" to="365000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.29" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="73000" rttvar="73000" to="365000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.30" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="66000" rttvar="66000" to="330000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.31" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="66000" rttvar="66000" to="330000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.32" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="53000" rttvar="53000" to="265000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.33" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="52000" rttvar="52000" to="260000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.34" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="52000" rttvar="52000" to="260000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.35" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="63000" rttvar="63000" to="315000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.36" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="62000" rttvar="62000" to="310000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.37" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="43000" rttvar="43000" to="215000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.38" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="42000" rttvar="42000" to="210000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.39" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="43000" rttvar="43000" to="215000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.40" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="42000" rttvar="42000" to="210000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.41" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="79000" rttvar="79000" to="395000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.42" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="77000" rttvar="77000" to="385000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.43" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="77000" rttvar="77000" to="385000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.44" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="76000" rttvar="76000" to="380000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.45" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="81000" rttvar="81000" to="405000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.46" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="79000" rttvar="79000" to="395000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.47" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="78000" rttvar="78000" to="390000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.48" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="74000" rttvar="74000" to="370000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.49" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="73000" rttvar="73000" to="365000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.50" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="71000" rttvar="71000" to="355000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.51" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="70000" rttvar="70000" to="350000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.52" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="68000" rttvar="68000" to="340000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.53" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="67000" rttvar="67000" to="335000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.54" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="66000" rttvar="66000" to="330000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.55" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="64000" rttvar="64000" to="320000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.56" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="64000" rttvar="64000" to="320000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.57" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="63000" rttvar="63000" to="315000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.58" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="71000" rttvar="71000" to="355000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.59" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="63000" rttvar="63000" to="315000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.60" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="62000" rttvar="62000" to="310000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.61" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="71000" rttvar="71000" to="355000"/>
+</host>
+<host><status state="up" reason="reset" reason_ttl="123"/>
+<address addr="192.168.1.62" addrtype="ipv4"/>
+<hostnames>
+</hostnames>

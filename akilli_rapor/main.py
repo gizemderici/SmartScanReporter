@@ -1,11 +1,11 @@
 from analyzer import parse_results
-from chart_generator import generate_risk_chart
+from chart_generator import generate_network_topology, generate_os_chart, generate_risk_chart
 from cve_lookup import enrich_reports_with_online_cves
 from env_loader import load_env_file
 from history_tracker import record_and_compare_scan
 from reporter import HTML_RAPOR_DOSYASI, TXT_RAPOR_DOSYASI, generate_reports
 from scenario_generator import generate_attack_scenarios
-from scanner import run_nmap_scan
+from scanner import run_nmap_scan, validate_target_value
 from team_advisor import BLUE_TEAM, RED_TEAM, apply_team_mode_analysis
 
 
@@ -22,6 +22,12 @@ def main():
         print("Hedef bos birakilamaz.")
         return
 
+    try:
+        target = validate_target_value(target)
+    except ValueError as validation_error:
+        print(f"Hedef hatasi: {validation_error}")
+        return
+
     success, stderr = run_nmap_scan(target)
     if not success:
         print(f"Nmap hatasi: {stderr}")
@@ -34,6 +40,8 @@ def main():
         apply_team_mode_analysis(network_summary, host_reports)
         comparison = record_and_compare_scan(target, network_summary, host_reports)
         generate_risk_chart(network_summary)
+        generate_os_chart(network_summary)
+        generate_network_topology(target, network_summary)
         generate_reports(network_summary, host_reports, comparison, mode=selected_mode)
     except ValueError as parse_error:
         print(f"Analiz hatasi: {parse_error}")

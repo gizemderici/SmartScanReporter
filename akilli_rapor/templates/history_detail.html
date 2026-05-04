@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarama Gecmisi Detayi</title>
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: rgba(10, 21, 38, 0.90);
+            --card: rgba(14, 28, 48, 0.94);
+            --line: rgba(148, 163, 184, 0.16);
+            --text: #e8eef8;
+            --muted: #8ea4c2;
+            --heading: #f7fbff;
+            --accent: #35d0ff;
+            --ok: #31d39b;
+            --warn: #ffb54a;
+            --bad: #ff6177;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
+            background: linear-gradient(180deg, #07111f 0%, #0b1830 100%);
+            color: var(--text);
+        }
+        .shell { max-width: 1180px; margin: 0 auto; padding: 24px; }
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+        .stats, .host-grid { display: grid; gap: 14px; }
+        .stats { grid-template-columns: repeat(4, 1fr); }
+        .host-grid { grid-template-columns: repeat(2, 1fr); }
+        .stat, .host-item {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 16px;
+        }
+        h1, h2, h3 { margin: 0; color: var(--heading); }
+        p { margin: 0; line-height: 1.6; }
+        .muted { color: var(--muted); }
+        .quick { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: .82rem;
+            background: rgba(255,255,255,.05);
+        }
+        .pill.accent { color: var(--accent); border-color: rgba(53,208,255,.24); }
+        .tool {
+            min-height: 46px;
+            border-radius: 14px;
+            padding: 0 16px;
+            cursor: pointer;
+            border: 1px solid var(--line);
+            color: var(--text);
+            background: rgba(255,255,255,.05);
+        }
+        a { text-decoration: none; }
+        @media (max-width: 900px) {
+            .stats, .host-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="card">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a href="/"><button type="button" class="tool">Panele Don</button></a>
+                <a href="/?target={{ history_item.target|urlencode }}&scan_type={{ history_item.scan_type|urlencode }}&team_mode={{ history_item.team_mode|urlencode }}&autostart=1"><button type="button" class="tool">Yeniden Tara</button></a>
+            </div>
+            <h1 style="margin-top:16px;">Tarama Gecmisi Detayi</h1>
+            <p class="muted" style="margin-top:10px;">Kaydedilen onceki tarama ozeti ve one cikan host bilgileri.</p>
+            <div class="quick">
+                <span class="pill accent">{{ history_item.target }}</span>
+                <span class="pill">{{ history_item.scan_label }}</span>
+                <span class="pill">{% if history_item.team_mode == 'red' %}Red Team{% else %}Blue Team{% endif %}</span>
+                <span class="pill">{{ history_item.created_at }}</span>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat"><h3>Toplam Host</h3><p style="margin-top:10px; font-size:2rem;">{{ history_item.total_hosts }}</p></div>
+            <div class="stat"><h3>Kritik Risk</h3><p style="margin-top:10px; font-size:2rem;">{{ history_item.high_risk_hosts }}</p></div>
+            <div class="stat"><h3>Toplam CVE</h3><p style="margin-top:10px; font-size:2rem;">{{ history_item.total_known_cves }}</p></div>
+            <div class="stat"><h3>MITRE Teknik</h3><p style="margin-top:10px; font-size:2rem;">{{ history_item.detail.mitre_technique_count or 0 }}</p></div>
+        </div>
+
+        <div class="card">
+            <h2>Tarama Ozeti</h2>
+            <div class="quick" style="margin-top:14px;">
+                <span class="pill">Orta Risk: {{ history_item.detail.medium_risk_hosts or 0 }}</span>
+                <span class="pill">Dusuk Risk: {{ history_item.detail.low_risk_hosts or 0 }}</span>
+                <span class="pill">Filtered Port: {{ history_item.detail.total_filtered_ports or 0 }}</span>
+                <span class="pill">Senaryo: {{ history_item.detail.scenario_count or 0 }}</span>
+            </div>
+            <p class="muted" style="margin-top:14px;">En riskli host: {{ history_item.detail.most_risky_host or 'Yok' }}</p>
+        </div>
+
+        <div class="card">
+            <h2>One Cikan Hostlar</h2>
+            {% if history_item.detail.hosts %}
+                <div class="host-grid" style="margin-top:16px;">
+                    {% for host in history_item.detail.hosts %}
+                    <div class="host-item">
+                        <h3>{{ host.ip }}</h3>
+                        <p class="muted" style="margin-top:8px;">OS: {{ host.detected_os }}</p>
+                        <p class="muted">Risk: {{ host.general_risk }} | Skor: {{ host.host_score }}</p>
+                        <p class="muted">Open Port: {{ host.total_open_ports }} | Filtered: {{ host.total_filtered_ports }}</p>
+                        {% if host.scan_timed_out %}
+                        <p class="muted" style="color:#8a5a00;">Detayli tarama zaman asimina ugradi; bu kayitta port bilgileri eksik olabilir.</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="muted" style="margin-top:14px;">Bu kayit icin host detayi bulunamadi.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

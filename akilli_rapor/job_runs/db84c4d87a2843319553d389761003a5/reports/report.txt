@@ -1,0 +1,678 @@
+##################################################
+GENEL AG OZETI
+##################################################
+Analiz Modu: Red Team
+Mod Sorusu: Bu ag nasil hacklenir?
+Toplam Aktif Host Sayisi: 36
+Yuksek Riskli Host Sayisi: 0
+Orta Riskli Host Sayisi: 0
+Dusuk Riskli Host Sayisi: 0
+Bilinen CVE Bulunan Host Sayisi: 0
+Toplam Eslesen CVE Sayisi: 0
+Firewall Belirtisi Olan Host Sayisi: 0
+Toplam Filtered Port Sayisi: 0
+Zaman Asimina Ugrayan Host Sayisi: 36
+Brute-Force Riski Olan Host Sayisi: 0
+Saldiri Senaryosu Uretilen Host Sayisi: 0
+Toplam Saldiri Senaryosu: 0
+Toplam Senaryo Etki Skoru: 0
+MITRE ATT&CK Teknik Sayisi: 0
+CVE Veri Kaynagi: Yerel eşleme
+En Riskli Host: 192.168.1.1 (Skor: 0, Acik Port: 0)
+Red Team Ozet: 0 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.
+MITRE ATT&CK: MITRE ATT&CK eslesmesi uretilmedi.
+Onceki Tarama: 2026-04-27T21:34:20+03:00
+Yeni Acilan Port Sayisi: 0
+Kapanan Port Sayisi: 4
+Risk Artisi Gorulen Host Sayisi: 0
+
+HOST LISTESI
+- 192.168.1.1 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.2 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.3 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.4 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.5 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.6 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.7 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.8 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.9 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.10 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.11 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.12 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.13 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.14 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.15 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.16 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.17 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.18 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.19 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.20 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.21 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.22 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.23 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.24 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.25 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.26 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.27 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.28 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.29 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.30 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.31 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.32 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.33 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.34 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.35 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.36 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+
+==================================================
+Host: 192.168.1.1
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.2
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.3
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.4
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.5
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.6
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.7
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.8
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.9
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.10
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.11
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.12
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.13
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.14
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.15
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.16
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.17
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.18
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.19
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.20
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.21
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.22
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.23
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.24
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.25
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.26
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.27
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.28
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.29
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.30
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.31
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.32
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.33
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.34
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.35
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.36
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+

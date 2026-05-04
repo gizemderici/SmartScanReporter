@@ -44,13 +44,24 @@ def get_nvd_query(service_name: str, port_number: int, service_version: str = ""
     return None
 
 
+def _read_int_setting(env_key, default_value, minimum=1):
+    raw_value = os.getenv(env_key, "").strip()
+    if not raw_value:
+        return default_value
+    try:
+        value = int(raw_value)
+    except ValueError:
+        return default_value
+    return max(minimum, value)
+
+
 def fetch_nvd_cves(service_name: str, port_number: int, service_version: str = ""):
     query = get_nvd_query(service_name, port_number, service_version)
     if not query:
         return []
 
-    results_per_page = int(os.getenv("NVD_RESULTS_PER_PAGE", DEFAULT_RESULTS_PER_PAGE))
-    timeout = int(os.getenv("NVD_API_TIMEOUT", DEFAULT_TIMEOUT))
+    results_per_page = _read_int_setting("NVD_RESULTS_PER_PAGE", DEFAULT_RESULTS_PER_PAGE)
+    timeout = _read_int_setting("NVD_API_TIMEOUT", DEFAULT_TIMEOUT)
     params = parse.urlencode(
         {
             "keywordSearch": query,

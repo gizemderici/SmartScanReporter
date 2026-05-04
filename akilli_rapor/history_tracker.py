@@ -1,4 +1,5 @@
 import json
+import hashlib
 import os
 import re
 from datetime import datetime
@@ -13,8 +14,27 @@ def _safe_target_name(target: str) -> str:
     return safe or "unknown_target"
 
 
+def _target_hash(target: str) -> str:
+    normalized = (target or "").strip().encode("utf-8")
+    return hashlib.sha1(normalized).hexdigest()[:10]
+
+
 def _snapshot_path(target: str) -> str:
+    safe_name = _safe_target_name(target)
+    return os.path.join(HISTORY_DIR, f"{safe_name}__{_target_hash(target)}.json")
+
+
+def _discovery_snapshot_path(target: str) -> str:
+    safe_name = _safe_target_name(target)
+    return os.path.join(HISTORY_DIR, f"discovery_{safe_name}__{_target_hash(target)}.json")
+
+
+def _legacy_snapshot_path(target: str) -> str:
     return os.path.join(HISTORY_DIR, f"{_safe_target_name(target)}.json")
+
+
+def _legacy_discovery_snapshot_path(target: str) -> str:
+    return os.path.join(HISTORY_DIR, f"discovery_{_safe_target_name(target)}.json")
 
 
 def build_snapshot(target: str, network_summary, host_reports):
@@ -25,6 +45,7 @@ def build_snapshot(target: str, network_summary, host_reports):
                 "ip": host["ip"],
                 "general_risk": host["general_risk"],
                 "host_score": host["host_score"],
+                "scan_timed_out": bool(host.get("scan_timed_out", False)),
                 "open_ports": [
                     {
                         "port": port["port"],
@@ -47,6 +68,7 @@ def build_snapshot(target: str, network_summary, host_reports):
             "medium_risk_hosts": network_summary["medium_risk_hosts"],
             "low_risk_hosts": network_summary["low_risk_hosts"],
             "total_known_cves": network_summary.get("total_known_cves", 0),
+            "timed_out_hosts": network_summary.get("timed_out_hosts", 0),
         },
         "hosts": hosts,
     }
@@ -54,10 +76,15 @@ def build_snapshot(target: str, network_summary, host_reports):
 
 def load_previous_snapshot(target: str):
     path = _snapshot_path(target)
-    if not os.path.exists(path):
-        return None
-    with open(path, "r", encoding="utf-8") as file:
-        return json.load(file)
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
+
+    legacy_path = _legacy_snapshot_path(target)
+    if os.path.exists(legacy_path):
+        with open(legacy_path, "r", encoding="utf-8") as file:
+            return json.load(file)
+    return None
 
 
 def save_snapshot(target: str, snapshot):
@@ -125,6 +152,12 @@ def compare_snapshots(previous_snapshot, current_snapshot):
         current_risk = current_host.get("general_risk", "Bilinmiyor")
 
         if previous_score != current_score or previous_risk != current_risk:
+            direction = "degisti"
+            if current_score > previous_score:
+                direction = "artti"
+            elif current_score < previous_score:
+                direction = "azaldi"
+
             risk_changes.append(
                 {
                     "ip": ip,
@@ -132,7 +165,7 @@ def compare_snapshots(previous_snapshot, current_snapshot):
                     "current_risk": current_risk,
                     "previous_score": previous_score,
                     "current_score": current_score,
-                    "direction": "arttı" if current_score > previous_score else "azaldı" if current_score < previous_score else "değişti",
+                    "direction": direction,
                 }
             )
 
@@ -156,4 +189,84 @@ def record_and_compare_scan(target: str, network_summary, host_reports):
     current_snapshot = build_snapshot(target, network_summary, host_reports)
     comparison = compare_snapshots(previous_snapshot, current_snapshot)
     save_snapshot(target, current_snapshot)
+    return comparison
+
+
+def build_discovery_snapshot(target: str, discovery_result):
+    devices = []
+    for device in discovery_result.get("devices", []):
+        devices.append(
+            {
+                "ip": device.get("ip", "Bilinmiyor"),
+                "hostname": device.get("hostname", "Bilinmiyor"),
+                "mac": device.get("mac", "Bilinmiyor"),
+                "vendor": device.get("vendor", "Bilinmiyor"),
+            }
+        )
+
+    return {
+        "target": target,
+        "captured_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "device_count": len(devices),
+        "devices": devices,
+    }
+
+
+def load_previous_discovery_snapshot(target: str):
+    path = _discovery_snapshot_path(target)
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
+
+    legacy_path = _legacy_discovery_snapshot_path(target)
+    if os.path.exists(legacy_path):
+        with open(legacy_path, "r", encoding="utf-8") as file:
+            return json.load(file)
+    return None
+
+
+def save_discovery_snapshot(target: str, snapshot):
+    os.makedirs(HISTORY_DIR, exist_ok=True)
+    with open(_discovery_snapshot_path(target), "w", encoding="utf-8") as file:
+        json.dump(snapshot, file, ensure_ascii=False, indent=2)
+
+
+def compare_discovery_snapshots(previous_snapshot, current_snapshot):
+    if not previous_snapshot:
+        return {
+            "has_previous": False,
+            "previous_scan_time": None,
+            "current_scan_time": current_snapshot["captured_at"],
+            "new_devices": [],
+            "missing_devices": [],
+            "summary": {
+                "new_device_count": 0,
+                "missing_device_count": 0,
+            },
+        }
+
+    previous_devices = {device["ip"]: device for device in previous_snapshot.get("devices", [])}
+    current_devices = {device["ip"]: device for device in current_snapshot.get("devices", [])}
+
+    new_devices = [device for ip, device in current_devices.items() if ip not in previous_devices]
+    missing_devices = [device for ip, device in previous_devices.items() if ip not in current_devices]
+
+    return {
+        "has_previous": True,
+        "previous_scan_time": previous_snapshot.get("captured_at"),
+        "current_scan_time": current_snapshot.get("captured_at"),
+        "new_devices": new_devices,
+        "missing_devices": missing_devices,
+        "summary": {
+            "new_device_count": len(new_devices),
+            "missing_device_count": len(missing_devices),
+        },
+    }
+
+
+def record_and_compare_discovery(target: str, discovery_result):
+    previous_snapshot = load_previous_discovery_snapshot(target)
+    current_snapshot = build_discovery_snapshot(target, discovery_result)
+    comparison = compare_discovery_snapshots(previous_snapshot, current_snapshot)
+    save_discovery_snapshot(target, current_snapshot)
     return comparison

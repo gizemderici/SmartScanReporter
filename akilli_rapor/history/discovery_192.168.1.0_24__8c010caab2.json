@@ -1,0 +1,67 @@
+{
+  "target": "192.168.1.0/24",
+  "captured_at": "2026-05-03T22:27:22+03:00",
+  "device_count": 10,
+  "devices": [
+    {
+      "ip": "192.168.1.1",
+      "hostname": "Bilinmiyor",
+      "mac": "BC:07:1D:50:3A:CF",
+      "vendor": "TP-Link Systems"
+    },
+    {
+      "ip": "192.168.1.100",
+      "hostname": "Bilinmiyor",
+      "mac": "0A:92:72:84:F8:24",
+      "vendor": "Bilinmiyor"
+    },
+    {
+      "ip": "192.168.1.101",
+      "hostname": "Bilinmiyor",
+      "mac": "E8:AA:CB:E8:66:B6",
+      "vendor": "Samsung Electronics"
+    },
+    {
+      "ip": "192.168.1.102",
+      "hostname": "Bilinmiyor",
+      "mac": "E4:5F:01:6A:B4:CD",
+      "vendor": "Raspberry Pi Trading"
+    },
+    {
+      "ip": "192.168.1.103",
+      "hostname": "Bilinmiyor",
+      "mac": "1E:39:4D:ED:D4:F0",
+      "vendor": "Bilinmiyor"
+    },
+    {
+      "ip": "192.168.1.104",
+      "hostname": "Bilinmiyor",
+      "mac": "BA:DF:39:D3:33:C2",
+      "vendor": "Bilinmiyor"
+    },
+    {
+      "ip": "192.168.1.105",
+      "hostname": "Bilinmiyor",
+      "mac": "8C:85:90:65:DC:E1",
+      "vendor": "Apple"
+    },
+    {
+      "ip": "192.168.1.106",
+      "hostname": "Bilinmiyor",
+      "mac": "E4:5F:01:6A:B4:CE",
+      "vendor": "Raspberry Pi Trading"
+    },
+    {
+      "ip": "192.168.1.109",
+      "hostname": "Bilinmiyor",
+      "mac": "AC:A7:04:D0:6F:34",
+      "vendor": "Espressif"
+    },
+    {
+      "ip": "192.168.1.107",
+      "hostname": "gizem",
+      "mac": "Bilinmiyor",
+      "vendor": "Bilinmiyor"
+    }
+  ]
+}

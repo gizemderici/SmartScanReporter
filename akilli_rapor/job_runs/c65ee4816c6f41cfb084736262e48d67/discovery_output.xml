@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///C:/Program Files (x86)/Nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Sun May  3 21:39:06 2026 as: nmap -sn -PR -&#45;max-retries 1 -&#45;min-parallelism 16 -&#45;max-rtt-timeout 750ms -&#45;host-timeout 8s -oX C:\\SmartScanReporter\\akilli_rapor\\job_runs\\c65ee4816c6f41cfb084736262e48d67\\discovery_output.xml 192.168.1.0/24 -->
+<nmaprun scanner="nmap" args="nmap -sn -PR -&#45;max-retries 1 -&#45;min-parallelism 16 -&#45;max-rtt-timeout 750ms -&#45;host-timeout 8s -oX C:\\SmartScanReporter\\akilli_rapor\\job_runs\\c65ee4816c6f41cfb084736262e48d67\\discovery_output.xml 192.168.1.0/24" start="1777833546" startstr="Sun May  3 21:39:06 2026" version="7.99" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.1" addrtype="ipv4"/>
+<address addr="BC:07:1D:50:3A:CF" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="10000" rttvar="7500" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.100" addrtype="ipv4"/>
+<address addr="0A:92:72:84:F8:24" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="20000" rttvar="20000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.101" addrtype="ipv4"/>
+<address addr="E8:AA:CB:E8:66:B6" addrtype="mac" vendor="Samsung Electronics"/>
+<hostnames>
+</hostnames>
+<times srtt="139000" rttvar="139000" to="695000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.102" addrtype="ipv4"/>
+<address addr="E4:5F:01:6A:B4:CD" addrtype="mac" vendor="Raspberry Pi Trading"/>
+<hostnames>
+</hostnames>
+<times srtt="18000" rttvar="18000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.104" addrtype="ipv4"/>
+<address addr="BA:DF:39:D3:33:C2" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="149375" rttvar="130250" to="670375"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.105" addrtype="ipv4"/>
+<address addr="8C:85:90:65:DC:E1" addrtype="mac" vendor="Apple"/>
+<hostnames>
+</hostnames>
+<times srtt="48000" rttvar="48000" to="240000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.106" addrtype="ipv4"/>
+<address addr="E4:5F:01:6A:B4:CE" addrtype="mac" vendor="Raspberry Pi Trading"/>
+<hostnames>
+</hostnames>
+<times srtt="16000" rttvar="16000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.109" addrtype="ipv4"/>
+<address addr="AC:A7:04:D0:6F:34" addrtype="mac" vendor="Espressif"/>
+<hostnames>
+</hostnames>
+<times srtt="316375" rttvar="307750" to="750000"/>
+</host>
+<host><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="192.168.1.107" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</host>
+<runstats><finished time="1777833554" timestr="Sun May  3 21:39:14 2026" summary="Nmap done at Sun May  3 21:39:14 2026; 256 IP addresses (9 hosts up) scanned in 7.92 seconds" elapsed="7.92" exit="success"/><hosts up="9" down="247" total="256"/>
+</runstats>
+</nmaprun>

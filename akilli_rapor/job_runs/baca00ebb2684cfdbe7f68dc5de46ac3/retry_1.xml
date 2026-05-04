@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///C:/Program Files (x86)/Nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Sun Apr 26 20:26:44 2026 as: &quot;C:\\Program Files (x86)\\Nmap\\nmap.exe&quot; -sV -&#45;top-ports 20 -O -oX scan_results/test.xml 192.168.1.110 -->
+<nmaprun scanner="nmap" args="&quot;C:\\Program Files (x86)\\Nmap\\nmap.exe&quot; -sV -&#45;top-ports 20 -O -oX scan_results/test.xml 192.168.1.110" start="1777224404" startstr="Sun Apr 26 20:26:44 2026" version="7.99" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="20" services="21-23,25,53,80,110-111,135,139,143,443,445,993,995,1723,3306,3389,5900,8080"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1777224405" endtime="1777224412"><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="192.168.1.110" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="21"><state state="closed" reason="reset" reason_ttl="128"/><service name="ftp" method="table" conf="3"/></port>
+<port protocol="tcp" portid="22"><state state="closed" reason="reset" reason_ttl="128"/><service name="ssh" method="table" conf="3"/></port>
+<port protocol="tcp" portid="23"><state state="closed" reason="reset" reason_ttl="128"/><service name="telnet" method="table" conf="3"/></port>
+<port protocol="tcp" portid="25"><state state="closed" reason="reset" reason_ttl="128"/><service name="smtp" method="table" conf="3"/></port>
+<port protocol="tcp" portid="53"><state state="closed" reason="reset" reason_ttl="128"/><service name="domain" method="table" conf="3"/></port>
+<port protocol="tcp" portid="80"><state state="closed" reason="reset" reason_ttl="128"/><service name="http" method="table" conf="3"/></port>
+<port protocol="tcp" portid="110"><state state="closed" reason="reset" reason_ttl="128"/><service name="pop3" method="table" conf="3"/></port>
+<port protocol="tcp" portid="111"><state state="closed" reason="reset" reason_ttl="128"/><service name="rpcbind" method="table" conf="3"/></port>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" product="Microsoft Windows RPC" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="143"><state state="closed" reason="reset" reason_ttl="128"/><service name="imap" method="table" conf="3"/></port>
+<port protocol="tcp" portid="443"><state state="closed" reason="reset" reason_ttl="128"/><service name="https" method="table" conf="3"/></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" method="table" conf="3"/></port>
+<port protocol="tcp" portid="993"><state state="closed" reason="reset" reason_ttl="128"/><service name="imaps" method="table" conf="3"/></port>
+<port protocol="tcp" portid="995"><state state="closed" reason="reset" reason_ttl="128"/><service name="pop3s" method="table" conf="3"/></port>
+<port protocol="tcp" portid="1723"><state state="closed" reason="reset" reason_ttl="128"/><service name="pptp" method="table" conf="3"/></port>
+<port protocol="tcp" portid="3306"><state state="closed" reason="reset" reason_ttl="128"/><service name="mysql" method="table" conf="3"/></port>
+<port protocol="tcp" portid="3389"><state state="closed" reason="reset" reason_ttl="128"/><service name="ms-wbt-server" method="table" conf="3"/></port>
+<port protocol="tcp" portid="5900"><state state="closed" reason="reset" reason_ttl="128"/><service name="vnc" method="table" conf="3"/></port>
+<port protocol="tcp" portid="8080"><state state="closed" reason="reset" reason_ttl="128"/><service name="http-proxy" method="table" conf="3"/></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="135"/>
+<portused state="closed" proto="tcp" portid="21"/>
+<portused state="closed" proto="udp" portid="35230"/>
+<osmatch name="Microsoft Windows 11 24H2 - 25H2" accuracy="100" line="76668">
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="11" accuracy="100"><cpe>cpe:/o:microsoft:windows_11</cpe></osclass>
+</osmatch>
+</os>
+<uptime seconds="9227" lastboot="Sun Apr 26 17:53:05 2026"/>
+<distance value="0"/>
+<tcpsequence index="260" difficulty="Good luck!" values="596C90D7,368981BC,B582B816,1E45F677,4879F78C,8199D585"/>
+<ipidsequence class="Incremental" values="8D47,8D49,8D4B,8D4D,8D4F,8D51"/>
+<tcptssequence class="1000HZ" values="8CCACC,8CCB37,8CCBA3,8CCC0F,8CCC7B,8CCCE8"/>
+<times srtt="329" rttvar="507" to="100000"/>
+</host>
+<runstats><finished time="1777224412" timestr="Sun Apr 26 20:26:52 2026" summary="Nmap done at Sun Apr 26 20:26:52 2026; 1 IP address (1 host up) scanned in 8.10 seconds" elapsed="8.10" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

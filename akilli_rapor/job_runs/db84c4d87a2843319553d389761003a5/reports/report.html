@@ -1,0 +1,1884 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ag Tarama Raporu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+        h1, h2, h3 {
+            color: #1f3b5b;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e9eef5;
+        }
+        .high {
+            color: #b00020;
+            font-weight: bold;
+        }
+        .medium {
+            color: #c77700;
+            font-weight: bold;
+        }
+        .low {
+            color: #1a7f37;
+            font-weight: bold;
+        }
+        .unknown {
+            color: #555;
+            font-weight: bold;
+        }
+        .state-pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid #d7deea;
+            font-size: 0.82rem;
+            font-weight: bold;
+        }
+        .state-open {
+            color: #1a7f37;
+            background: rgba(26, 127, 55, 0.12);
+            border-color: rgba(26, 127, 55, 0.24);
+        }
+        .state-filtered {
+            color: #c77700;
+            background: rgba(199, 119, 0, 0.12);
+            border-color: rgba(199, 119, 0, 0.22);
+        }
+        .state-closed {
+            color: #b00020;
+            background: rgba(176, 0, 32, 0.1);
+            border-color: rgba(176, 0, 32, 0.18);
+        }
+        .cve-list, .action-list {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .cve-list li, .action-list li {
+            margin-bottom: 6px;
+        }
+        .mode-card {
+            border-left: 6px solid #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; background: linear-gradient(135deg, #1f3b5b, #2563eb); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
+        <h1 style="margin: 0; font-size: 2.5em;">Akilli Ag Tarama Raporlama Sistemi</h1>
+        <p style="margin: 10px 0 0 0; font-size: 1.1em; opacity: 0.9;">Guvenlik analizi ve raporlama icin kapsamli cozum</p>
+        <p style="margin: 10px 0 0 0; font-size: 1.1em; opacity: 0.9;">Rapor Olusturulma Tarihi: 2026-04-28 14:30:42 | Mod: Red Team</p>
+    </div>
+
+    <div class="card">
+        <h2>Rapor Hakkinda</h2>
+        <p>Bu rapor, ag tarama sonuclarini detayli olarak analiz eder ve guvenlik ekipleri icin yorumlanabilir bir cikti uretir.</p>
+        <p><strong>Tarama Metodolojisi:</strong> Nmap port taramasi, servis surum tespiti ve isletim sistemi fingerprinting</p>
+        <p><strong>Risk Degerlendirme:</strong> Acik portlar, servis surumleri ve bilinen CVE kayitlari baz alinarak yapilir.</p>
+        <p><strong>Analiz Modlari:</strong> Red Team (saldirgan perspektifi) ve Blue Team (savunma perspektifi)</p>
+    </div>
+
+    <div class="card">
+        <h2>Genel Ag Ozeti</h2>
+        <p><strong>Analiz Modu:</strong> Red Team</p>
+        <p><strong>Mod Sorusu:</strong> Bu ag nasil hacklenir?</p>
+        <p><strong>Toplam Aktif Host Sayisi:</strong> 36</p>
+        <p><strong>Yuksek Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Orta Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Dusuk Riskli Host Sayisi:</strong> 0</p>
+        <p><strong>Bilinen CVE Bulunan Host Sayisi:</strong> 0</p>
+        <p><strong>Toplam Eslesen CVE Sayisi:</strong> 0</p>
+        <p><strong>Firewall Belirtisi Olan Host Sayisi:</strong> 0</p>
+        <p><strong>Toplam Filtered Port Sayisi:</strong> 0</p>
+        <p><strong>Zaman Asimina Ugrayan Host Sayisi:</strong> 36</p>
+        <p><strong>Brute-Force Riski Olan Host Sayisi:</strong> 0</p>
+        <p><strong>Saldiri Senaryosu Uretilen Host Sayisi:</strong> 0</p>
+        <p><strong>Toplam Saldiri Senaryosu:</strong> 0</p>
+        <p><strong>Toplam Senaryo Etki Skoru:</strong> 0</p>
+        <p><strong>MITRE ATT&CK Teknik Sayisi:</strong> 0</p>
+        <p><strong>CVE Veri Kaynagi:</strong> Yerel eşleme</p>
+        <p><strong>En Riskli Host:</strong> 192.168.1.1 (Skor: 0, Acik Port: 0)</p>
+    </div>
+    
+    <div class="card mode-card">
+        <h2>Red Team Modu</h2>
+        <p><strong>Soru:</strong> Bu ag nasil hacklenir?</p>
+        <p>0 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.</p>
+        <p><strong>MITRE ATT&CK:</strong> MITRE ATT&CK eslesmesi uretilmedi.</p>
+    </div>
+
+    <div class="card">
+        <h2>Host Listesi</h2>
+        <table>
+            <tr>
+                <th>IP</th>
+                <th>Isletim Sistemi</th>
+                <th>Genel Risk</th>
+                <th>Acik Port Sayisi</th>
+                <th>Filtered</th>
+                <th>Firewall</th>
+                <th>CVE Sayisi</th>
+                <th>Risk Skoru</th>
+            </tr>
+    
+            <tr>
+                <td>192.168.1.1</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.2</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.3</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.4</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.5</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.6</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.7</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.8</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.9</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.10</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.11</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.12</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.13</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.14</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.15</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.16</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.17</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.18</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.19</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.20</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.21</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.22</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.23</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.24</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.25</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.26</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.27</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.28</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.29</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.30</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.31</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.32</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.33</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.34</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.35</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+            <tr>
+                <td>192.168.1.36</td>
+                <td>Bilinmiyor</td>
+                <td class="unknown">Bilinmiyor</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Hayir</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div class="card">
+        <h2>Grafiksel Analiz ve Aciklamalar</h2>
+        <p>Bu bolumde ag tarama sonuclarinin gorsel temsilleri ve kisa aciklamalari yer alir.</p>
+
+        <h3>Risk Dagilimi Grafigi</h3>
+        <p>Hostlarin risk seviyelerine gore dagilimini gosterir.</p>
+        <img src="/job-artifact/db84c4d87a2843319553d389761003a5/risk_chart.png" alt="Risk Dagilimi Grafigi" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+        <h3>Isletim Sistemi Dagilimi</h3>
+        <p>Ortamda tespit edilen platformlarin genel dagilimini gosterir.</p>
+        <img src="/job-artifact/db84c4d87a2843319553d389761003a5/os_distribution.png" alt="OS Dagilim Grafigi" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+        <h3>Ag Topolojisi</h3>
+        <p>Tarayan sistem, hedef ag ve bulunan hostlar arasindaki baglantilari ozetler.</p>
+        <img src="/job-artifact/db84c4d87a2843319553d389761003a5/network_topology.png" alt="Ag Topolojisi" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+        <div style="background: #e9eef5; padding: 15px; border-radius: 8px; margin-top: 20px;">
+            <h4>Renk Kodlamasi</h4>
+            <ul>
+                <li><span style="color: #d9534f; font-weight: bold;">Kirmizi:</span> Yuksek risk</li>
+                <li><span style="color: #f0ad4e; font-weight: bold;">Turuncu:</span> Orta risk</li>
+                <li><span style="color: #5cb85c; font-weight: bold;">Yesil:</span> Dusuk risk</li>
+                <li><span style="color: #94a3b8; font-weight: bold;">Gri:</span> Bilinmiyor</li>
+            </ul>
+        </div>
+    </div>
+    
+        <div class="card">
+            <h2>Zaman Karsilastirmasi</h2>
+            <p><strong>Onceki Tarama:</strong> 2026-04-27T21:34:20+03:00</p>
+            <p><strong>Yeni Acilan Port Sayisi:</strong> 0</p>
+            <p><strong>Kapanan Port Sayisi:</strong> 4</p>
+            <p><strong>Risk Artisi Gorulen Host Sayisi:</strong> 0</p>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.1</h2>
+            <p>Bu bolumde 192.168.1.1 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.2</h2>
+            <p>Bu bolumde 192.168.1.2 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.3</h2>
+            <p>Bu bolumde 192.168.1.3 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.4</h2>
+            <p>Bu bolumde 192.168.1.4 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.5</h2>
+            <p>Bu bolumde 192.168.1.5 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.6</h2>
+            <p>Bu bolumde 192.168.1.6 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.7</h2>
+            <p>Bu bolumde 192.168.1.7 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.8</h2>
+            <p>Bu bolumde 192.168.1.8 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.9</h2>
+            <p>Bu bolumde 192.168.1.9 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.10</h2>
+            <p>Bu bolumde 192.168.1.10 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.11</h2>
+            <p>Bu bolumde 192.168.1.11 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.12</h2>
+            <p>Bu bolumde 192.168.1.12 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.13</h2>
+            <p>Bu bolumde 192.168.1.13 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.14</h2>
+            <p>Bu bolumde 192.168.1.14 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.15</h2>
+            <p>Bu bolumde 192.168.1.15 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.16</h2>
+            <p>Bu bolumde 192.168.1.16 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.17</h2>
+            <p>Bu bolumde 192.168.1.17 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.18</h2>
+            <p>Bu bolumde 192.168.1.18 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.19</h2>
+            <p>Bu bolumde 192.168.1.19 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.20</h2>
+            <p>Bu bolumde 192.168.1.20 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.21</h2>
+            <p>Bu bolumde 192.168.1.21 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.22</h2>
+            <p>Bu bolumde 192.168.1.22 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.23</h2>
+            <p>Bu bolumde 192.168.1.23 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.24</h2>
+            <p>Bu bolumde 192.168.1.24 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.25</h2>
+            <p>Bu bolumde 192.168.1.25 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.26</h2>
+            <p>Bu bolumde 192.168.1.26 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.27</h2>
+            <p>Bu bolumde 192.168.1.27 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.28</h2>
+            <p>Bu bolumde 192.168.1.28 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.29</h2>
+            <p>Bu bolumde 192.168.1.29 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.30</h2>
+            <p>Bu bolumde 192.168.1.30 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.31</h2>
+            <p>Bu bolumde 192.168.1.31 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.32</h2>
+            <p>Bu bolumde 192.168.1.32 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.33</h2>
+            <p>Bu bolumde 192.168.1.33 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.34</h2>
+            <p>Bu bolumde 192.168.1.34 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.35</h2>
+            <p>Bu bolumde 192.168.1.35 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>Host Detayli Analizi: 192.168.1.36</h2>
+            <p>Bu bolumde 192.168.1.36 IP adresli host icin detayli guvenlik analizi yer almaktadir.</p>
+
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Host Genel Bilgileri</h3>
+                <p><strong>Tespit Edilen Isletim Sistemi:</strong> Bilinmiyor</p>
+                <p><strong>Toplam Acik Port Sayisi:</strong> 0</p>
+                <p><strong>Filtered Port Sayisi:</strong> 0</p>
+                <p><strong>Firewall Tespiti:</strong> Belirgin firewall gostergesi yok.</p>
+                <p><strong>Brute-Force Riskli Servis Sayisi:</strong> 0</p>
+                <p><strong>Genel Risk Seviyesi:</strong> <span class="unknown">Bilinmiyor</span></p>
+                <p><strong>Uyari:</strong> Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port ve servis sonuclari eksik ya da bos olabilir.</p>
+            </div>
+        <p><strong>Red Team Ozeti:</strong> Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.</p>
+            <h3>Acik Portlar ve Guvenlik Analizi</h3>
+            <table>
+                <tr>
+                    <th>Port</th>
+                    <th>Protokol</th>
+                    <th>Durum</th>
+                    <th>Durum Aciklamasi</th>
+                    <th>Servis</th>
+                    <th>Surum Tespiti</th>
+                    <th>Kategori</th>
+                    <th>Risk</th>
+                    <th>OS Etkisi</th>
+                    <th>Brute-Force Riski</th>
+                    <th>NSE Script</th>
+                    <th>Bilinen CVE</th>
+                    <th>Oneri</th>
+                </tr>
+        
+            </table>
+        </div>
+        
+    <div class="card" style="text-align: center; background: #e9eef5; border-top: 4px solid #1f3b5b;">
+        <h2>Rapor Tamamlandi</h2>
+        <p>Bu rapor Akilli Ag Tarama Raporlama Sistemi tarafindan otomatik olarak olusturulmustur.</p>
+        <p><strong>Onemli Not:</strong> Bu rapor guvenlik degerlendirmesi icin bir aractir. Profesyonel destek gereken senaryolarda uzman dogrulamasi onerilir.</p>
+    </div>
+</body>
+</html>
+    

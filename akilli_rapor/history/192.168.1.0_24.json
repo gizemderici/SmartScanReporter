@@ -1,0 +1,92 @@
+{
+  "target": "192.168.1.0/24",
+  "captured_at": "2026-05-01T19:38:46+03:00",
+  "network_summary": {
+    "total_hosts": 8,
+    "high_risk_hosts": 1,
+    "medium_risk_hosts": 0,
+    "low_risk_hosts": 0,
+    "total_known_cves": 2,
+    "timed_out_hosts": 7
+  },
+  "hosts": [
+    {
+      "ip": "192.168.1.1",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.100",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.101",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.102",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.103",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.104",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.106",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "scan_timed_out": true,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.107",
+      "general_risk": "Yuksek",
+      "host_score": 9,
+      "scan_timed_out": false,
+      "open_ports": [
+        {
+          "port": 135,
+          "protocol": "tcp",
+          "service": "msrpc",
+          "service_version": "Microsoft Windows RPC",
+          "risk": "Yuksek"
+        },
+        {
+          "port": 139,
+          "protocol": "tcp",
+          "service": "netbios-ssn",
+          "service_version": "Microsoft Windows netbios-ssn",
+          "risk": "Yuksek"
+        },
+        {
+          "port": 445,
+          "protocol": "tcp",
+          "service": "microsoft-ds",
+          "service_version": "microsoft-ds",
+          "risk": "Yuksek"
+        }
+      ]
+    }
+  ]
+}

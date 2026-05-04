@@ -1,0 +1,215 @@
+##################################################
+GENEL AG OZETI
+##################################################
+Analiz Modu: Red Team
+Mod Sorusu: Bu ag nasil hacklenir?
+Toplam Aktif Host Sayisi: 8
+Yuksek Riskli Host Sayisi: 1
+Orta Riskli Host Sayisi: 0
+Dusuk Riskli Host Sayisi: 0
+Bilinen CVE Bulunan Host Sayisi: 1
+Toplam Eslesen CVE Sayisi: 2
+Firewall Belirtisi Olan Host Sayisi: 0
+Toplam Filtered Port Sayisi: 0
+Zaman Asimina Ugrayan Host Sayisi: 7
+Brute-Force Riski Olan Host Sayisi: 0
+Saldiri Senaryosu Uretilen Host Sayisi: 1
+Toplam Saldiri Senaryosu: 1
+Toplam Senaryo Etki Skoru: 9
+MITRE ATT&CK Teknik Sayisi: 2
+CVE Veri Kaynagi: Yerel eşleme
+En Riskli Host: 192.168.1.107 (Skor: 9, Acik Port: 3)
+Red Team Ozet: 1 host icin saldiri akisi uretildi; en riskli hostlar once exploit ve parola saldirisi adayi.
+MITRE ATT&CK: 2 farkli MITRE ATT&CK teknigi ile iliskilendirildi.
+Onceki Tarama: 2026-05-01T19:30:22+03:00
+Yeni Acilan Port Sayisi: 0
+Kapanan Port Sayisi: 0
+Risk Artisi Gorulen Host Sayisi: 0
+
+HOST LISTESI
+- 192.168.1.1 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.100 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.101 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.102 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.103 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.104 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.106 | OS: Bilinmiyor | Risk: Bilinmiyor | Acik Port: 0 | Filtered: 0 | Firewall: Hayir | CVE: 0 | Skor: 0
+- 192.168.1.107 | OS: Microsoft Windows 11 24H2 - 25H2 | Risk: Yuksek | Acik Port: 3 | Filtered: 0 | Firewall: Hayir | CVE: 2 | Skor: 9
+
+==================================================
+Host: 192.168.1.1
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.100
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.101
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.102
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.103
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.104
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.106
+==================================================
+Tespit Edilen Isletim Sistemi: Bilinmiyor
+Toplam Acik Port Sayisi: 0
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 0
+Senaryo Etki Skoru: 0
+Genel Risk Seviyesi: Bilinmiyor
+Risk Skoru: 0
+Uyari: Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle port/servis bilgileri eksik veya bos olabilir.
+
+Red Team Ozeti: Belirgin bir exploit akisi uretilmedi; manuel dogrulama gerekir.
+ACIK PORTLAR VE ANALIZ
+
+==================================================
+Host: 192.168.1.107
+==================================================
+Tespit Edilen Isletim Sistemi: Microsoft Windows 11 24H2 - 25H2
+Toplam Acik Port Sayisi: 3
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 0
+Saldiri Senaryosu Sayisi: 1
+Senaryo Etki Skoru: 9
+Genel Risk Seviyesi: Yuksek
+Risk Skoru: 9
+
+Red Team Ozeti: En olasi istismar yolu: SMB Istismar Senaryosu (Kritik / 9/10).
+SALDIRI SENARYOSU SIMULASYONU
+Senaryo: SMB Istismar Senaryosu
+Siddet: Kritik | Etki Skoru: 9/10
+1. Port 445 (SMB) acik.
+2. Yerel agdan veya erisilebilir segmentten SMB servisine baglanti kurulabilir.
+3. SMB uzerinde bilinen zafiyetler veya yanlis yapilandirmalar kullanilarak EternalBlue benzeri denemeler yapilabilir.
+Sonuc: Sistem ele gecirilebilir veya yanal hareket baslatilabilir.
+Etki: Dosya erisimi, kimlik bilgisi toplama ve ag icinde yayilma riski olusur.
+MITRE ATT&CK ESLESMELERI
+- Lateral Movement | T1021.002 | SMB/Windows Admin Shares
+- Execution | T1203 | Exploitation for Client Execution
+
+ACIK PORTLAR VE ANALIZ
+
+Port: 135/tcp
+Servis: msrpc
+Surum Tespiti: Microsoft Windows RPC
+Kategori: Sistem Servisi
+Risk: Yuksek
+OS Etkisi: Windows sistemlerde bu port daha yuksek saldiri yuzeyi olusturabilir.
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis gerekmiyorsa ag erisimi sinirlandirilmalidir.
+
+Port: 139/tcp
+Servis: netbios-ssn
+Surum Tespiti: Microsoft Windows netbios-ssn
+Kategori: Dosya Paylasimi
+Risk: Yuksek
+OS Etkisi: Windows sistemlerde bu port daha yuksek saldiri yuzeyi olusturabilir.
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: CVE-2017-0144 - EternalBlue / SMBv1 | Kaynak: Yerel servis kurali | Siddet: Bilinmiyor | Eslesme Nedeni: SMB servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi. | Aciklama: SMBv1 kullanan eski Windows sistemlerde uzaktan kod calistirma riski olabilir.
+Oneri: NetBIOS erisimi gerekmiyorsa kapatilmali veya yerel ag ile sinirlandirilmalidir.
+
+Port: 445/tcp
+Servis: microsoft-ds
+Surum Tespiti: microsoft-ds
+Kategori: Dosya Paylasimi
+Risk: Yuksek
+OS Etkisi: Windows sistemlerde bu port daha yuksek saldiri yuzeyi olusturabilir.
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: CVE-2017-0144 - EternalBlue / SMBv1 | Kaynak: Yerel servis kurali | Siddet: Bilinmiyor | Eslesme Nedeni: SMB servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi. | Aciklama: SMBv1 kullanan eski Windows sistemlerde uzaktan kod calistirma riski olabilir.
+Oneri: SMB erisimi firewall ile sinirlandirilmali ve yalnizca gerekli cihazlara acik olmalidir.
+

@@ -1,0 +1,112 @@
+##################################################
+GENEL AG OZETI
+##################################################
+Analiz Modu: Blue Team
+Mod Sorusu: Bu ag nasil korunur?
+Toplam Aktif Host Sayisi: 1
+Yuksek Riskli Host Sayisi: 1
+Orta Riskli Host Sayisi: 0
+Dusuk Riskli Host Sayisi: 0
+Bilinen CVE Bulunan Host Sayisi: 1
+Toplam Eslesen CVE Sayisi: 2
+Firewall Belirtisi Olan Host Sayisi: 0
+Toplam Filtered Port Sayisi: 0
+Brute-Force Riski Olan Host Sayisi: 1
+Saldiri Senaryosu Uretilen Host Sayisi: 1
+Toplam Saldiri Senaryosu: 1
+Toplam Senaryo Etki Skoru: 7
+MITRE ATT&CK Teknik Sayisi: 2
+CVE Veri Kaynagi: Yerel eşleme
+En Riskli Host: 192.168.1.106 (Skor: 6, Acik Port: 4)
+Blue Team Ozet: 1 host savunma acisindan oncelikli; yamalama, firewall kisitlamasi ve servis kapatma onerileri hazir.
+ONCELIKLENDIRILMIS AKSIYON PLANI
+1. 192.168.1.106 uzerindeki 22/tcpwrapped servisini yamala | tcpwrapped icin CVE-2018-15473 eslesmesi bulundu. | Oncelik Puani: 90
+2. 192.168.1.106 uzerindeki 3389/tcpwrapped servisini yamala | tcpwrapped icin CVE-2019-0708 eslesmesi bulundu. | Oncelik Puani: 90
+3. 192.168.1.106 uzerindeki 22/tcpwrapped servisini gozden gecir | SSH erisimi guclu parola ve mumkunse anahtar tabanli kimlik dogrulama ile korunmalidir. | Oncelik Puani: 85
+4. 192.168.1.106 uzerindeki 3389/tcpwrapped servisini gozden gecir | RDP erisimi VPN arkasina alinmali ve firewall ile korunmalidir. | Oncelik Puani: 85
+5. 192.168.1.106 uzerindeki 22/tcpwrapped icin erisim korumasi ekle | VPN, MFA, hesap kilitleme ve izinli IP sinirlamasi uygulanmalidir. | Oncelik Puani: 80
+6. 192.168.1.106 uzerindeki 3389/tcpwrapped icin erisim korumasi ekle | VPN, MFA, hesap kilitleme ve izinli IP sinirlamasi uygulanmalidir. | Oncelik Puani: 80
+7. 192.168.1.106 hostunu daha dar bir ag segmentine tasi | Yuksek riskli hostlarda yanal hareketi azaltmak icin ag segmentasyonu uygulanmalidir. | Oncelik Puani: 75
+8. 192.168.1.106 icin temel firewall politikasi uygula | Host onunde yalnizca gerekli portlari acik birakan bir ACL veya firewall kural seti tanimlanmalidir. | Oncelik Puani: 70
+Onceki Tarama: 2026-05-03T20:46:18+03:00
+Yeni Acilan Port Sayisi: 0
+Kapanan Port Sayisi: 0
+Risk Artisi Gorulen Host Sayisi: 0
+
+HOST LISTESI
+- 192.168.1.106 | OS: Linux 5.0 - 5.14 | Risk: Yuksek | Acik Port: 4 | Filtered: 0 | Firewall: Hayir | CVE: 2 | Skor: 6
+
+==================================================
+Host: 192.168.1.106
+==================================================
+Tespit Edilen Isletim Sistemi: Linux 5.0 - 5.14
+Toplam Acik Port Sayisi: 4
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 2
+Saldiri Senaryosu Sayisi: 1
+Senaryo Etki Skoru: 7
+Genel Risk Seviyesi: Yuksek
+Risk Skoru: 6
+
+Blue Team Onceligi: Yuksek
+HOST ICIN SIRALI AKSIYONLAR
+1. 192.168.1.106 uzerindeki 22/tcpwrapped servisini yamala | tcpwrapped icin CVE-2018-15473 eslesmesi bulundu. | Oncelik Puani: 90
+2. 192.168.1.106 uzerindeki 3389/tcpwrapped servisini yamala | tcpwrapped icin CVE-2019-0708 eslesmesi bulundu. | Oncelik Puani: 90
+3. 192.168.1.106 uzerindeki 22/tcpwrapped servisini gozden gecir | SSH erisimi guclu parola ve mumkunse anahtar tabanli kimlik dogrulama ile korunmalidir. | Oncelik Puani: 85
+4. 192.168.1.106 uzerindeki 3389/tcpwrapped servisini gozden gecir | RDP erisimi VPN arkasina alinmali ve firewall ile korunmalidir. | Oncelik Puani: 85
+SAVUNMA ONERILERI
+- Tespit edilen servisler icin yamalari ve guvenlik guncellemelerini oncelikli uygulayin.
+- SSH, FTP ve RDP gibi uzak erisim servislerinde MFA, hesap kilitleme ve guclu parola politikasi uygulayin.
+- Host onunde firewall veya ACL kullanarak yalnizca gerekli servisleri acik birakin.
+- Bu host icin segmentasyon uygulayin ve gerekmedikce internetten dogrudan erisimi kapatin.
+- SSH erisimi guclu parola ve mumkunse anahtar tabanli kimlik dogrulama ile korunmalidir.
+- 22/tcpwrapped servisini VPN arkasi veya izinli IP listesi ile sinirlandirin.
+- 22/tcpwrapped icin servis gerekliligini dogrulayin; gereksizse kapatin.
+- RDP erisimi VPN arkasina alinmali ve firewall ile korunmalidir.
+- 3389/tcpwrapped servisini VPN arkasi veya izinli IP listesi ile sinirlandirin.
+- 3389/tcpwrapped icin servis gerekliligini dogrulayin; gereksizse kapatin.
+- Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.
+
+ACIK PORTLAR VE ANALIZ
+
+Port: 22/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Uzak Erisim
+Risk: Yuksek
+OS Etkisi: Linux sistemlerde bu servis yanlis yapilandirilirsa uzaktan erisim riski artabilir.
+Brute-Force Riski: SSH servisi acik oldugu icin brute-force saldiri riski vardir.
+CVE: CVE-2018-15473 - OpenSSH User Enumeration | Kaynak: Yerel servis kurali | Siddet: Bilinmiyor | Eslesme Nedeni: SSH servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi. | Aciklama: Bazi OpenSSH surumlerinde kullanici adi dogrulama davranisi bilgi sizdirabilir.
+Oneri: SSH erisimi guclu parola ve mumkunse anahtar tabanli kimlik dogrulama ile korunmalidir.
+
+Port: 3389/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Uzak Erisim
+Risk: Yuksek
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: RDP servisi acik oldugu icin brute-force saldiri riski vardir.
+CVE: CVE-2019-0708 - BlueKeep / RDP | Kaynak: Yerel servis kurali | Siddet: Bilinmiyor | Eslesme Nedeni: RDP servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi. | Aciklama: Eski RDP servislerinde kimlik dogrulama oncesi kritik uzaktan kod calistirma acigi bulunabilir.
+Oneri: RDP erisimi VPN arkasina alinmali ve firewall ile korunmalidir.
+
+Port: 5432/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Bilinmiyor
+Risk: Bilinmiyor
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.
+
+Port: 8086/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Bilinmiyor
+Risk: Bilinmiyor
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.
+

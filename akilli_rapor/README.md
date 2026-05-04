@@ -42,6 +42,25 @@ uretir.
 
 ---
 
+## Hizli Calistirma
+
+Projeyi bu repo icindeki scriptlerle daha kolay baslatabilirsin:
+
+1. Sanal ortam ve paketleri kur:
+`.\setup_venv.ps1 -UpgradePip -InstallRequirements`
+
+2. Web uygulamasini sanal ortam ile baslat:
+`.\run_web.ps1 -UseVenv`
+
+3. Sadece kurulu sistem Python ile baslatmak istersen:
+`.\run_web.ps1`
+
+Not:
+- Script `.venv` klasorini `--copies` ile olusturur; bu Windows ortaminda daha stabil calisir.
+- `matplotlib` veya `flask` eksigi gorursen once 1. adimi yeniden calistir.
+
+---
+
 ## Ana Ozellikler
 
 ### 1. Web tabanli tarama arayuzu
@@ -769,6 +788,118 @@ Bu projede asagidaki gelistirmeler uygulanmistir:
 - indirilebilir PDF cikisi
 - XML parse hatasina karsi koruma
 - reloader kaynakli sayfa kapanma sorununun giderilmesi
+
+---
+
+## Son Eklenen Tarama ve Discovery Ozellikleri
+
+Projeye son asamada tarama esnekligi ve network discovery odakli yeni yetenekler eklenmistir:
+
+### 1. Tarama Turu Secme Sistemi
+
+Kullanici artik tek bir sabit taramaya bagli degildir. Web arayuzunden tarama profili secilebilir:
+
+- `Hizli Tarama`
+  - `nmap hedef`
+- `SYN Tarama`
+  - `nmap -sS hedef`
+- `Detayli Tarama`
+  - `nmap -sV -O hedef`
+- `UDP Tarama`
+  - `nmap -sU hedef`
+- `Ping Scan`
+  - `nmap -sn hedef`
+- `Zafiyet Taramasi`
+  - `nmap -sV --script vuln hedef`
+
+Bu secim, `scanner.py` tarafinda gercek `nmap` komutuna donusturulur.
+
+### 2. Canli Tarama Ilerlemesi
+
+Tarama artik sayfayi bloke eden basit bir form gonderimi degil:
+
+- arka planda calisan job mantigi
+- yuzde bazli ilerleme cubugu
+- asama listesi
+- tahmini kalan sure
+- iptal et / yeniden dene
+- son olaylar logu
+
+sunulur.
+
+Gorunen asamalar:
+
+- Nmap taramasi
+- XML cozumleme
+- CVE zenginlestirme
+- senaryo uretimi
+- takim modu analizi
+- gecmis karsilastirma
+- grafik ve topoloji
+- rapor olusturma
+
+### 3. Network Discovery Ekrani
+
+Projeye ayrica `Network Discovery` sayfasi eklenmistir.
+
+Bu ekranin amaci:
+
+- subnet girerek agdaki aktif cihazlari bulmak
+- port detayi olmadan hizli canli host kesfi yapmak
+- sonucu sunuma uygun sekilde gostermek
+
+Kullanilan komut:
+
+- `nmap -sn 192.168.1.0/24`
+
+Uretilen ciktilar:
+
+- bulunan cihaz sayisi
+- cihaz listesi
+- IP / hostname / MAC / vendor bilgisi
+- discovery topolojisi
+
+### 4. Discovery Gecmisi ve Yeni Cihaz Takibi
+
+Ayni subnet tekrar tarandiginda sistem onceki discovery snapshot'i ile yeni sonucu karsilastirir.
+
+Boylece:
+
+- yeni gorunen cihazlar
+- artik gorunmeyen cihazlar
+- onceki discovery zamani
+
+ekranda gosterilir.
+
+Yeni cihazlar kart uzerinde `Yeni Cihaz` rozeti ile isaretlenir.
+
+### 5. UDP Servis Ozetleme
+
+UDP tarama secildiginde sadece ham port listesi verilmez.
+
+Sistem artik UDP tarafinda ozellikle su servisleri daha anlamli yorumlar:
+
+- `53/udp` DNS
+- `69/udp` TFTP
+- `123/udp` NTP
+- `161/udp` SNMP
+
+Bu portlar icin:
+
+- servis kategorisi
+- risk seviyesi
+- yerel CVE eslestirmesi
+- guvenlik onerisi
+
+uretilir.
+
+Ek olarak:
+
+- ana panelde `UDP Servisleri` ozeti
+- TXT raporda `UDP SERVIS OZETI`
+- HTML raporda `UDP Servis Ozeti`
+
+bolumleri gosterilir.
 
 ---
 

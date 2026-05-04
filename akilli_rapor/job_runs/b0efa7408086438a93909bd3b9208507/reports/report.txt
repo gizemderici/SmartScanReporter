@@ -1,0 +1,115 @@
+##################################################
+GENEL AG OZETI
+##################################################
+Analiz Modu: Red Team
+Mod Sorusu: Bu ag nasil hacklenir?
+Toplam Aktif Host Sayisi: 1
+Yuksek Riskli Host Sayisi: 1
+Orta Riskli Host Sayisi: 0
+Dusuk Riskli Host Sayisi: 0
+Bilinen CVE Bulunan Host Sayisi: 1
+Toplam Eslesen CVE Sayisi: 2
+Firewall Belirtisi Olan Host Sayisi: 0
+Toplam Filtered Port Sayisi: 0
+Brute-Force Riski Olan Host Sayisi: 1
+Saldiri Senaryosu Uretilen Host Sayisi: 1
+Toplam Saldiri Senaryosu: 1
+Toplam Senaryo Etki Skoru: 7
+MITRE ATT&CK Teknik Sayisi: 2
+CVE Veri Kaynagi: Yerel eşleme
+En Riskli Host: 192.168.1.106 (Skor: 6, Acik Port: 4)
+Ortalama Exploitability Skoru: 65.0/100
+En Yuksek Exploitability: 192.168.1.106 | 65/100 | Yuksek
+En Olasi Giris Vektoru: 192.168.1.106 | Kimlik Bilgisi Zorlama Senaryosu (Orta olasilik)
+Onerilen Ilk Aksiyon: 192.168.1.106 | [Critical] 192.168.1.106 uzerindeki 22/tcpwrapped servisini yamala
+NSE Script Bulgusu: 1
+NSE Bulgusu Olan Host Sayisi: 1
+NSE SCRIPT OZETI
+- 192.168.1.106 | 22/tcp | ssh-hostkey | ERROR: Script execution failed (use -d to debug)
+Red Team Ozet: 1 host icin senaryo uretildi. En yuksek istismar edilebilirlik: 192.168.1.106 (65/100, Yuksek).
+MITRE ATT&CK: 2 farkli MITRE ATT&CK teknigi ile iliskilendirildi.
+Onceki Tarama: 2026-05-03T21:33:20+03:00
+Yeni Acilan Port Sayisi: 0
+Kapanan Port Sayisi: 0
+Risk Artisi Gorulen Host Sayisi: 0
+
+HOST LISTESI
+- 192.168.1.106 | OS: Linux 5.0 - 5.14 | Risk: Yuksek | Acik Port: 4 | Filtered: 0 | Firewall: Hayir | CVE: 2 | Skor: 6
+
+==================================================
+Host: 192.168.1.106
+==================================================
+Tespit Edilen Isletim Sistemi: Linux 5.0 - 5.14
+Toplam Acik Port Sayisi: 4
+Filtered Port Sayisi: 0
+Firewall Tespiti: Belirgin firewall gostergesi yok.
+Brute-Force Riskli Servis Sayisi: 2
+Saldiri Senaryosu Sayisi: 1
+Senaryo Etki Skoru: 7
+Exploitability Skoru: 65/100 | Seviye: Yuksek
+Genel Risk Seviyesi: Yuksek
+Risk Skoru: 6
+
+Red Team Ozeti: En olasi istismar yolu: Kimlik Bilgisi Zorlama Senaryosu | Istismar Edilebilirlik: Yuksek (65/100).
+RED TEAM ONE CIKANLAR
+- 2 CVE eslesmesi
+- 2 brute-force yuzeyi
+- Oncelikli senaryo: Kimlik Bilgisi Zorlama Senaryosu
+SALDIRI SENARYOSU SIMULASYONU
+Senaryo: Kimlik Bilgisi Zorlama Senaryosu
+Siddet: Yuksek | Etki Skoru: 7/10
+1. Brute-force acisindan hassas servisler acik: tcpwrapped:22, tcpwrapped:3389.
+2. Zayif parola, tekrar kullanilan parola veya varsayilan kimlik bilgileri hedeflenir.
+3. Basarili bir parola tahmini sonrasi uzaktan oturum acilir.
+4. Elde edilen hesaplarla kalicilik, veri toplama veya ek hostlara gecis denenir.
+Sonuc: Yetkisiz erisim elde edilebilir.
+Etki: Sunucu yonetimi ele gecirilebilir, veri sizdirma ve yanal hareket mumkun olabilir.
+MITRE ATT&CK ESLESMELERI
+- Credential Access | T1110 | Brute Force
+- Initial Access | T1078 | Valid Accounts
+
+ACIK PORTLAR VE ANALIZ
+
+Port: 22/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Uzak Erisim
+Risk: Yuksek
+OS Etkisi: Linux sistemlerde bu servis yanlis yapilandirilirsa uzaktan erisim riski artabilir.
+Brute-Force Riski: SSH servisi acik oldugu icin brute-force saldiri riski vardir.
+NSE Script Bulgulari:
+- ssh-hostkey: ERROR: Script execution failed (use -d to debug)
+  Cikti: ERROR: Script execution failed (use -d to debug)
+CVE: CVE-2018-15473 - OpenSSH User Enumeration | Kaynak: Yerel servis kurali | Siddet: Bilinmiyor | Eslesme Nedeni: SSH servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi. | Aciklama: Bazi OpenSSH surumlerinde kullanici adi dogrulama davranisi bilgi sizdirabilir.
+Oneri: SSH erisimi guclu parola ve mumkunse anahtar tabanli kimlik dogrulama ile korunmalidir.
+
+Port: 3389/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Uzak Erisim
+Risk: Yuksek
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: RDP servisi acik oldugu icin brute-force saldiri riski vardir.
+CVE: CVE-2019-0708 - BlueKeep / RDP | Kaynak: Yerel servis kurali | Siddet: Bilinmiyor | Eslesme Nedeni: RDP servisi tespit edildigi icin bu CVE yerel servis kuralindan onerildi. | Aciklama: Eski RDP servislerinde kimlik dogrulama oncesi kritik uzaktan kod calistirma acigi bulunabilir.
+Oneri: RDP erisimi VPN arkasina alinmali ve firewall ile korunmalidir.
+
+Port: 5432/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Bilinmiyor
+Risk: Bilinmiyor
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.
+
+Port: 8086/tcp
+Servis: tcpwrapped
+Surum Tespiti: tcpwrapped
+Kategori: Bilinmiyor
+Risk: Bilinmiyor
+OS Etkisi: OS etkisi yok
+Brute-Force Riski: Belirgin brute-force riski tespit edilmedi.
+CVE: Bilinen eslesme yok
+Oneri: Bu servis icin manuel guvenlik degerlendirmesi yapilmalidir.
+

@@ -1,0 +1,41 @@
+{
+  "target": "192.168.1.110",
+  "captured_at": "2026-04-26T20:29:26+03:00",
+  "network_summary": {
+    "total_hosts": 1,
+    "high_risk_hosts": 1,
+    "medium_risk_hosts": 0,
+    "low_risk_hosts": 0,
+    "total_known_cves": 2
+  },
+  "hosts": [
+    {
+      "ip": "192.168.1.110",
+      "general_risk": "Yuksek",
+      "host_score": 9,
+      "open_ports": [
+        {
+          "port": 135,
+          "protocol": "tcp",
+          "service": "msrpc",
+          "service_version": "Microsoft Windows RPC",
+          "risk": "Yuksek"
+        },
+        {
+          "port": 139,
+          "protocol": "tcp",
+          "service": "netbios-ssn",
+          "service_version": "Microsoft Windows netbios-ssn",
+          "risk": "Yuksek"
+        },
+        {
+          "port": 445,
+          "protocol": "tcp",
+          "service": "microsoft-ds",
+          "service_version": "microsoft-ds",
+          "risk": "Yuksek"
+        }
+      ]
+    }
+  ]
+}

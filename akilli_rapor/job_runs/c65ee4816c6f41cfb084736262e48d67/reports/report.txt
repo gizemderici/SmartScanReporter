@@ -1,0 +1,33 @@
+##################################################
+GENEL AG OZETI
+##################################################
+Analiz Modu: Red Team
+Mod Sorusu: Bu ag nasil hacklenir?
+Toplam Aktif Host Sayisi: 0
+Yuksek Riskli Host Sayisi: 0
+Orta Riskli Host Sayisi: 0
+Dusuk Riskli Host Sayisi: 0
+Bilinen CVE Bulunan Host Sayisi: 0
+Toplam Eslesen CVE Sayisi: 0
+Firewall Belirtisi Olan Host Sayisi: 0
+Toplam Filtered Port Sayisi: 0
+Brute-Force Riski Olan Host Sayisi: 0
+Saldiri Senaryosu Uretilen Host Sayisi: 0
+Toplam Saldiri Senaryosu: 0
+Toplam Senaryo Etki Skoru: 0
+MITRE ATT&CK Teknik Sayisi: 0
+CVE Veri Kaynagi: Yerel eşleme
+En Riskli Host: Yok
+Ortalama Exploitability Skoru: 0/100
+En Yuksek Exploitability: Yok | 0/100 | Dusuk
+En Olasi Giris Vektoru: Belirgin bir giris vektoru uretilmedi.
+Onerilen Ilk Aksiyon: Belirgin bir ilk aksiyon uretilmedi.
+Red Team Ozet: 0 host icin senaryo uretildi. En yuksek istismar edilebilirlik: Yok (0/100, Dusuk).
+MITRE ATT&CK: MITRE ATT&CK eslesmesi uretilmedi.
+Onceki Tarama: 2026-05-01T19:38:46+03:00
+Yeni Acilan Port Sayisi: 0
+Kapanan Port Sayisi: 3
+Risk Artisi Gorulen Host Sayisi: 0
+
+HOST LISTESI
+

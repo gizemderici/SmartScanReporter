@@ -1,0 +1,60 @@
+{
+  "target": "192.168.1.100-107",
+  "captured_at": "2026-04-06T17:13:48-07:00",
+  "network_summary": {
+    "total_hosts": 3,
+    "high_risk_hosts": 1,
+    "medium_risk_hosts": 0,
+    "low_risk_hosts": 0,
+    "total_known_cves": 2
+  },
+  "hosts": [
+    {
+      "ip": "192.168.1.102",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "open_ports": []
+    },
+    {
+      "ip": "192.168.1.104",
+      "general_risk": "Yüksek",
+      "host_score": 6,
+      "open_ports": [
+        {
+          "port": 22,
+          "protocol": "tcp",
+          "service": "ssh",
+          "service_version": "OpenSSH 10.0p2 Debian 7 protocol 2.0",
+          "risk": "Yüksek"
+        },
+        {
+          "port": 3389,
+          "protocol": "tcp",
+          "service": "ms-wbt-server",
+          "service_version": "Microsoft Terminal Service",
+          "risk": "Yüksek"
+        },
+        {
+          "port": 5432,
+          "protocol": "tcp",
+          "service": "postgresql",
+          "service_version": "PostgreSQL DB 16.11 - 16.12",
+          "risk": "Bilinmiyor"
+        },
+        {
+          "port": 8086,
+          "protocol": "tcp",
+          "service": "http",
+          "service_version": "InfluxDB http admin 2.8.0",
+          "risk": "Bilinmiyor"
+        }
+      ]
+    },
+    {
+      "ip": "192.168.1.106",
+      "general_risk": "Bilinmiyor",
+      "host_score": 0,
+      "open_ports": []
+    }
+  ]
+}

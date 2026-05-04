@@ -73,6 +73,9 @@
         .tag { color: var(--accent); background: rgba(53,208,255,.10); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
         .pill { background: rgba(255,255,255,.05); color: var(--text); }
         .pill.accent { color: var(--accent); border-color: rgba(53,208,255,.25); }
+        .pill.state-open { background: rgba(49,211,155,.16); color: var(--ok); border-color: rgba(49,211,155,.34); }
+        .pill.state-filtered { background: rgba(255,181,74,.16); color: var(--warn); border-color: rgba(255,181,74,.30); }
+        .pill.state-closed { background: rgba(255,97,119,.14); color: var(--bad); border-color: rgba(255,97,119,.28); }
         .risk-badge.high, .badge.high { background: var(--bad); color: #fff; border: none; }
         .risk-badge.medium, .badge.medium { background: var(--warn); color: #241600; border: none; }
         .risk-badge.low, .badge.low { background: var(--ok); color: #04120d; border: none; }
@@ -83,10 +86,15 @@
         .toolbar, .quick, .host-meta { display: flex; flex-wrap: wrap; gap: 10px; }
         .toolbar {
             align-items: stretch;
+            justify-content: flex-end;
         }
         .tool, .primary {
             min-height: 50px; border-radius: 16px; padding: 0 16px; cursor: pointer;
             border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,.05);
+        }
+        .tool:disabled, .primary:disabled {
+            cursor: not-allowed;
+            opacity: .6;
         }
         .primary {
             background: linear-gradient(135deg, #73ecff, #35d0ff);
@@ -95,12 +103,105 @@
         .tool:hover, .primary:hover { transform: translateY(-1px); }
         .panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 20px; }
         .form-grid, .stats-grid, .feature-grid, .host-stats, .filter-grid { display: grid; gap: 12px; }
-        .form-grid { grid-template-columns: 1.7fr .9fr auto; align-items: end; }
+        .form-grid { grid-template-columns: 1.35fr .9fr .9fr .9fr auto; align-items: end; }
         .stats-grid { grid-template-columns: repeat(4, 1fr); }
         .feature-grid { grid-template-columns: 1.15fr 1.15fr .9fr; }
         .host-stats { grid-template-columns: repeat(4, 1fr); margin: 16px 0; }
         .filter-grid { grid-template-columns: 1.35fr repeat(4, .7fr) auto; align-items: end; }
         label { display: block; margin-bottom: 8px; color: var(--muted); font-size: .9rem; }
+        .field-help {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: .86rem;
+            line-height: 1.55;
+        }
+        .scan-type-hints {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .scan-type-card {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.03);
+        }
+        .scan-type-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .scan-type-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(53,208,255,.24);
+            background: rgba(53,208,255,.10);
+            color: var(--accent);
+            font-size: .9rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            flex: 0 0 auto;
+        }
+        .scan-type-card strong {
+            color: var(--heading);
+        }
+        .scan-hint-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: .8rem;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.04);
+            color: var(--text);
+        }
+        .scan-hint-badge.rec {
+            color: var(--accent);
+            border-color: rgba(53,208,255,.28);
+        }
+        .scan-hint-badge.warn {
+            color: var(--warn);
+            border-color: rgba(255,181,74,.24);
+        }
+        .scan-hint-badge.info {
+            color: var(--ok);
+            border-color: rgba(49,211,155,.24);
+        }
+        .nse-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .nse-option {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: rgba(255,255,255,.03);
+        }
+        .nse-option input {
+            margin-top: 3px;
+        }
+        .nse-option strong {
+            color: var(--heading);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .nse-option span {
+            color: var(--muted);
+            font-size: .84rem;
+            line-height: 1.4;
+        }
         input[type="text"], select {
             width: 100%; min-height: 52px; border-radius: 16px; border: 1px solid var(--line);
             background: rgba(255,255,255,.04); color: var(--text); padding: 0 16px; outline: none;
@@ -120,8 +221,272 @@
         .metric:last-child { border-bottom: none; padding-bottom: 0; }
         .metric span:first-child { color: var(--muted); }
         .metric strong { color: var(--heading); }
+        .team-panel {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .team-scenario-list {
+            display: grid;
+            gap: 12px;
+        }
+        .spotlight-grid {
+            display: grid;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .spotlight-card {
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255,255,255,.04);
+        }
+        .spotlight-card.critical {
+            border-color: rgba(255,97,119,.32);
+            background: rgba(255,97,119,.08);
+        }
+        .spotlight-card.high {
+            border-color: rgba(255,181,74,.28);
+            background: rgba(255,181,74,.08);
+        }
+        .spotlight-card.info {
+            border-color: rgba(53,208,255,.24);
+            background: rgba(53,208,255,.07);
+        }
+        .spotlight-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .spotlight-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--heading);
+            font-weight: 700;
+        }
+        .spotlight-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.06);
+            font-size: .85rem;
+        }
+        .spotlight-card.critical .spotlight-icon {
+            color: #fff;
+            background: rgba(255,97,119,.85);
+            border-color: transparent;
+        }
+        .spotlight-card.high .spotlight-icon {
+            color: #241600;
+            background: rgba(255,181,74,.88);
+            border-color: transparent;
+        }
+        .spotlight-card.info .spotlight-icon {
+            color: #031019;
+            background: rgba(53,208,255,.88);
+            border-color: transparent;
+        }
+        .spotlight-card strong {
+            color: var(--heading);
+            display: block;
+        }
+        .spotlight-card p {
+            color: var(--muted);
+            font-size: .92rem;
+            line-height: 1.55;
+        }
+        .team-panel-note {
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: rgba(255,255,255,.03);
+        }
+        .team-panel-note strong {
+            color: var(--heading);
+            display: block;
+            margin-bottom: 6px;
+        }
+        .team-panel-note p {
+            color: var(--muted);
+            font-size: .92rem;
+            line-height: 1.55;
+        }
         .visuals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .visuals img { width: 100%; border-radius: 18px; border: 1px solid var(--line); }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr 1fr;
+            gap: 16px;
+        }
+        .dashboard-chart {
+            background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .history-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .history-group {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 16px;
+        }
+        .history-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .history-list.is-collapsed {
+            display: none;
+        }
+        .history-item {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: rgba(255,255,255,.03);
+            transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+        }
+        .history-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(53,208,255,.28);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+            background: rgba(255,255,255,.05);
+        }
+        .history-link {
+            display: block;
+            padding: 12px 13px;
+            color: inherit;
+            text-decoration: none;
+        }
+        .history-link:focus-visible {
+            outline: 2px solid rgba(53,208,255,.65);
+            outline-offset: 4px;
+            border-radius: 16px;
+        }
+        .history-item strong {
+            color: var(--heading);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+        .history-group.history-older .history-list {
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+        .history-group-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+        .history-group-copy {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+        .history-summary-note {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+        .history-time {
+            color: var(--muted);
+            font-size: .78rem;
+            margin-top: 6px;
+        }
+        .history-meta {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: .84rem;
+            line-height: 1.45;
+        }
+        .history-cta {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--heading);
+            opacity: .9;
+        }
+        .chart-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-size: .75rem;
+            margin-bottom: 8px;
+        }
+        .chart-shell {
+            margin-top: 18px;
+            display: grid;
+            gap: 12px;
+        }
+        .chart-canvas-wrap {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+            padding: 12px;
+            min-height: 250px;
+        }
+        .chart-canvas {
+            width: 100%;
+            height: 220px;
+            display: block;
+        }
+        .chart-legend {
+            display: grid;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .chart-row {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 12px;
+            align-items: center;
+        }
+        .chart-label {
+            color: var(--text);
+            font-weight: 600;
+        }
+        .chart-track {
+            width: 100%;
+            min-height: 16px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .chart-fill {
+            height: 16px;
+            border-radius: 999px;
+            transition: width .45s ease;
+        }
+        .chart-value {
+            color: var(--heading);
+            font-weight: 700;
+            min-width: 54px;
+            text-align: right;
+        }
+        .chart-note {
+            margin-top: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: .9rem;
+        }
         .host-list { display: grid; gap: 18px; }
         .host-card { padding: 22px; }
         .host-top { grid-template-columns: 1fr auto; align-items: start; margin-bottom: 10px; }
@@ -142,6 +507,137 @@
         .medium { color: var(--warn); font-weight: 700; }
         .low { color: var(--ok); font-weight: 700; }
         .error { color: var(--bad); font-weight: 700; margin-top: 14px; }
+        .scan-progress {
+            display: none;
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(53,208,255,.18);
+            background: rgba(53,208,255,.08);
+        }
+        .scan-progress.is-visible {
+            display: block;
+        }
+        .progress-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: rgba(255,255,255,.08);
+            border: 1px solid var(--line);
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #35d0ff, #73ecff);
+            transition: width .35s ease;
+        }
+        .progress-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .progress-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .progress-timing {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+        .progress-current-step {
+            margin-top: 8px;
+            color: var(--heading);
+            font-size: .92rem;
+            font-weight: 600;
+        }
+        .progress-stage {
+            font-weight: 700;
+            color: var(--heading);
+        }
+        .progress-steps {
+            margin: 14px 0 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+        .progress-step {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.03);
+        }
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(148, 163, 184, 0.65);
+            box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.12);
+        }
+        .step-label {
+            font-weight: 600;
+            color: var(--heading);
+        }
+        .step-status {
+            color: var(--muted);
+            font-size: .85rem;
+        }
+        .progress-step.is-active {
+            border-color: rgba(53,208,255,.35);
+            background: rgba(53,208,255,.08);
+        }
+        .progress-step.is-active .step-dot {
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(53,208,255,.16);
+        }
+        .progress-step.is-done .step-dot {
+            background: var(--ok);
+            box-shadow: 0 0 0 4px rgba(49,211,155,.16);
+        }
+        .progress-step.is-failed .step-dot {
+            background: var(--bad);
+            box-shadow: 0 0 0 4px rgba(255,97,119,.16);
+        }
+        .progress-log {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.03);
+        }
+        .progress-log h4 {
+            margin-bottom: 10px;
+        }
+        .progress-log-list {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 8px;
+        }
+        .progress-log-list li {
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .progress-log-list strong {
+            color: var(--heading);
+        }
         .filter-summary {
             margin-top: 12px;
             display: flex;
@@ -155,6 +651,7 @@
         }
         .export-center {
             min-width: 290px;
+            max-width: 100%;
             padding: 16px;
             background: var(--card);
             border: 1px solid var(--line);
@@ -179,21 +676,161 @@
         .export-link .tool {
             width: 100%;
         }
+        .view-switch {
+            display: inline-flex;
+            gap: 8px;
+            padding: 6px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,.04);
+        }
+        .view-switch button.is-active {
+            background: linear-gradient(135deg, #73ecff, #35d0ff);
+            color: #031018;
+            border: none;
+            font-weight: 700;
+        }
+        .detail-technical,
+        .detail-management {
+            transition: opacity .18s ease, transform .18s ease;
+        }
+        body[data-detail-mode="manager"] .detail-technical {
+            display: none !important;
+        }
+        body[data-detail-mode="technical"] .detail-management {
+            display: none !important;
+        }
+        .export-preview-list,
+        .action-board,
+        .compare-grid,
+        .compare-delta-grid,
+        .compare-host-grid {
+            display: grid;
+            gap: 12px;
+        }
+        .export-preview-list {
+            margin-top: 12px;
+        }
+        .export-preview {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px;
+            background: rgba(255,255,255,.03);
+        }
+        .export-preview-head,
+        .compare-card-head,
+        .action-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .export-preview-meta,
+        .compare-mini-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .export-preview-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .export-state-ready {
+            color: var(--ok);
+        }
+        .export-state-missing {
+            color: var(--warn);
+        }
+        .action-board {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .action-card,
+        .compare-card,
+        .compare-delta,
+        .compare-host-item {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 16px;
+            background: rgba(255,255,255,.04);
+        }
+        .action-card p,
+        .compare-card p,
+        .compare-delta p,
+        .compare-host-item p {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+        .action-score {
+            color: var(--heading);
+            font-weight: 800;
+            font-size: 1.15rem;
+        }
+        .compare-grid {
+            grid-template-columns: 1fr 1fr;
+            margin-top: 16px;
+        }
+        .compare-delta-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 16px;
+        }
+        .compare-host-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 16px;
+        }
+        .compare-card strong,
+        .compare-host-item strong,
+        .compare-delta strong {
+            color: var(--heading);
+            display: block;
+        }
+        .compare-delta-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--heading);
+            margin-top: 8px;
+        }
+        .compare-select-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+            margin-top: 16px;
+        }
         .host-card.is-hidden {
             display: none;
         }
         a { text-decoration: none; }
         @media (max-width: 1180px) {
+            .topbar { grid-template-columns: 1fr; }
+            .toolbar { justify-content: flex-start; }
             .hero-grid, .feature-grid, .visuals, .content-grid, .filter-grid { grid-template-columns: 1fr; }
             .stats-grid, .host-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 980px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .nse-grid { grid-template-columns: 1fr; }
+            .history-board { grid-template-columns: 1fr; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .export-center { min-width: 0; width: 100%; }
+            .action-board,
+            .compare-grid,
+            .compare-delta-grid,
+            .compare-host-grid,
+            .compare-select-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 760px) {
             .shell { padding: 16px; }
             .topbar, .form-grid, .stats-grid, .host-stats, .section-head, .host-top, .filter-grid { grid-template-columns: 1fr; }
+            .history-group-head { flex-direction: column; align-items: flex-start; }
+            .history-group.history-older .history-list { max-height: none; }
         }
     </style>
 </head>
-<body>
+<body data-detail-mode="{{ view_mode }}">
     <div class="shell">
         <section class="hero">
             <div class="topbar">
@@ -206,16 +843,36 @@
                     </p>
                 </div>
                 <div class="toolbar">
+                    <a href="/discovery"><button type="button" class="tool">Network Discovery</button></a>
+                    <div class="view-switch" id="detail-view-switch">
+                        <button type="button" class="tool {% if view_mode == 'manager' %}is-active{% endif %}" data-view-mode="manager">Yonetici Ozeti</button>
+                        <button type="button" class="tool {% if view_mode == 'technical' %}is-active{% endif %}" data-view-mode="technical">Teknik Detay</button>
+                    </div>
                     <button type="button" id="theme-toggle" class="tool">Light Mode</button>
                     {% if network_summary %}
                         <div class="export-center">
                             <div class="export-title">Export Merkezi</div>
                             <h4>Raporlari tek yerden ac veya indir</h4>
-                            <p class="muted" style="margin-top:6px;">HTML, PDF ve TXT ciktilarini bu panelden yonetebilirsin.</p>
-                            <div class="export-buttons">
-                                <a href="/report" target="_blank" class="export-link"><button type="button" class="tool">HTML</button></a>
-                                <a href="/report/pdf" target="_blank" class="export-link"><button type="button" class="tool">PDF</button></a>
-                                <a href="/report/txt" target="_blank" class="export-link"><button type="button" class="tool">TXT</button></a>
+                            <p class="muted" style="margin-top:6px;">Hangi cikti ne iceriyor, ne zaman guncellendi ve boyutu ne kadar buradan gor.</p>
+                            <div class="export-preview-list">
+                                {% for item in export_previews %}
+                                <div class="export-preview">
+                                    <div class="export-preview-head">
+                                        <strong>{{ item.label }}</strong>
+                                        <span class="pill {% if item.available %}accent export-state-ready{% else %}export-state-missing{% endif %}">
+                                            {% if item.available %}Hazir{% else %}Bekleniyor{% endif %}
+                                        </span>
+                                    </div>
+                                    <p class="muted">{{ item.summary }}</p>
+                                    <div class="export-preview-meta">
+                                        <span class="pill">Boyut {{ item.size_label }}</span>
+                                        <span class="pill">Guncelleme {{ item.updated_at }}</span>
+                                    </div>
+                                    <div class="export-preview-actions">
+                                        <a href="{{ item.url }}" target="_blank" class="export-link"><button type="button" class="tool">{{ item.label }} Ac</button></a>
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     {% endif %}
@@ -225,11 +882,33 @@
             <div class="hero-grid">
                 <div class="panel">
                     <h2 style="margin-bottom:14px;">Yeni Tarama Baslat</h2>
-                    <form method="POST" onsubmit="document.getElementById('loading').style.display='block';">
+                    <form id="scan-form" method="POST">
                         <div class="form-grid">
                             <div>
                                 <label for="target">Hedef IP veya ag araligi</label>
                                 <input type="text" id="target" name="target" value="{{ target }}" placeholder="Orn: 127.0.0.1 veya 192.168.1.0/24">
+                            </div>
+                            <div>
+                                <label for="scan_type">Tarama turu</label>
+                                <select id="scan_type" name="scan_type">
+                                    {% for key, profile in scan_profiles.items() %}
+                                        <option value="{{ key }}" {% if scan_type == key %}selected{% endif %}>{{ profile.label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="scan-type-card">
+                                    <div class="scan-type-head">
+                                        <span class="scan-type-icon" id="scan-type-icon">SV</span>
+                                        <strong id="scan-type-title">Detayli Tarama</strong>
+                                    </div>
+                                    <div class="field-help" id="scan-type-help">
+                                        Detayli Tarama servis ve isletim sistemi bilgisi toplar; raporlama icin en dengeli secenektir.
+                                    </div>
+                                    <div class="scan-type-hints" id="scan-type-hints">
+                                        <span class="scan-hint-badge rec">Onerilen: Genel kullanim</span>
+                                        <span class="scan-hint-badge info">Detay: Servis ve OS bilgisi</span>
+                                        <span class="scan-hint-badge warn">Sure: Orta</span>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <label for="team_mode">Analiz modu</label>
@@ -238,7 +917,45 @@
                                     <option value="blue" {% if team_mode == 'blue' %}selected{% endif %}>Blue Team</option>
                                 </select>
                             </div>
-                            <button type="submit" class="primary">Taramayi Baslat</button>
+                            <div>
+                                <label for="port_scope">Port kapsami</label>
+                                <select id="port_scope" name="port_scope">
+                                    {% for key, label in port_scope_options.items() %}
+                                        <option value="{{ key }}" {% if port_scope == key %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="field-help" id="port-scope-help">
+                                    Varsayilan secenekte Nmap'in standart port listesi taranir.
+                                </div>
+                            </div>
+                            <button type="submit" id="scan-submit" class="primary">Taramayi Baslat</button>
+                        </div>
+                        <div style="margin-top:16px;">
+                            <label for="port_spec">Ozel port listesi veya araligi</label>
+                            <input type="text" id="port_spec" name="port_spec" value="{{ port_spec }}" placeholder="Orn: 22,80,443 veya 1-1000">
+                            <div class="field-help" id="port-spec-help">
+                                Ozel Port Araligi secildiginde bu alana liste ya da aralik gir. Tum Portlar secenegi `-p-`, varsayilan secenek ise Nmap'in standart taramasini kullanir.
+                            </div>
+                        </div>
+                        <div style="margin-top:16px;">
+                            <label>NSE Script Taramasi</label>
+                            <div class="field-help">Nmap'in script motorunu kullanarak HTTP, SMB ve temel zafiyet kontrollerini ekleyebilirsin.</div>
+                            <div class="nse-grid">
+                                {% for key, option in nse_script_options.items() %}
+                                <label class="nse-option" for="nse_{{ key }}">
+                                    <input type="checkbox" id="nse_{{ key }}" name="nse_scripts" value="{{ key }}" {% if key in selected_nse_scripts %}checked{% endif %}>
+                                    <div>
+                                        <strong>{{ option.label }}</strong>
+                                        <span>
+                                            {% if key == 'safe' %}Temel ve guvenli varsayilan Nmap scriptlerini calistirir.{% endif %}
+                                            {% if key == 'http' %}HTTP title, header ve web servis izi toplar.{% endif %}
+                                            {% if key == 'smb' %}SMB protokol surumu ve signing gibi ayarlari kontrol eder.{% endif %}
+                                            {% if key == 'cve' %}Bilinen zafiyet imzalarina gore ek CVE kontrolu dener.{% endif %}
+                                        </span>
+                                    </div>
+                                </label>
+                                {% endfor %}
+                            </div>
                         </div>
                     </form>
                     <div class="quick" style="margin-top:14px;">
@@ -246,7 +963,79 @@
                         <span class="pill">PDF / HTML Cikti</span>
                         <span class="pill">Red Team / Blue Team</span>
                     </div>
-                    <div id="loading" class="muted" style="display:none; margin-top:14px;">Tarama yapiliyor, lutfen bekleyin...</div>
+                    <div id="scan-progress" class="scan-progress">
+                        <div class="progress-head">
+                            <div>
+                                <div class="progress-stage" id="progress-stage">Tarama hazirlaniyor</div>
+                                <p class="muted" id="progress-message">Tarama adimlari ve anlik ilerleme burada gosterilecek.</p>
+                            </div>
+                            <span class="pill accent" id="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                        <div class="progress-meta">
+                            <span class="pill" id="progress-status-pill">Bekleniyor</span>
+                            <span class="pill" id="progress-target-pill">Hedef secilmedi</span>
+                            <span class="pill" id="progress-scan-pill">Tarama tipi secilmedi</span>
+                            <span class="pill" id="progress-port-pill">Port kapsami secilmedi</span>
+                            <span class="pill" id="progress-nse-pill">NSE script secilmedi</span>
+                        </div>
+                        <div class="progress-actions">
+                            <button type="button" id="cancel-scan" class="tool" style="display:none;">Taramayi Iptal Et</button>
+                            <button type="button" id="retry-scan" class="tool" style="display:none;">Yeniden Dene</button>
+                        </div>
+                        <div class="progress-timing" id="progress-timing">Tahmini kalan sure hazirlanacak.</div>
+                        <div class="progress-current-step" id="progress-current-step">Su an: Tarama hazirlaniyor</div>
+                        <ul class="progress-steps" id="progress-steps">
+                            <li class="progress-step" data-step-key="nmap">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Host kesfi ve port tarama</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="parse">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Tarama sonuclarini isleme</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="cve">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Versiyon ve zafiyet analizi</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="scenario">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Bulgulari yorumlama</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="team">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Takim modu degerlendirmesi</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="history">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Gecmisle karsilastirma</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="charts">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Gorselleri hazirlama</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                            <li class="progress-step" data-step-key="reports">
+                                <span class="step-dot"></span>
+                                <span class="step-label">Rapor olusturma</span>
+                                <span class="step-status">Bekliyor</span>
+                            </li>
+                        </ul>
+                        <div class="progress-log">
+                            <h4>Son Olaylar</h4>
+                            <ul class="progress-log-list" id="progress-log-list">
+                                <li>Tarama baslatildiginda olay kaydi burada gorunecek.</li>
+                            </ul>
+                        </div>
+                    </div>
                     {% if error %}
                         <div class="error">{{ error }}</div>
                     {% endif %}
@@ -254,23 +1043,174 @@
 
                 <div class="panel">
                     {% if team_mode == 'red' %}
-                        <h2>Red Team Modu</h2>
-                        <p class="muted" style="margin-top:10px;">Bu ag nasil hacklenir, hangi servisler uzerinden ilerlenir ve hangi MITRE teknikleri kullanilabilir?</p>
+                        <h2 id="team-panel-title">Red Team Modu</h2>
+                        <p class="muted" id="team-panel-subtitle" style="margin-top:10px;">Bu ag nasil hacklenir, hangi servisler uzerinden ilerlenir ve hangi MITRE teknikleri kullanilabilir?</p>
                     {% else %}
-                        <h2>Blue Team Modu</h2>
-                        <p class="muted" style="margin-top:10px;">Bu ag nasil korunur, once ne kapatilip ne yamalanmali?</p>
+                        <h2 id="team-panel-title">Blue Team Modu</h2>
+                        <p class="muted" id="team-panel-subtitle" style="margin-top:10px;">Bu ag nasil korunur, once ne kapatilip ne yamalanmali?</p>
                     {% endif %}
-                    <div class="quick" style="margin-top:14px;">
-                        <span class="pill accent">{% if team_mode == 'red' %}Saldirgan bakisi{% else %}Savunmaci bakisi{% endif %}</span>
+                    <div class="quick" id="team-panel-pills" style="margin-top:14px;">
+                        <span class="pill accent" id="team-panel-mode-pill">{% if team_mode == 'red' %}Saldirgan bakisi{% else %}Savunmaci bakisi{% endif %}</span>
                         <span class="pill">Sunum uyumlu</span>
                         <span class="pill">Canli dashboard</span>
+                    </div>
+                    <div class="team-panel" id="team-panel-body">
+                        {% if team_mode == 'red' %}
+                            <div class="metric-list">
+                                <div class="metric"><span>Bakis acisi</span><strong>Ilk erisim ve yatay hareket</strong></div>
+                                <div class="metric"><span>Oncelik</span><strong>Acik servis, varsayilan hesap, eski surum</strong></div>
+                                <div class="metric"><span>Cikti</span><strong>MITRE eslemeli saldiri senaryosu</strong></div>
+                            </div>
+                            <div class="team-scenario-list">
+                                <div class="scenario">
+                                    <div class="scenario-head">
+                                        <strong>Dis yuzeyden ilk temas</strong>
+                                        <span class="pill accent">T1190 / T1133</span>
+                                    </div>
+                                    <p class="muted">HTTP, SSH, SMB veya yonetim paneli gibi acik servisler icin ilk erisim noktalari aranir.</p>
+                                </div>
+                                <div class="scenario">
+                                    <div class="scenario-head">
+                                        <strong>Kimlik bilgisi ve lateral hareket</strong>
+                                        <span class="pill">T1110 / T1021</span>
+                                    </div>
+                                    <p class="muted">Zayif parola, varsayilan kimlik bilgisi ve paylasim servisleri uzerinden ic ağa ilerleme ihtimali degerlendirilir.</p>
+                                </div>
+                            </div>
+                            <div class="team-panel-note">
+                                <strong>Bu mod ne uretir?</strong>
+                                <p>Rapor, saldirganin muhtemel giris adimlarini, etki skorunu ve hangi servislerden zincir kurabilecegini yonetime uygun dille ozetler.</p>
+                            </div>
+                        {% else %}
+                            <div class="metric-list">
+                                <div class="metric"><span>Bakis acisi</span><strong>Oncelikli kapatma ve izleme</strong></div>
+                                <div class="metric"><span>Oncelik</span><strong>Kritik port, zafiyet ve yamalama sirası</strong></div>
+                                <div class="metric"><span>Cikti</span><strong>Savunma odakli aksiyon listesi</strong></div>
+                            </div>
+                            <div class="team-scenario-list">
+                                <div class="scenario">
+                                    <div class="scenario-head">
+                                        <strong>Maruziyet azaltma</strong>
+                                        <span class="pill accent">Kisa vade</span>
+                                    </div>
+                                    <p class="muted">Gereksiz acik portlar, eski servisler ve dis yuzeye acik yonetim arayuzleri icin hizli kapatma listesi cikarilir.</p>
+                                </div>
+                                <div class="scenario">
+                                    <div class="scenario-head">
+                                        <strong>Tespit ve iyilestirme</strong>
+                                        <span class="pill">Operasyon</span>
+                                    </div>
+                                    <p class="muted">Izleme, segmentasyon, parola hijyeni ve yamalama adimlari risk seviyesine gore siralanir.</p>
+                                </div>
+                            </div>
+                            <div class="team-panel-note">
+                                <strong>Bu mod ne uretir?</strong>
+                                <p>Rapor, hangi hostun once ele alinacagini, hangi kontrollerin eksik oldugunu ve savunma ekibi icin uygulanabilir bir yol haritasi sunar.</p>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </section>
 
+        <section class="detail-management" style="margin-top:20px;">
+            <div class="section-head">
+                <div>
+                    <h2>Tarama Gecmisi</h2>
+                    <p class="muted">Daha once calistirilan taramalar burada zaman bazli gruplanir.</p>
+                </div>
+            </div>
+            <div class="history-board">
+                <div class="history-group">
+                    <div class="history-group-head">
+                        <h3>Bugun</h3>
+                        <button
+                            type="button"
+                            class="tool history-toggle"
+                            data-target="history-today-list"
+                            aria-expanded="false"
+                        >
+                            Arsivi Ac
+                        </button>
+                    </div>
+                    <p class="history-summary-note">Bugunun kayitlari gizli. Gormek icin Arsivi Ac butonuna bas.</p>
+                    <div class="history-list is-collapsed" id="history-today-list">
+                        {% if recent_history.Bugun %}
+                            {% for item in recent_history.Bugun %}
+                            <div class="history-item">
+                                <a class="history-link" href="/history/{{ item.id }}">
+                                    <strong>{{ item.target }}</strong>
+                                    <div class="quick">
+                                        <span class="pill accent">{{ item.scan_label }}</span>
+                                        <span class="pill">{% if item.team_mode == 'red' %}Red Team{% else %}Blue Team{% endif %}</span>
+                                    </div>
+                                    <div class="history-meta">Host: {{ item.total_hosts }} | Kritik Risk: {{ item.high_risk_hosts }} | CVE: {{ item.total_known_cves }}</div>
+                                    <div class="history-time">{{ item.created_at }}</div>
+                                    <div class="history-cta">Detayi Ac</div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="muted">Bugun kaydedilen tarama yok.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="history-group">
+                    <div class="history-group-head">
+                        <h3>Dun</h3>
+                        <button
+                            type="button"
+                            class="tool history-toggle"
+                            data-target="history-yesterday-list"
+                            aria-expanded="false"
+                        >
+                            Arsivi Ac
+                        </button>
+                    </div>
+                    <p class="history-summary-note">Dune ait kayitlar gizli. Gormek icin Arsivi Ac butonuna bas.</p>
+                    <div class="history-list is-collapsed" id="history-yesterday-list">
+                        {% if recent_history.Dun %}
+                            {% for item in recent_history.Dun %}
+                            <div class="history-item">
+                                <a class="history-link" href="/history/{{ item.id }}">
+                                    <strong>{{ item.target }}</strong>
+                                    <div class="quick">
+                                        <span class="pill accent">{{ item.scan_label }}</span>
+                                        <span class="pill">{% if item.team_mode == 'red' %}Red Team{% else %}Blue Team{% endif %}</span>
+                                    </div>
+                                    <div class="history-meta">Host: {{ item.total_hosts }} | Kritik Risk: {{ item.high_risk_hosts }} | CVE: {{ item.total_known_cves }}</div>
+                                    <div class="history-time">{{ item.created_at }}</div>
+                                    <div class="history-cta">Detayi Ac</div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="muted">Dune ait kayit yok.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="history-group history-older">
+                    <div class="history-group-head">
+                        <h3>Daha Eski</h3>
+                        <span class="pill accent">{{ recent_history['Daha Eski']|length }} kayit</span>
+                    </div>
+                    <p class="history-group-copy">Tum tarama arsivini yeni bir sayfada acip daha rahat gezebilirsin.</p>
+                    <div class="quick" style="margin-top:12px;">
+                        <span class="pill">Ayrı sayfa</span>
+                        <span class="pill">Tum gecmis</span>
+                    </div>
+                    <div style="margin-top:12px;">
+                        <a href="/history"><button type="button" class="tool">Arsivi Ac</button></a>
+                    </div>
+                    {% if not recent_history['Daha Eski'] %}
+                        <p class="muted" style="margin-top:12px;">Daha eski tarama kaydi yok.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
         {% if network_summary %}
-        <section style="margin-top:20px;">
+        <section class="detail-technical" style="margin-top:20px;">
             <div class="section-head">
                 <div>
                     <h2>Durum Ozeti</h2>
@@ -282,10 +1222,11 @@
                 <div class="stat"><div class="label">Kritik Risk</div><div class="value">{{ network_summary.high_risk_hosts }}</div><div class="foot">Yuksek riskli host</div></div>
                 <div class="stat"><div class="label">Bilinen CVE</div><div class="value">{{ network_summary.total_known_cves }}</div><div class="foot">Eslesen toplam zafiyet</div></div>
                 <div class="stat"><div class="label">MITRE Teknik</div><div class="value">{{ network_summary.mitre_technique_count }}</div><div class="foot">ATT&CK baglantisi</div></div>
+                <div class="stat"><div class="label">Exploitability</div><div class="value">{{ network_summary.average_exploitability_score }}</div><div class="foot">Ortalama istismar skoru</div></div>
             </div>
         </section>
 
-        <section style="margin-top:20px;">
+        <section class="detail-technical" style="margin-top:20px;">
             <div class="feature-grid">
                 <div class="card" style="padding:22px;">
                     <h3>Genel Ag Ozeti</h3>
@@ -309,13 +1250,19 @@
                             <div class="metric"><span>MITRE ATT&CK</span><strong>{{ network_summary.mitre_summary }}</strong></div>
                             <div class="metric"><span>Toplam senaryo</span><strong>{{ network_summary.scenario_count }}</strong></div>
                             <div class="metric"><span>Toplam etki skoru</span><strong>{{ network_summary.scenario_total_impact_score }}</strong></div>
+                            <div class="metric"><span>En yuksek exploitability</span><strong>{{ network_summary.max_exploitability.ip }} | {{ network_summary.max_exploitability.score }}/100</strong></div>
                         </div>
                     {% else %}
                         <h3>Blue Team Aksiyon Masasi</h3>
                         <p class="muted" style="margin:8px 0 14px;">Once yapilmasi gerekenleri sirali plan olarak verir.</p>
+                        <div class="quick" style="margin-bottom:12px;">
+                            <span class="pill accent">Critical {{ network_summary.priority_counts.critical }}</span>
+                            <span class="pill">High {{ network_summary.priority_counts.high }}</span>
+                            <span class="pill">Medium {{ network_summary.priority_counts.medium }}</span>
+                        </div>
                         <ol class="plan-list">
                             {% for item in network_summary.priority_action_plan %}
-                                <li><strong>{{ item.title }}</strong><br><span class="muted">{{ item.detail }} | Oncelik Puani: {{ item.score }}</span></li>
+                                <li><strong>[{{ item.severity_label }}] {{ item.title }}</strong><br><span class="muted">{{ item.detail }} | Oncelik Puani: {{ item.score }}</span></li>
                             {% endfor %}
                         </ol>
                     {% endif %}
@@ -330,17 +1277,257 @@
                         <span class="pill">MITRE: {{ network_summary.mitre_technique_count }}</span>
                         <span class="pill">Scenarios: {{ network_summary.scenario_count }}</span>
                     </div>
+                    <div class="spotlight-grid">
+                        <div class="spotlight-card critical">
+                            <div class="spotlight-head">
+                                <span class="spotlight-kicker"><span class="spotlight-icon">RT</span><strong>En olasi giris vektoru</strong></span>
+                                <span class="pill accent">Red Path</span>
+                            </div>
+                            <p>{{ network_summary.most_likely_entry_vector }}</p>
+                        </div>
+                        <div class="spotlight-card high">
+                            <div class="spotlight-head">
+                                <span class="spotlight-kicker"><span class="spotlight-icon">BT</span><strong>Onerilen ilk aksiyon</strong></span>
+                                <span class="pill">Priority 1</span>
+                            </div>
+                            <p>{{ network_summary.recommended_first_action }}</p>
+                        </div>
+                        <div class="spotlight-card info">
+                            <div class="spotlight-head">
+                                <span class="spotlight-kicker"><span class="spotlight-icon">HX</span><strong>{% if team_mode == 'red' %}En agresif host{% else %}En oncelikli host{% endif %}</strong></span>
+                                <span class="pill">{% if team_mode == 'red' %}Exploitability{% else %}Action Density{% endif %}</span>
+                            </div>
+                            <p>
+                                {% if team_mode == 'red' %}
+                                    {{ network_summary.max_exploitability.ip }} | {{ network_summary.max_exploitability.score }}/100 | {{ network_summary.max_exploitability.level }}
+                                {% else %}
+                                    {{ network_summary.most_risky_host }} | Critical {{ network_summary.priority_counts.critical }}, High {{ network_summary.priority_counts.high }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section style="margin-top:20px;">
-            <div class="visuals">
-                <div class="card" style="padding:22px;"><h3>Risk Dagilimi</h3><p class="muted" style="margin:8px 0 14px;">Host bazli risk resmi</p><img src="{{ url_for('static', filename='risk_chart.png') }}" alt="Risk Grafigi"></div>
-                <div class="card" style="padding:22px;"><h3>Isletim Sistemi Dagilimi</h3><p class="muted" style="margin:8px 0 14px;">Ortamda tespit edilen platformlar</p><img src="{{ url_for('static', filename='os_distribution.png') }}" alt="OS Grafigi"></div>
-                <div class="card" style="padding:22px;"><h3>Ag Haritasi</h3><p class="muted" style="margin:8px 0 14px;">Gorsel topoloji ve host iliskileri</p><img src="{{ url_for('static', filename='network_topology.png') }}" alt="Ag Haritasi"></div>
+        {% if network_summary and network_summary.priority_action_plan %}
+        <section class="detail-management" style="margin-top:20px;">
+            <div class="card" style="padding:22px;">
+                <div class="section-head">
+                    <div>
+                        <h2>Otomatik Yapilacaklar Panosu</h2>
+                        <p class="muted">Risk puani en yuksek aksiyonlar operasyon sirasi ile burada toplanir.</p>
+                    </div>
+                    <div class="quick">
+                        <span class="pill accent">Critical {{ network_summary.priority_counts.critical }}</span>
+                        <span class="pill">High {{ network_summary.priority_counts.high }}</span>
+                        <span class="pill">Medium {{ network_summary.priority_counts.medium }}</span>
+                    </div>
+                </div>
+                <div class="action-board">
+                    {% for item in network_summary.priority_action_plan[:6] %}
+                    <div class="action-card">
+                        <div class="action-card-head">
+                            <strong>{{ item.order }}. {{ item.title }}</strong>
+                            <span class="pill {% if item.severity == 'critical' %}high{% elif item.severity == 'high' %}medium{% else %}low{% endif %}">{{ item.severity_label }}</span>
+                        </div>
+                        <p>{{ item.detail }}</p>
+                        <div class="export-preview-meta">
+                            <span class="pill accent">{{ item.host_ip }}</span>
+                            <span class="pill">{{ item.category }}</span>
+                        </div>
+                        <div class="action-score">Oncelik Puani {{ item.score }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </section>
+        {% endif %}
+
+        <section class="detail-technical" style="margin-top:20px;">
+            <div class="section-head">
+                <div>
+                    <h2>Dashboard Grafikleri</h2>
+                    <p class="muted">Sunumda tek bakista okunabilen canli grafik ozetleri.</p>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-chart">
+                    <div class="chart-kicker">Acik Port Sayisi</div>
+                    <h3>Port Yogunlugu</h3>
+                    <p class="chart-note">Toplam acik port miktarini ve host bazli dagilimi yatay barlarla gosterir.</p>
+                    <div class="chart-shell" id="open-port-chart"></div>
+                </div>
+                <div class="dashboard-chart">
+                    <div class="chart-kicker">Risk Seviyesi</div>
+                    <h3>Risk Dagilimi</h3>
+                    <p class="chart-note">Dusuk, orta ve yuksek riskli host sayilarini karsilastirir.</p>
+                    <div class="chart-shell" id="risk-level-chart"></div>
+                </div>
+                <div class="dashboard-chart">
+                    <div class="chart-kicker">Isletim Sistemi</div>
+                    <h3>OS Dagilimi</h3>
+                    <p class="chart-note">Linux, Windows ve bilinmeyen sistemlerin yuzdesel dagilimini verir.</p>
+                    <div class="chart-shell" id="os-distribution-chart"></div>
+                </div>
+            </div>
+        </section>
+
+        {% if network_summary.udp_service_count %}
+        <section style="margin-top:20px;">
+            <div class="card" style="padding:22px;">
+                <div class="section-head">
+                    <div>
+                        <h2>UDP Servisleri</h2>
+                        <p class="muted">UDP taramada one cikan servisler burada ozetlenir.</p>
+                    </div>
+                    <div class="quick">
+                        <span class="pill accent">UDP Servis: {{ network_summary.udp_service_count }}</span>
+                        <span class="pill">UDP Host: {{ network_summary.udp_host_count }}</span>
+                    </div>
+                </div>
+                <div class="feature-grid">
+                    <div class="info">
+                        <h4>One Cikan UDP Bulgulari</h4>
+                        <ul class="change-list">
+                            {% for item in network_summary.udp_services %}
+                                <li>{{ item.ip }} - {{ item.port }}/udp - {{ item.service }} <span class="pill">{{ item.risk }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h4>Bu Neden Onemli?</h4>
+                        <p class="muted">DNS, NTP, SNMP ve TFTP gibi servisler UDP uzerinden calisabilir. Bu ozet, TCP taramada gozden kacabilecek servisleri hizli fark etmeni saglar.</p>
+                    </div>
+                    <div class="info">
+                        <h4>Sunum Notu</h4>
+                        <p class="muted">UDP tarama secildiginde burada bulunan servisler tek bakista gorunur; tabloya inmeden agdaki yonetim ve altyapi servisleri ayiklanabilir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if network_summary.nse_finding_count %}
+        <section style="margin-top:20px;">
+            <div class="card" style="padding:22px;">
+                <div class="section-head">
+                    <div>
+                        <h2>NSE Script Bulgulari</h2>
+                        <p class="muted">Nmap script engine ile toplanan dikkat cekici servis bulgulari burada ozetlenir.</p>
+                    </div>
+                    <div class="quick">
+                        <span class="pill accent">Bulgu: {{ network_summary.nse_finding_count }}</span>
+                        <span class="pill">Host: {{ network_summary.nse_host_count }}</span>
+                    </div>
+                </div>
+                <div class="feature-grid">
+                    <div class="info">
+                        <h4>One Cikan Script Sonuclari</h4>
+                        <ul class="change-list">
+                            {% for item in network_summary.nse_findings %}
+                                <li>{{ item.ip }} - {{ item.port }}/{{ item.protocol }} - {{ item.summary }} <span class="pill">{{ item.script_id }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h4>Bu Neden Onemli?</h4>
+                        <p class="muted">Normal port taramasi sadece servisleri gosterir. NSE ise o servislerin davranisina bakip anonymous FTP, SMBv1 veya HTTP title gibi daha anlamli bulgular uretir.</p>
+                    </div>
+                    <div class="info">
+                        <h4>Sunum Dili</h4>
+                        <p class="muted">Bu kart, teknik ciktidan daha anlasilir bir yorum uretir. Boylece sadece "445 acik" yerine "SMBv1 acik" gibi daha guclu bir ifade gosterilir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="detail-technical" style="margin-top:20px;">
+            <div class="visuals">
+                <div class="card" style="padding:22px;"><h3>Risk Dagilimi</h3><p class="muted" style="margin:8px 0 14px;">Host bazli risk resmi</p><img src="{{ risk_chart_url }}" alt="Risk Grafigi"></div>
+                <div class="card" style="padding:22px;"><h3>Isletim Sistemi Dagilimi</h3><p class="muted" style="margin:8px 0 14px;">Ortamda tespit edilen platformlar</p><img src="{{ os_chart_url }}" alt="OS Grafigi"></div>
+                <div class="card" style="padding:22px;"><h3>Ag Haritasi</h3><p class="muted" style="margin:8px 0 14px;">Gorsel topoloji ve host iliskileri</p><img src="{{ topology_chart_url }}" alt="Ag Haritasi"></div>
+            </div>
+        </section>
+
+        {% if compare_candidates %}
+        <section class="detail-management" style="margin-top:20px;">
+            <div class="card" style="padding:22px;">
+                <div class="section-head">
+                    <div><h2>Karsilastirmali Gorunum</h2><p class="muted">Iki taramayi yan yana acip farklari yonetici ozeti olarak gor.</p></div>
+                </div>
+                <form method="GET">
+                    {% if job_id %}<input type="hidden" name="job" value="{{ job_id }}">{% endif %}
+                    <input type="hidden" name="view" value="{{ view_mode }}">
+                    <div class="compare-select-grid">
+                        <div>
+                            <label for="compare_left">Referans tarama</label>
+                            <select id="compare_left" name="compare_left">
+                                <option value="">Bir kayit sec</option>
+                                {% for item in compare_candidates %}
+                                    <option value="{{ item.id }}" {% if selected_compare_left|int == item.id %}selected{% endif %}>{{ item.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <label for="compare_right">Yeni tarama</label>
+                            <select id="compare_right" name="compare_right">
+                                <option value="">Bir kayit sec</option>
+                                {% for item in compare_candidates %}
+                                    <option value="{{ item.id }}" {% if selected_compare_right|int == item.id %}selected{% endif %}>{{ item.label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="primary">Diff Ac</button>
+                    </div>
+                </form>
+                {% if history_compare %}
+                    <div class="compare-grid" id="compare-view">
+                        <div class="compare-card">
+                            <div class="compare-card-head"><strong>Referans</strong><span class="pill accent">#{{ history_compare.left.id }}</span></div>
+                            <p>{{ history_compare.left.target }} | {{ history_compare.left.scan_label }}</p>
+                            <div class="compare-mini-meta">
+                                <span class="pill">{{ history_compare.left.created_at }}</span>
+                                <span class="pill">Host {{ history_compare.left.total_hosts }}</span>
+                                <span class="pill">Kritik {{ history_compare.left.high_risk_hosts }}</span>
+                                <span class="pill">CVE {{ history_compare.left.total_known_cves }}</span>
+                            </div>
+                        </div>
+                        <div class="compare-card">
+                            <div class="compare-card-head"><strong>Yeni</strong><span class="pill accent">#{{ history_compare.right.id }}</span></div>
+                            <p>{{ history_compare.right.target }} | {{ history_compare.right.scan_label }}</p>
+                            <div class="compare-mini-meta">
+                                <span class="pill">{{ history_compare.right.created_at }}</span>
+                                <span class="pill">Host {{ history_compare.right.total_hosts }}</span>
+                                <span class="pill">Kritik {{ history_compare.right.high_risk_hosts }}</span>
+                                <span class="pill">CVE {{ history_compare.right.total_known_cves }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compare-delta-grid">
+                        <div class="compare-delta"><strong>Host farki</strong><div class="compare-delta-value">{% if history_compare.summary.host_delta >= 0 %}+{% endif %}{{ history_compare.summary.host_delta }}</div><p>Gorunen toplam host degisimi.</p></div>
+                        <div class="compare-delta"><strong>Kritik risk farki</strong><div class="compare-delta-value">{% if history_compare.summary.high_risk_delta >= 0 %}+{% endif %}{{ history_compare.summary.high_risk_delta }}</div><p>Yuksek riskli host degisimi.</p></div>
+                        <div class="compare-delta"><strong>CVE farki</strong><div class="compare-delta-value">{% if history_compare.summary.cve_delta >= 0 %}+{% endif %}{{ history_compare.summary.cve_delta }}</div><p>Toplam CVE eslesmesi degisimi.</p></div>
+                    </div>
+                    <div class="compare-host-grid">
+                        <div class="compare-host-item">
+                            <strong>Yeni hostlar</strong>
+                            {% if history_compare.new_hosts %}<ul class="change-list">{% for item in history_compare.new_hosts[:5] %}<li>{{ item.ip }} | {{ item.risk }} | Skor {{ item.score }}</li>{% endfor %}</ul>{% else %}<p>Yeni host yok.</p>{% endif %}
+                        </div>
+                        <div class="compare-host-item">
+                            <strong>Kaybolan hostlar</strong>
+                            {% if history_compare.missing_hosts %}<ul class="change-list">{% for item in history_compare.missing_hosts[:5] %}<li>{{ item.ip }} | {{ item.risk }} | Skor {{ item.score }}</li>{% endfor %}</ul>{% else %}<p>Kaybolan host yok.</p>{% endif %}
+                        </div>
+                        <div class="compare-host-item">
+                            <strong>Riski degisen hostlar</strong>
+                            {% if history_compare.risk_changes %}<ul class="change-list">{% for item in history_compare.risk_changes[:5] %}<li>{{ item.ip }} | {{ item.left_risk }} ({{ item.left_score }}) -> {{ item.right_risk }} ({{ item.right_score }})</li>{% endfor %}</ul>{% else %}<p>Risk degisimi yok.</p>{% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+        {% endif %}
 
         {% if comparison %}
         <section style="margin-top:20px;">
@@ -358,7 +1545,7 @@
                     <div class="feature-grid">
                         <div class="info"><h4>Yeni Acilan Portlar</h4>{% if comparison.new_ports %}<ul class="change-list">{% for item in comparison.new_ports %}<li>{{ item.ip }} - {{ item.port }}/{{ item.protocol }} - {{ item.service }} ({{ item.service_version }})</li>{% endfor %}</ul>{% else %}<p class="muted">Yeni acilan port yok.</p>{% endif %}</div>
                         <div class="info"><h4>Kapanan Portlar</h4>{% if comparison.closed_ports %}<ul class="change-list">{% for item in comparison.closed_ports %}<li>{{ item.ip }} - {{ item.port }}/{{ item.protocol }} - {{ item.service }} ({{ item.service_version }})</li>{% endfor %}</ul>{% else %}<p class="muted">Kapanan port yok.</p>{% endif %}</div>
-                        <div class="info"><h4>Risk Degisimi</h4>{% if comparison.risk_changes %}<ul class="change-list">{% for item in comparison.risk_changes %}<li>{{ item.ip }} - {{ item.previous_risk }} ({{ item.previous_score }}) -> {{ item.current_risk }} ({{ item.current_score }}) <span class="badge {% if item.direction == 'artti' %}increase{% elif item.direction == 'azaldi' %}decrease{% else %}change{% endif %}">Risk {{ item.direction }}</span></li>{% endfor %}</ul>{% else %}<p class="muted">Risk degisimi yok.</p>{% endif %}</div>
+                        <div class="info"><h4>Risk Degisimi</h4>{% if comparison.risk_changes %}<ul class="change-list">{% for item in comparison.risk_changes %}<li>{{ item.ip }} - {{ item.previous_risk }} ({{ item.previous_score }}) -> {{ item.current_risk }} ({{ item.current_score }}) <span class="badge {% if item.direction == 'artti' %}increase{% elif item.direction == 'azaldi' %}decrease{% else %}change{% endif %}">Risk {% if item.direction == 'artti' %}artti{% elif item.direction == 'azaldi' %}azaldi{% else %}degisti{% endif %}</span></li>{% endfor %}</ul>{% else %}<p class="muted">Risk degisimi yok.</p>{% endif %}</div>
                     </div>
                 {% else %}
                     <p class="muted">Ilk snapshot kaydedildi. Ayni hedefi tekrar taradiginda degisimler burada gorunecek.</p>
@@ -367,7 +1554,7 @@
         </section>
         {% endif %}
 
-        <section style="margin-top:20px;">
+        <section class="detail-technical" style="margin-top:20px;">
             <div class="section-head">
                 <div><h2>Host Merkezli Inceleme</h2><p class="muted">Her host kendi risk karti ve port tablosu ile sunulur.</p></div>
             </div>
@@ -383,10 +1570,8 @@
                         <label for="risk-filter">Risk seviyesi</label>
                         <select id="risk-filter">
                             <option value="">Tum riskler</option>
-                            <option value="yüksek">Yuksek</option>
+                            <option value="yuksek">Yuksek</option>
                             <option value="orta">Orta</option>
-                            <option value="düşük">Dusuk</option>
-                            <option value="dÃ¼ÅŸÃ¼k">Dusuk</option>
                             <option value="dusuk">Dusuk</option>
                         </select>
                     </div>
@@ -437,7 +1622,7 @@
                     data-os="{{ host.detected_os|lower }}"
                     data-has-cve="{% if host.known_cve_count > 0 %}yes{% else %}no{% endif %}"
                     data-firewall="{% if host.firewall_detected %}yes{% else %}no{% endif %}"
-                    data-search="{{ host.ip }} {{ host.detected_os }} {{ host.general_risk }} {% for port in host.open_ports_data %} {{ port.port }} {{ port.protocol }} {{ port.service }} {{ port.service_version }} {{ port.category }} {{ port.risk }} {{ port.os_risk_note }} {{ port.brute_force_note }} {{ port.recommendation }} {% for cve in port.cves %} {{ cve.cve_id }} {{ cve.title }} {{ cve.description }} {% endfor %} {% endfor %}"
+                    data-search="{{ host.ip }} {{ host.detected_os }} {{ host.general_risk }} {% for port in host.all_ports_data %} {{ port.port }} {{ port.protocol }} {{ port.state }} {{ port.state_explanation }} {{ port.service }} {{ port.service_version }} {{ port.category }} {{ port.risk }} {{ port.os_risk_note }} {{ port.brute_force_note }} {{ port.recommendation }} {% for finding in port.nse_findings %} {{ finding.id }} {{ finding.summary }} {{ finding.output }} {% endfor %} {% for cve in port.cves %} {{ cve.cve_id }} {{ cve.title }} {{ cve.description }} {% endfor %} {% endfor %}"
                 >
                     <div class="host-top">
                         <div>
@@ -448,23 +1633,57 @@
                                 <span class="pill">Filtered {{ host.total_filtered_ports }}</span>
                                 <span class="pill">CVE {{ host.known_cve_count }}</span>
                                 <span class="pill">MITRE {{ host.mitre_technique_count or 0 }}</span>
+                                <span class="pill">Exploitability {{ host.exploitability_score or 0 }}/100</span>
+                                {% if host.scan_timed_out %}
+                                <span class="pill" style="background:#fff3cd; color:#8a5a00; border-color:#f3d98b;">Tarama Timeout</span>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="risk-badge {% if host.general_risk == 'Yüksek' %}high{% elif host.general_risk == 'Orta' %}medium{% else %}low{% endif %}">{{ host.general_risk }}</div>
+                        <div class="risk-badge {% if host.general_risk == 'Yuksek' %}high{% elif host.general_risk == 'Orta' %}medium{% elif host.general_risk == 'Dusuk' %}low{% endif %}">{{ host.general_risk }}</div>
                     </div>
 
                     <div class="host-stats">
                         <div class="mini"><div class="label">Risk Skoru</div><strong>{{ host.host_score }}</strong></div>
                         <div class="mini"><div class="label">Etki Skoru</div><strong>{{ host.scenario_impact_score }}</strong></div>
+                        <div class="mini"><div class="label">Exploitability</div><strong>{{ host.exploitability_score or 0 }}/100</strong></div>
                         <div class="mini"><div class="label">Brute-force</div><strong>{{ host.brute_force_risk_count }}</strong></div>
                         <div class="mini"><div class="label">Firewall</div><strong>{% if host.firewall_detected %}Var{% else %}Yok{% endif %}</strong></div>
                     </div>
+
+                    {% if host.scan_timed_out %}
+                    <div class="notice" style="margin-bottom:16px; background:#fff8e1; border:1px solid #f3d98b; color:#6f4e00; border-radius:14px; padding:12px 14px;">
+                        Host cevap verdi ancak detayli tarama zaman asimina ugradi. Bu nedenle {{ host.ip }} icin port ve servis listesi bos veya eksik gorunebilir. Sistem bu hostu hafif profille yeniden denemeye calisir.
+                    </div>
+                    {% endif %}
 
                     <div class="content-grid">
                         <div class="info">
                             {% if team_mode == 'red' %}
                                 <h4>Red Team Ozeti</h4>
                                 <p class="muted" style="margin:8px 0 12px;">{{ host.red_team_summary }}</p>
+                                <div class="spotlight-grid" style="margin-bottom:12px;">
+                                    <div class="spotlight-card critical">
+                                        <div class="spotlight-head">
+                                            <span class="spotlight-kicker"><span class="spotlight-icon">IN</span><strong>En olasi giris vektoru</strong></span>
+                                            <span class="pill accent">Host Path</span>
+                                        </div>
+                                        <p>{{ host.first_entry_vector or 'Belirgin bir giris vektoru uretilmedi.' }}</p>
+                                    </div>
+                                    <div class="spotlight-card info">
+                                        <div class="spotlight-head">
+                                            <span class="spotlight-kicker"><span class="spotlight-icon">EX</span><strong>Istismar seviyesi</strong></span>
+                                            <span class="pill">{{ host.exploitability_level or 'Dusuk' }}</span>
+                                        </div>
+                                        <p>{{ host.exploitability_level or 'Dusuk' }} | {{ host.exploitability_score or 0 }}/100</p>
+                                    </div>
+                                </div>
+                                {% if host.red_team_highlights %}
+                                    <div class="quick" style="margin-bottom:12px;">
+                                        {% for item in host.red_team_highlights %}
+                                            <span class="pill">{{ item }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                                 {% if host.attack_scenarios %}
                                     {% for scenario in host.attack_scenarios %}
                                         <div class="scenario">
@@ -486,9 +1705,30 @@
                                 {% endif %}
                             {% else %}
                                 <h4>Blue Team Planlama</h4>
-                                <p class="muted" style="margin:8px 0 12px;">Bu host icin oncelikli savunma adimlari.</p>
+                                <p class="muted" style="margin:8px 0 12px;">{{ host.blue_team_summary }}</p>
+                                <div class="spotlight-grid" style="margin-bottom:12px;">
+                                    <div class="spotlight-card critical">
+                                        <div class="spotlight-head">
+                                            <span class="spotlight-kicker"><span class="spotlight-icon">AX</span><strong>Onerilen ilk aksiyon</strong></span>
+                                            <span class="pill accent">Immediate</span>
+                                        </div>
+                                        <p>{{ host.recommended_first_action or 'Belirgin bir ilk aksiyon uretilmedi.' }}</p>
+                                    </div>
+                                    <div class="spotlight-card high">
+                                        <div class="spotlight-head">
+                                            <span class="spotlight-kicker"><span class="spotlight-icon">SV</span><strong>Aksiyon yogunlugu</strong></span>
+                                            <span class="pill">Severity Mix</span>
+                                        </div>
+                                        <p>Critical {{ host.priority_counts.critical }} | High {{ host.priority_counts.high }} | Medium {{ host.priority_counts.medium }}</p>
+                                    </div>
+                                </div>
+                                <div class="quick" style="margin-bottom:12px;">
+                                    <span class="pill accent">Critical {{ host.priority_counts.critical }}</span>
+                                    <span class="pill">High {{ host.priority_counts.high }}</span>
+                                    <span class="pill">Medium {{ host.priority_counts.medium }}</span>
+                                </div>
                                 {% if host.priority_actions %}
-                                    <ol class="plan-list">{% for item in host.priority_actions[:4] %}<li><strong>{{ item.title }}</strong><br><span class="muted">{{ item.detail }} | Oncelik Puani: {{ item.score }}</span></li>{% endfor %}</ol>
+                                    <ol class="plan-list">{% for item in host.priority_actions[:4] %}<li><strong>[{{ item.severity_label }}] {{ item.title }}</strong><br><span class="muted">{{ item.detail }} | Oncelik Puani: {{ item.score }}</span></li>{% endfor %}</ol>
                                 {% else %}
                                     <p class="muted">Sirali aksiyon uretilmedi.</p>
                                 {% endif %}
@@ -502,6 +1742,7 @@
                                 <div class="metric"><span>Orta riskli port</span><strong>{{ host.medium_risk_count }}</strong></div>
                                 <div class="metric"><span>Dusuk riskli port</span><strong>{{ host.low_risk_count }}</strong></div>
                                 <div class="metric"><span>Eslesen CVE</span><strong>{{ host.known_cve_count }}</strong></div>
+                                <div class="metric"><span>NSE bulgusu</span><strong>{{ host.nse_finding_count or 0 }}</strong></div>
                                 <div class="metric"><span>Toplam senaryo</span><strong>{{ host.attack_scenarios|length }}</strong></div>
                                 <div class="metric"><span>MITRE teknik</span><strong>{{ host.mitre_technique_count or 0 }}</strong></div>
                             </div>
@@ -522,27 +1763,43 @@
                                 <tr>
                                     <th>Port</th>
                                     <th>Protokol</th>
+                                    <th>Durum</th>
+                                    <th>Durum Aciklamasi</th>
                                     <th>Servis</th>
                                     <th>Surum</th>
                                     <th>Kategori</th>
                                     <th>Risk</th>
                                     <th>OS Etkisi</th>
                                     <th>Brute-force</th>
+                                    <th>NSE Script</th>
                                     <th>Bilinen CVE</th>
                                     <th>Oneri</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for port in host.open_ports_data %}
+                                {% for port in host.all_ports_data %}
                                 <tr>
                                     <td>{{ port.port }}</td>
                                     <td>{{ port.protocol }}</td>
+                                    <td><span class="pill {% if port.state == 'open' %}state-open{% elif port.state == 'filtered' %}state-filtered{% elif port.state == 'closed' %}state-closed{% endif %}">{{ port.state|capitalize }}</span></td>
+                                    <td>{{ port.state_explanation }}</td>
                                     <td>{{ port.service }}</td>
                                     <td>{{ port.service_version }}</td>
                                     <td>{{ port.category }}</td>
-                                    <td class="{% if port.risk == 'Yüksek' %}high{% elif port.risk == 'Orta' %}medium{% elif port.risk == 'Düşük' %}low{% endif %}">{{ port.risk }}</td>
+                                    <td class="{% if port.risk == 'Yuksek' %}high{% elif port.risk == 'Orta' %}medium{% elif port.risk == 'Dusuk' %}low{% endif %}">{{ port.risk }}</td>
                                     <td>{{ port.os_risk_note }}</td>
                                     <td>{{ port.brute_force_note }}</td>
+                                    <td>
+                                        {% if port.nse_findings %}
+                                            <ul class="cve-list">
+                                                {% for finding in port.nse_findings %}
+                                                    <li><strong>{{ finding.id }}</strong> - {{ finding.summary }}{% if finding.output %}<br><span class="muted">{{ finding.output }}</span>{% endif %}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% else %}
+                                            <span class="muted">Script bulgusu yok</span>
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         {% if port.cves %}
                                             <ul class="cve-list">
@@ -567,6 +1824,62 @@
         {% endif %}
     </div>
 
+    {% if network_summary %}
+    <script id="team-panel-findings" type="application/json">
+        {
+            "totalHosts": {{ network_summary.total_hosts|default(0) }},
+            "highRiskHosts": {{ network_summary.high_risk_hosts|default(0) }},
+            "mediumRiskHosts": {{ network_summary.medium_risk_hosts|default(0) }},
+            "lowRiskHosts": {{ network_summary.low_risk_hosts|default(0) }},
+            "totalKnownCves": {{ network_summary.total_known_cves|default(0) }},
+            "scenarioCount": {{ network_summary.scenario_count|default(0) }},
+            "scenarioImpactScore": {{ network_summary.scenario_total_impact_score|default(0) }},
+            "mitreTechniqueCount": {{ network_summary.mitre_technique_count|default(0) }},
+            "bruteForceRiskHosts": {{ network_summary.brute_force_risk_hosts|default(0) }},
+            "timedOutHosts": {{ network_summary.timed_out_hosts|default(0) }},
+            "mostRiskyHost": {{ network_summary.most_risky_host|default('Bilinmiyor')|tojson }},
+            "averageExploitability": {{ network_summary.average_exploitability_score|default(0)|tojson }},
+            "maxExploitabilityIp": {{ network_summary.max_exploitability.ip|default('Yok')|tojson }},
+            "maxExploitabilityScore": {{ network_summary.max_exploitability.score|default(0)|tojson }},
+            "entryVector": {{ network_summary.most_likely_entry_vector|default('Belirgin bir giris vektoru uretilmedi.')|tojson }},
+            "firstAction": {{ network_summary.recommended_first_action|default('Belirgin bir ilk aksiyon uretilmedi.')|tojson }},
+            "hosts": [
+                {% for host in host_reports %}
+                {
+                    "ip": {{ host.ip|tojson }},
+                    "risk": {{ host.general_risk|tojson }},
+                    "openPorts": {{ host.total_open_ports|default(0) }},
+                    "knownCves": {{ host.known_cve_count|default(0) }},
+                    "score": {{ host.host_score|default(0) }},
+                    "exploitability": {{ host.exploitability_score|default(0) }},
+                    "timedOut": {% if host.scan_timed_out %}true{% else %}false{% endif %},
+                    "scenarioCount": {{ host.attack_scenarios|length if host.attack_scenarios else 0 }},
+                    "priorityCount": {{ host.priority_actions|length if host.priority_actions else 0 }},
+                    "firstEntryVector": {{ host.first_entry_vector|default('Belirgin bir giris vektoru uretilmedi.')|tojson }},
+                    "recommendedFirstAction": {{ host.recommended_first_action|default('Belirgin bir ilk aksiyon uretilmedi.')|tojson }}
+                }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+    </script>
+    <script id="dashboard-chart-data" type="application/json">
+        {
+            "totalOpenPorts": {{ host_reports|sum(attribute='total_open_ports')|default(0) }},
+            "riskLevels": [
+                { "label": "Dusuk", "value": {{ network_summary.low_risk_hosts|default(0) }}, "color": "#31d39b" },
+                { "label": "Orta", "value": {{ network_summary.medium_risk_hosts|default(0) }}, "color": "#ffb54a" },
+                { "label": "Yuksek", "value": {{ network_summary.high_risk_hosts|default(0) }}, "color": "#ff6177" }
+            ],
+            "osDistribution": {{ network_summary.host_list|map(attribute='detected_os')|list|tojson }},
+            "openPortBreakdown": [
+                {% for host in host_reports %}
+                { "label": "{{ host.ip }}", "value": {{ host.total_open_ports }} }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+    </script>
+    <script src="{{ url_for('static', filename='charts.js') }}"></script>
+    {% endif %}
     <script>
         (function () {
             const storageKey = 'akilli_rapor_theme';
@@ -576,6 +1889,7 @@
                 const isLight = theme === 'light';
                 body.classList.toggle('light-mode', isLight);
                 if (toggle) toggle.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+                window.dispatchEvent(new CustomEvent('dashboard-theme-change', { detail: { theme: theme } }));
             }
             const savedTheme = localStorage.getItem(storageKey) || 'dark';
             applyTheme(savedTheme);
@@ -586,6 +1900,889 @@
                     applyTheme(nextTheme);
                 });
             }
+        })();
+
+        (function () {
+            const storageKey = 'akilli_rapor_detail_mode';
+            const body = document.body;
+            const switchRoot = document.getElementById('detail-view-switch');
+            if (!body || !switchRoot) {
+                return;
+            }
+
+            const buttons = Array.from(switchRoot.querySelectorAll('[data-view-mode]'));
+
+            function applyMode(mode, persist) {
+                const nextMode = mode === 'technical' ? 'technical' : 'manager';
+                body.setAttribute('data-detail-mode', nextMode);
+                buttons.forEach(function (button) {
+                    button.classList.toggle('is-active', button.getAttribute('data-view-mode') === nextMode);
+                });
+                document.querySelectorAll('input[name="view"]').forEach(function (input) {
+                    input.value = nextMode;
+                });
+                if (persist) {
+                    localStorage.setItem(storageKey, nextMode);
+                }
+            }
+
+            const savedMode = localStorage.getItem(storageKey);
+            const initialMode = savedMode || body.getAttribute('data-detail-mode') || 'manager';
+            applyMode(initialMode, false);
+
+            buttons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    applyMode(button.getAttribute('data-view-mode'), true);
+                });
+            });
+        })();
+
+        (function () {
+            const scanForm = document.getElementById('scan-form');
+            const scanSubmit = document.getElementById('scan-submit');
+            const progressCard = document.getElementById('scan-progress');
+            const progressStage = document.getElementById('progress-stage');
+            const progressMessage = document.getElementById('progress-message');
+            const progressPercent = document.getElementById('progress-percent');
+            const progressFill = document.getElementById('progress-fill');
+            const progressStatusPill = document.getElementById('progress-status-pill');
+            const progressTargetPill = document.getElementById('progress-target-pill');
+            const progressScanPill = document.getElementById('progress-scan-pill');
+            const progressPortPill = document.getElementById('progress-port-pill');
+            const progressNsePill = document.getElementById('progress-nse-pill');
+            const scanTypeIcon = document.getElementById('scan-type-icon');
+            const scanTypeTitle = document.getElementById('scan-type-title');
+            const scanTypeHelp = document.getElementById('scan-type-help');
+            const scanTypeHints = document.getElementById('scan-type-hints');
+            const teamModeSelect = document.getElementById('team_mode');
+            const targetInput = document.getElementById('target');
+            const teamPanelTitle = document.getElementById('team-panel-title');
+            const teamPanelSubtitle = document.getElementById('team-panel-subtitle');
+            const teamPanelModePill = document.getElementById('team-panel-mode-pill');
+            const teamPanelBody = document.getElementById('team-panel-body');
+            const findingsScript = document.getElementById('team-panel-findings');
+            const cancelScanButton = document.getElementById('cancel-scan');
+            const retryScanButton = document.getElementById('retry-scan');
+            const progressTiming = document.getElementById('progress-timing');
+            const progressCurrentStep = document.getElementById('progress-current-step');
+            const progressLogList = document.getElementById('progress-log-list');
+            const progressSteps = Array.from(document.querySelectorAll('#progress-steps .progress-step'));
+            const riskFilterSelect = document.getElementById('risk-filter');
+            if (riskFilterSelect) {
+                riskFilterSelect.innerHTML = [
+                    '<option value="">Tum riskler</option>',
+                    '<option value="yuksek">Yuksek</option>',
+                    '<option value="orta">Orta</option>',
+                    '<option value="dusuk">Dusuk</option>'
+                ].join('');
+            }
+            document.querySelectorAll('.risk-badge').forEach(function (badge) {
+                const text = (badge.textContent || '').toLowerCase();
+                const normalized = text
+                    .replaceAll('ü', 'u')
+                    .replaceAll('ş', 's')
+                    .replaceAll('ı', 'i')
+                    .replaceAll('ö', 'o')
+                    .replaceAll('ğ', 'g')
+                    .replaceAll('ç', 'c');
+                badge.classList.remove('high', 'medium', 'low');
+                if (normalized.includes('yuksek')) {
+                    badge.classList.add('high');
+                } else if (normalized.includes('orta')) {
+                    badge.classList.add('medium');
+                } else if (normalized.includes('dusuk')) {
+                    badge.classList.add('low');
+                }
+            });
+            const scanTypeDescriptions = {
+                quick: {
+                    icon: 'QK',
+                    title: 'Hizli Tarama',
+                    help: 'Temel port gorunurlugu icin en pratik secenektir; servis detayi daha sinirli olabilir.',
+                    hints: [
+                        { tone: 'rec', text: 'Onerilen: Ilk kesif' },
+                        { tone: 'info', text: 'Detay: Temel port taramasi' },
+                        { tone: 'warn', text: 'Sure: Kisa' },
+                    ],
+                },
+                syn: {
+                    icon: 'SYN',
+                    title: 'SYN Tarama',
+                    help: 'Profesyonel ortamlarda sik kullanilan yarim acik TCP taramasidir; daha hizli ve daha sessiz calisabilir.',
+                    hints: [
+                        { tone: 'rec', text: 'Onerilen: Gercek sistem taramasi' },
+                        { tone: 'info', text: 'Detay: TCP SYN -sS' },
+                        { tone: 'warn', text: 'Sure: Kisa-Orta' },
+                    ],
+                },
+                detailed: {
+                    icon: 'SV',
+                    title: 'Detayli Tarama',
+                    help: 'Servis ve isletim sistemi bilgisi toplar; raporlama icin en dengeli secenektir.',
+                    hints: [
+                        { tone: 'rec', text: 'Onerilen: Genel kullanim' },
+                        { tone: 'info', text: 'Detay: Servis ve OS bilgisi' },
+                        { tone: 'warn', text: 'Sure: Orta' },
+                    ],
+                },
+                udp: {
+                    icon: 'UDP',
+                    title: 'UDP Tarama',
+                    help: 'DNS, SNMP gibi UDP servislerini arar; diger taramalara gore daha yavas olabilir.',
+                    hints: [
+                        { tone: 'rec', text: 'Onerilen: UDP servis arama' },
+                        { tone: 'info', text: 'Detay: Baglantisiz servisler' },
+                        { tone: 'warn', text: 'Sure: Uzayabilir' },
+                    ],
+                },
+                ping: {
+                    icon: 'PNG',
+                    title: 'Ping Scan',
+                    help: 'Sadece aktif cihazlari bulur; port ve servis ayrintisi uretmez.',
+                    hints: [
+                        { tone: 'rec', text: 'Onerilen: Canli host bulma' },
+                        { tone: 'info', text: 'Detay: Port taramasi yok' },
+                        { tone: 'warn', text: 'Sure: Cok kisa' },
+                    ],
+                },
+                vuln: {
+                    icon: 'VUL',
+                    title: 'Zafiyet Taramasi',
+                    help: 'Nmap scriptleri ile ek guvenlik kontrolleri dener; sure daha uzun olabilir.',
+                    hints: [
+                        { tone: 'rec', text: 'Onerilen: Ek guvenlik kontrolu' },
+                        { tone: 'info', text: 'Detay: Script tabanli tarama' },
+                        { tone: 'warn', text: 'Sure: Uzun olabilir' },
+                    ],
+                },
+            };
+            const teamModeContent = {
+                red: {
+                    title: 'Red Team Modu',
+                    subtitle: 'Bu ag nasil hacklenir, hangi servisler uzerinden ilerlenir ve hangi MITRE teknikleri kullanilabilir?',
+                    modePill: 'Saldirgan bakisi',
+                    metrics: function (targetLabel, scanTitle, scopeLabel) {
+                        return [
+                            ['Hedef odagi', targetLabel],
+                            ['Tarama profili', scanTitle],
+                            ['Oncelik', scopeLabel],
+                        ];
+                    },
+                    scenarios: function (targetLabel, scanTitle) {
+                        return [
+                            {
+                                title: 'Dis yuzeyden ilk temas',
+                                pill: 'T1190 / T1133',
+                                text: targetLabel + ' uzerindeki HTTP, SSH, SMB veya yonetim servisleri ' + scanTitle.toLowerCase() + ' ile ilk erisim noktasi olarak degerlendirilir.',
+                            },
+                            {
+                                title: 'Kimlik bilgisi ve lateral hareket',
+                                pill: 'T1110 / T1021',
+                                text: 'Varsayilan hesap, zayif parola ve paylasim servisleri uzerinden ic agda ilerleme ihtimali gozden gecirilir.',
+                            },
+                        ];
+                    },
+                    noteTitle: 'Bu mod ne uretir?',
+                    note: function (targetLabel) {
+                        return targetLabel + ' icin olasi saldiri zinciri, etki skoru ve MITRE eslemeli ilerleme adimlari yonetime uygun dille ozetlenir.';
+                    },
+                },
+                blue: {
+                    title: 'Blue Team Modu',
+                    subtitle: 'Bu ag nasil korunur, once ne kapatilip ne yamalanmali?',
+                    modePill: 'Savunmaci bakisi',
+                    metrics: function (targetLabel, scanTitle, scopeLabel) {
+                        return [
+                            ['Koruma alani', targetLabel],
+                            ['Tarama profili', scanTitle],
+                            ['Oncelik', scopeLabel],
+                        ];
+                    },
+                    scenarios: function (targetLabel, scanTitle) {
+                        return [
+                            {
+                                title: 'Maruziyet azaltma',
+                                pill: 'Kisa vade',
+                                text: targetLabel + ' uzerindeki gereksiz acik portlar ve dis yuzeye acik yonetim servisleri ' + scanTitle.toLowerCase() + ' sonucuna gore hizli aksiyon listesine donusturulur.',
+                            },
+                            {
+                                title: 'Tespit ve iyilestirme',
+                                pill: 'Operasyon',
+                                text: 'Yamalama, segmentasyon, parola hijyeni ve izleme adimlari riske gore siralanarak savunma plani cikarilir.',
+                            },
+                        ];
+                    },
+                    noteTitle: 'Bu mod ne uretir?',
+                    note: function (targetLabel) {
+                        return targetLabel + ' icin hangi hostun once ele alinacagini ve hangi kontrollerin eksik oldugunu gosteren uygulanabilir bir yol haritasi sunar.';
+                    },
+                },
+            };
+            let teamPanelFindings = null;
+            if (findingsScript) {
+                try {
+                    teamPanelFindings = JSON.parse(findingsScript.textContent);
+                } catch (error) {
+                    teamPanelFindings = null;
+                }
+            }
+            let activeJobId = null;
+            let progressTimer = null;
+            let jobStartedAt = null;
+            let progressHistory = [];
+            const stageThresholds = [
+                { key: 'nmap', start: 0, end: 29, label: 'Host kesfi ve port tarama' },
+                { key: 'parse', start: 30, end: 47, label: 'Tarama sonuclarini isleme' },
+                { key: 'cve', start: 48, end: 61, label: 'Versiyon ve zafiyet analizi' },
+                { key: 'scenario', start: 62, end: 71, label: 'Bulgulari yorumlama' },
+                { key: 'team', start: 72, end: 79, label: 'Takim modu degerlendirmesi' },
+                { key: 'history', start: 80, end: 87, label: 'Gecmisle karsilastirma' },
+                { key: 'charts', start: 88, end: 94, label: 'Gorselleri hazirlama' },
+                { key: 'reports', start: 95, end: 100, label: 'Rapor olusturma' },
+            ];
+
+            function resolveCurrentStep(payload) {
+                const progressValue = Number(payload.progress || 0);
+                if (payload.status === 'completed') {
+                    return 'reports';
+                }
+                for (const item of stageThresholds) {
+                    if (progressValue >= item.start && progressValue <= item.end) {
+                        return item.key;
+                    }
+                }
+                return 'nmap';
+            }
+
+            function humanizeStep(stepKey, statusText) {
+                const item = stageThresholds.find(function (entry) {
+                    return entry.key === stepKey;
+                });
+                if (statusText === 'completed') {
+                    return 'Tamamlandi';
+                }
+                if (statusText === 'canceled') {
+                    return item ? item.label + ' asamasinda iptal edildi' : 'Tarama iptal edildi';
+                }
+                if (statusText === 'failed') {
+                    return item ? item.label + ' asamasinda hata olustu' : 'Tarama hata ile sonlandi';
+                }
+                return item ? item.label : 'Hazirlaniyor';
+            }
+
+            function renderLogs(payload) {
+                if (!progressLogList) {
+                    return;
+                }
+
+                const logs = Array.isArray(payload.logs) ? payload.logs : [];
+                if (!logs.length) {
+                    progressLogList.innerHTML = '<li>Heniz olay kaydi yok.</li>';
+                    return;
+                }
+
+                progressLogList.innerHTML = logs.slice(-6).map(function (entry) {
+                    const level =
+                        entry.level === 'error' ? 'Hata'
+                        : entry.level === 'warn' ? 'Uyari'
+                        : 'Bilgi';
+                    return '<li><strong>' + level + ':</strong> ' + entry.message + '</li>';
+                }).join('');
+            }
+
+            function renderSteps(payload) {
+                if (!progressSteps.length) {
+                    return;
+                }
+
+                const currentStep = payload.current_step || resolveCurrentStep(payload);
+                const currentIndex = stageThresholds.findIndex(function (item) {
+                    return item.key === currentStep;
+                });
+
+                progressSteps.forEach(function (stepElement, index) {
+                    const stepKey = stepElement.dataset.stepKey;
+                    const statusElement = stepElement.querySelector('.step-status');
+                    stepElement.classList.remove('is-active', 'is-done', 'is-failed');
+
+                    if (payload.status === 'failed' || payload.status === 'canceled') {
+                        if (stepKey === currentStep) {
+                            stepElement.classList.add(payload.status === 'canceled' ? 'is-active' : 'is-failed');
+                            statusElement.textContent = payload.status === 'canceled' ? 'Iptal edildi' : 'Hata';
+                        } else if (index < currentIndex) {
+                            stepElement.classList.add('is-done');
+                            statusElement.textContent = 'Tamamlandi';
+                        } else {
+                            statusElement.textContent = 'Bekliyor';
+                        }
+                        return;
+                    }
+
+                    if (payload.status === 'completed') {
+                        stepElement.classList.add('is-done');
+                        statusElement.textContent = 'Tamamlandi';
+                        return;
+                    }
+
+                    const stepIndex = stageThresholds.findIndex(function (item) {
+                        return item.key === stepKey;
+                    });
+
+                    if (stepIndex < currentIndex) {
+                        stepElement.classList.add('is-done');
+                        statusElement.textContent = 'Tamamlandi';
+                    } else if (stepKey === currentStep) {
+                        stepElement.classList.add('is-active');
+                        statusElement.textContent = 'Calisiyor';
+                    } else {
+                        statusElement.textContent = 'Bekliyor';
+                    }
+                });
+            }
+
+            function formatDuration(totalSeconds) {
+                const safeSeconds = Math.max(0, Math.round(totalSeconds));
+                const minutes = Math.floor(safeSeconds / 60);
+                const seconds = safeSeconds % 60;
+                if (minutes <= 0) {
+                    return seconds + ' sn';
+                }
+                return minutes + ' dk ' + String(seconds).padStart(2, '0') + ' sn';
+            }
+
+            function estimateRemaining(progressValue, statusText) {
+                if (!progressTiming) {
+                    return;
+                }
+
+                if (statusText === 'completed') {
+                    progressTiming.textContent = 'Sure tahmini tamamlandi: tarama sonuclari hazir.';
+                    return;
+                }
+
+                if (statusText === 'failed') {
+                    progressTiming.textContent = 'Sure tahmini durduruldu: islem hata ile sonlandi.';
+                    return;
+                }
+
+                if (statusText === 'canceled') {
+                    progressTiming.textContent = 'Sure tahmini durduruldu: tarama kullanici tarafindan iptal edildi.';
+                    return;
+                }
+
+                if (!jobStartedAt || progressValue < 8) {
+                    progressTiming.textContent = 'Tahmini kalan sure hesaplanmaya baslaniyor.';
+                    return;
+                }
+
+                const now = Date.now();
+                const elapsedSeconds = (now - jobStartedAt) / 1000;
+
+                // Son snapshot ile farkli bir progress degeri varsa gecmise ekle
+                const last = progressHistory.length > 0 ? progressHistory[progressHistory.length - 1] : null;
+                if (!last || last.progress !== progressValue) {
+                    progressHistory.push({ t: now, progress: progressValue });
+                    // Yalnizca son 90 saniyeyi tut
+                    const cutoff = now - 90000;
+                    progressHistory = progressHistory.filter(function (e) { return e.t >= cutoff; });
+                }
+
+                // Son 60 saniye icindeki ilerleme hizini hesapla
+                const windowMs = 60000;
+                const windowStart = now - windowMs;
+                const windowEntries = progressHistory.filter(function (e) { return e.t >= windowStart; });
+                let remainingSeconds = null;
+
+                if (windowEntries.length >= 2) {
+                    const oldest = windowEntries[0];
+                    const newest = windowEntries[windowEntries.length - 1];
+                    const deltaProgress = newest.progress - oldest.progress;
+                    const deltaSec = (newest.t - oldest.t) / 1000;
+                    if (deltaProgress > 0 && deltaSec > 0) {
+                        const ratePerSec = deltaProgress / deltaSec; // % / saniye
+                        const remaining = (100 - progressValue) / ratePerSec;
+                        remainingSeconds = Math.max(0, remaining);
+                    }
+                }
+
+                if (remainingSeconds === null) {
+                    progressTiming.textContent = 'Gecen sure: ' + formatDuration(elapsedSeconds) + ' | Tahmini kalan: hesaplaniyor...';
+                } else {
+                    progressTiming.textContent =
+                        'Gecen sure: ' + formatDuration(elapsedSeconds) +
+                        ' | Tahmini kalan: ' + formatDuration(remainingSeconds);
+                }
+            }
+
+            function setProgressState(payload) {
+                if (!progressCard) {
+                    return;
+                }
+
+                progressCard.classList.add('is-visible');
+                const progressValue = Math.max(0, Math.min(100, Number(payload.progress || 0)));
+                const statusText = payload.status || 'running';
+                progressStage.textContent =
+                    statusText === 'completed' ? 'Tarama tamamlandi'
+                    : statusText === 'canceled' ? 'Tarama iptal edildi'
+                    : statusText === 'failed' ? 'Tarama durduruldu'
+                    : 'Tarama suruyor';
+                progressMessage.textContent = payload.error || payload.message || 'Durum bilgisi aliniyor.';
+                progressPercent.textContent = progressValue + '%';
+                progressFill.style.width = progressValue + '%';
+                progressStatusPill.textContent =
+                    statusText === 'completed' ? 'Hazir'
+                    : statusText === 'canceled' ? 'Iptal edildi'
+                    : statusText === 'failed' ? 'Hata'
+                    : 'Calisiyor';
+                progressTargetPill.textContent = payload.target ? 'Hedef: ' + payload.target : 'Hedef bilinmiyor';
+                if (progressScanPill) {
+                    progressScanPill.textContent = payload.scan_label ? 'Profil: ' + payload.scan_label : 'Tarama tipi bilinmiyor';
+                }
+                if (progressPortPill) {
+                    progressPortPill.textContent = payload.port_label ? payload.port_label : 'Port kapsami bilinmiyor';
+                }
+                if (progressNsePill) {
+                    progressNsePill.textContent = payload.nse_script_labels && payload.nse_script_labels.length
+                        ? 'NSE: ' + payload.nse_script_labels.join(', ')
+                        : 'NSE script secilmedi';
+                }
+                if (progressCurrentStep) {
+                    progressCurrentStep.textContent =
+                        'Su an: ' + humanizeStep(payload.current_step || resolveCurrentStep(payload), statusText);
+                }
+                if (cancelScanButton) {
+                    cancelScanButton.style.display = statusText === 'running' ? 'inline-flex' : 'none';
+                    cancelScanButton.disabled = statusText !== 'running';
+                }
+                if (retryScanButton) {
+                    retryScanButton.style.display = (statusText === 'failed' || statusText === 'canceled') ? 'inline-flex' : 'none';
+                }
+                estimateRemaining(progressValue, statusText);
+                renderSteps(payload);
+                renderLogs(payload);
+            }
+
+            function stopPolling() {
+                if (progressTimer) {
+                    window.clearTimeout(progressTimer);
+                    progressTimer = null;
+                }
+            }
+
+            async function pollJob(jobId) {
+                try {
+                    const response = await fetch('/scan-status/' + jobId + '?t=' + Date.now(), {
+                        cache: 'no-store',
+                    });
+                    const payload = await response.json();
+                    if (!response.ok || !payload.ok) {
+                        throw new Error(payload.error || 'Tarama durumu alinamadi.');
+                    }
+
+                    setProgressState(payload);
+
+                    if (payload.status === 'completed' && payload.result_url) {
+                        stopPolling();
+                        window.location.href = payload.result_url;
+                        return;
+                    }
+
+                    if (payload.status === 'failed' || payload.status === 'canceled') {
+                        stopPolling();
+                        if (scanSubmit) {
+                            scanSubmit.disabled = false;
+                            scanSubmit.textContent = 'Taramayi Baslat';
+                        }
+                        return;
+                    }
+
+                    progressTimer = window.setTimeout(function () {
+                        pollJob(jobId);
+                    }, 1200);
+                } catch (error) {
+                    setProgressState({
+                        status: 'failed',
+                        progress: 100,
+                        error: error.message || 'Tarama durumu alinamadi.',
+                    });
+                    stopPolling();
+                    if (scanSubmit) {
+                        scanSubmit.disabled = false;
+                        scanSubmit.textContent = 'Taramayi Baslat';
+                    }
+                }
+            }
+
+            function updateScanTypeHelp() {
+                const scanTypeSelect = document.getElementById('scan_type');
+                if (!scanTypeSelect || !scanTypeHelp || !scanTypeTitle || !scanTypeHints || !scanTypeIcon) {
+                    return;
+                }
+                const config = scanTypeDescriptions[scanTypeSelect.value];
+                if (!config) {
+                    scanTypeIcon.textContent = '--';
+                    scanTypeTitle.textContent = 'Tarama Profili';
+                    scanTypeHelp.textContent = 'Secilen tarama tipi icin aciklama bulunamadi.';
+                    scanTypeHints.innerHTML = '';
+                    return;
+                }
+
+                scanTypeIcon.textContent = config.icon;
+                scanTypeTitle.textContent = config.title;
+                scanTypeHelp.textContent = config.help;
+                scanTypeHints.innerHTML = config.hints.map(function (hint) {
+                    return '<span class="scan-hint-badge ' + hint.tone + '">' + hint.text + '</span>';
+                }).join('');
+            }
+
+            function updatePortScopeHelp() {
+                const portScopeSelect = document.getElementById('port_scope');
+                const portSpecInput = document.getElementById('port_spec');
+                const portScopeHelp = document.getElementById('port-scope-help');
+                const portSpecHelp = document.getElementById('port-spec-help');
+                if (!portScopeSelect || !portSpecInput || !portScopeHelp || !portSpecHelp) {
+                    return;
+                }
+
+                if (portScopeSelect.value === 'custom') {
+                    portSpecInput.disabled = false;
+                    portSpecInput.placeholder = 'Orn: 22,80,443 veya 1-1000';
+                    portScopeHelp.textContent = 'Yalnizca ilgilendigin portlari tarayarak sureyi kisaltabilirsin.';
+                    portSpecHelp.textContent = 'Virgul ile liste veya tire ile aralik gir. Ornek: 22,80,443 ya da 1-1000';
+                    return;
+                }
+
+                portSpecInput.disabled = true;
+                if (portScopeSelect.value === 'all') {
+                    portScopeHelp.textContent = 'Tum 1-65535 portlari tarar; daha uzun surebilir.';
+                    portSpecHelp.textContent = 'Tum Portlar secenegi Nmap tarafinda `-p-` ile calisir.';
+                    return;
+                }
+
+                portScopeHelp.textContent = 'Varsayilan secenekte Nmap\'in standart port listesi taranir.';
+                portSpecHelp.textContent = 'Bu mod hiz ve genel kesif icin uygundur. Ozel liste gerekiyorsa Ozel Port Araligi sec.';
+            }
+
+            function summarizeTarget(rawTarget) {
+                const target = (rawTarget || '').trim();
+                if (!target) {
+                    return 'Secili hedef';
+                }
+                if (target.indexOf('/') !== -1) {
+                    return target + ' agi';
+                }
+                if (target.indexOf(',') !== -1) {
+                    return 'Coklu hedef grubu';
+                }
+                return target;
+            }
+
+            function summarizePortScope() {
+                const portScopeSelect = document.getElementById('port_scope');
+                const portSpecInput = document.getElementById('port_spec');
+                if (!portScopeSelect) {
+                    return 'Varsayilan port kapsami';
+                }
+                if (portScopeSelect.value === 'all') {
+                    return 'Tum portlar ve daha genis yuzey';
+                }
+                if (portScopeSelect.value === 'custom') {
+                    const rawSpec = portSpecInput ? portSpecInput.value.trim() : '';
+                    return rawSpec ? 'Ozel port odagi: ' + rawSpec : 'Ozel port odagi';
+                }
+                return 'Standart port listesi';
+            }
+
+            function getTopFindingHost() {
+                if (!teamPanelFindings || !Array.isArray(teamPanelFindings.hosts) || !teamPanelFindings.hosts.length) {
+                    return null;
+                }
+                return teamPanelFindings.hosts.slice().sort(function (left, right) {
+                    return (Number(right.score) || 0) - (Number(left.score) || 0);
+                })[0];
+            }
+
+            function updateTeamPanel() {
+                if (!teamPanelTitle || !teamPanelSubtitle || !teamPanelModePill || !teamPanelBody) {
+                    return;
+                }
+
+                const mode = teamModeSelect ? teamModeSelect.value : 'red';
+                const scanTypeSelect = document.getElementById('scan_type');
+                const scanConfig = scanTypeSelect ? scanTypeDescriptions[scanTypeSelect.value] : null;
+                const scanTitle = scanConfig ? scanConfig.title : 'Tarama Profili';
+                const targetLabel = summarizeTarget(targetInput ? targetInput.value : '');
+                const scopeLabel = summarizePortScope();
+                const content = teamModeContent[mode] || teamModeContent.red;
+                const topHost = getTopFindingHost();
+                const hasFindings = !!(teamPanelFindings && teamPanelFindings.totalHosts > 0);
+
+                teamPanelTitle.textContent = content.title;
+                teamPanelSubtitle.textContent = hasFindings
+                    ? (mode === 'red'
+                        ? 'Son tarama bulgularina gore olasi saldiri yolu ve risk yogunlugu burada ozetleniyor.'
+                        : 'Son tarama bulgularina gore hangi hosta once mudahale edilmesi gerektigi burada ozetleniyor.')
+                    : content.subtitle;
+                teamPanelModePill.textContent = content.modePill;
+
+                let metrics = content.metrics(targetLabel, scanTitle, scopeLabel);
+                let scenarios = content.scenarios(targetLabel, scanTitle);
+                let noteText = content.note(targetLabel);
+
+                if (hasFindings) {
+                    if (mode === 'red') {
+                        metrics = [
+                            ['Aktif host', String(teamPanelFindings.totalHosts)],
+                            ['En riskli host', teamPanelFindings.mostRiskyHost || (topHost ? topHost.ip : 'Bilinmiyor')],
+                            ['Ort. exploitability', String(teamPanelFindings.averageExploitability || 0) + '/100'],
+                        ];
+                        scenarios = [
+                            {
+                                title: 'En olasi ilk erisim noktasi',
+                                pill: 'Canli bulgu',
+                                text: teamPanelFindings.entryVector
+                                    || (topHost
+                                        ? topHost.ip + ' hostu ' + (topHost.openPorts || 0) + ' acik port, ' + (topHost.knownCves || 0) + ' bilinen CVE ve ' + (topHost.risk || 'Bilinmiyor') + ' risk seviyesi ile ilk odak noktasi olarak one cikiyor.'
+                                        : targetLabel + ' icin ilk erisim noktasi olarak acik servisler one cikiyor.'),
+                            },
+                            {
+                                title: 'En agresif host',
+                                pill: 'Exploitability',
+                                text: (teamPanelFindings.maxExploitabilityIp || 'Yok') + ' hostu ' + (teamPanelFindings.maxExploitabilityScore || 0) + '/100 skor ile en yuksek istismar potansiyelini tasiyor.',
+                            },
+                        ];
+                        noteText =
+                            'Son taramada ' + (teamPanelFindings.highRiskHosts || 0) + ' yuksek riskli host bulundu.'
+                            + (teamPanelFindings.timedOutHosts ? ' ' + teamPanelFindings.timedOutHosts + ' hostta timeout oldugu icin ek manuel dogrulama gerekebilir.' : '');
+                    } else {
+                        metrics = [
+                            ['Aktif host', String(teamPanelFindings.totalHosts)],
+                            ['Yuksek riskli host', String(teamPanelFindings.highRiskHosts || 0)],
+                            ['Brute-force riski', String(teamPanelFindings.bruteForceRiskHosts || 0)],
+                        ];
+                        scenarios = [
+                            {
+                                title: 'Onerilen ilk aksiyon',
+                                pill: 'Oncelik 1',
+                                text: teamPanelFindings.firstAction
+                                    || (topHost
+                                        ? topHost.ip + ' hostu mevcut skora gore once ele alinmali; ' + (topHost.openPorts || 0) + ' acik port ve ' + (topHost.knownCves || 0) + ' bilinen CVE ile savunma listesinde basa yazilmali.'
+                                        : targetLabel + ' icin acik portlar ve eski servisler oncelikli azaltma alani olarak degerlendirilmeli.'),
+                            },
+                            {
+                                title: 'En oncelikli host',
+                                pill: 'Operasyon',
+                                text: (teamPanelFindings.mostRiskyHost || (topHost ? topHost.ip : 'Bilinmiyor')) + ' hostu once ele alinmali; ' + (teamPanelFindings.totalKnownCves || 0) + ' bilinen CVE ve ' + (teamPanelFindings.scenarioCount || 0) + ' senaryo genel savunma planini yukseltiyor.',
+                            },
+                        ];
+                        noteText =
+                            'En riskli host olarak ' + (teamPanelFindings.mostRiskyHost || (topHost ? topHost.ip : 'Bilinmiyor')) + ' one cikiyor.'
+                            + (teamPanelFindings.timedOutHosts ? ' Timeout alan hostlar icin yeniden tarama onerilir.' : '');
+                    }
+                }
+
+                teamPanelBody.innerHTML = ''
+                    + '<div class="metric-list">'
+                    + metrics.map(function (item) {
+                        return '<div class="metric"><span>' + item[0] + '</span><strong>' + item[1] + '</strong></div>';
+                    }).join('')
+                    + '</div>'
+                    + '<div class="team-scenario-list">'
+                    + scenarios.map(function (item, index) {
+                        return '<div class="scenario">'
+                            + '<div class="scenario-head"><strong>' + item.title + '</strong><span class="pill' + (index === 0 ? ' accent' : '') + '">' + item.pill + '</span></div>'
+                            + '<p class="muted">' + item.text + '</p>'
+                            + '</div>';
+                    }).join('')
+                    + '</div>'
+                    + '<div class="team-panel-note"><strong>' + content.noteTitle + '</strong><p>' + noteText + '</p></div>';
+            }
+
+            if (scanForm) {
+                updateScanTypeHelp();
+                updatePortScopeHelp();
+                updateTeamPanel();
+                const scanTypeSelect = document.getElementById('scan_type');
+                const portScopeSelect = document.getElementById('port_scope');
+                if (scanTypeSelect) {
+                    scanTypeSelect.addEventListener('change', function () {
+                        updateScanTypeHelp();
+                        updateTeamPanel();
+                    });
+                }
+                if (portScopeSelect) {
+                    portScopeSelect.addEventListener('change', function () {
+                        updatePortScopeHelp();
+                        updateTeamPanel();
+                    });
+                }
+                if (teamModeSelect) {
+                    teamModeSelect.addEventListener('change', updateTeamPanel);
+                }
+                if (targetInput) {
+                    targetInput.addEventListener('input', updateTeamPanel);
+                }
+                const portSpecInput = document.getElementById('port_spec');
+                if (portSpecInput) {
+                    portSpecInput.addEventListener('input', updateTeamPanel);
+                }
+
+                scanForm.addEventListener('submit', async function (event) {
+                    event.preventDefault();
+                    stopPolling();
+
+                    const formData = new FormData(scanForm);
+                    const targetValue = (formData.get('target') || '').toString().trim();
+                    const activeScanTypeSelect = document.getElementById('scan_type');
+                    const activePortScopeSelect = document.getElementById('port_scope');
+                    const scanLabel = activeScanTypeSelect ? activeScanTypeSelect.options[activeScanTypeSelect.selectedIndex].text : 'Detayli Tarama';
+                    const portScope = activePortScopeSelect ? activePortScopeSelect.value : 'default';
+                    const portSpec = (formData.get('port_spec') || '').toString().trim();
+                    const portLabel =
+                        portScope === 'all' ? 'Tum Portlar'
+                        : portScope === 'custom' ? 'Portlar: ' + portSpec
+                        : 'Varsayilan Portlar';
+                    const selectedNseLabels = formData.getAll('nse_scripts').map(function (value) {
+                        const checkbox = document.getElementById('nse_' + value);
+                        if (!checkbox) {
+                            return value;
+                        }
+                        const title = checkbox.parentElement ? checkbox.parentElement.querySelector('strong') : null;
+                        return title ? title.textContent : value;
+                    });
+                    jobStartedAt = Date.now();
+                    progressHistory = [];
+                    setProgressState({
+                        status: 'running',
+                        progress: 2,
+                        current_step: 'nmap',
+                        target: targetValue,
+                        scan_label: scanLabel,
+                        port_label: portLabel,
+                        nse_script_labels: selectedNseLabels,
+                        logs: [{ level: 'info', message: 'Tarama istegi sunucuya gonderiliyor.' }],
+                        message: 'Tarama istegi sunucuya gonderiliyor.',
+                    });
+
+                    if (scanSubmit) {
+                        scanSubmit.disabled = true;
+                        scanSubmit.textContent = 'Tarama Baslatildi';
+                    }
+
+                    try {
+                        const response = await fetch('/scan/start', {
+                            method: 'POST',
+                            body: formData,
+                        });
+                        const payload = await response.json();
+                        if (!response.ok || !payload.ok) {
+                            throw new Error(payload.error || 'Tarama baslatilamadi.');
+                        }
+
+                        activeJobId = payload.job_id;
+                        pollJob(activeJobId);
+                    } catch (error) {
+                        setProgressState({
+                            status: 'failed',
+                            progress: 100,
+                            target: targetValue,
+                            current_step: 'nmap',
+                            scan_label: scanLabel,
+                            port_label: portLabel,
+                            logs: [{ level: 'error', message: error.message || 'Tarama baslatilamadi.' }],
+                            error: error.message || 'Tarama baslatilamadi.',
+                        });
+                        if (scanSubmit) {
+                            scanSubmit.disabled = false;
+                            scanSubmit.textContent = 'Taramayi Baslat';
+                        }
+                    }
+                });
+            }
+
+            if (cancelScanButton) {
+                cancelScanButton.addEventListener('click', async function () {
+                    if (!activeJobId) {
+                        return;
+                    }
+
+                    cancelScanButton.disabled = true;
+                    try {
+                        const response = await fetch('/scan-cancel/' + activeJobId, {
+                            method: 'POST',
+                        });
+                        const payload = await response.json();
+                        if (!response.ok || !payload.ok) {
+                            throw new Error(payload.error || 'Tarama iptal edilemedi.');
+                        }
+
+                        setProgressState({
+                            status: 'canceled',
+                            progress: 100,
+                            current_step: 'nmap',
+                            scan_label: progressScanPill ? progressScanPill.textContent.replace('Profil: ', '') : 'Tarama tipi bilinmiyor',
+                            logs: [{ level: 'warn', message: 'Tarama kullanici tarafindan iptal edildi.' }],
+                            message: 'Tarama kullanici tarafindan iptal edildi.',
+                        });
+                        stopPolling();
+                        if (scanSubmit) {
+                            scanSubmit.disabled = false;
+                            scanSubmit.textContent = 'Taramayi Baslat';
+                        }
+                    } catch (error) {
+                        setProgressState({
+                            status: 'failed',
+                            progress: 100,
+                            current_step: 'nmap',
+                            scan_label: progressScanPill ? progressScanPill.textContent.replace('Profil: ', '') : 'Tarama tipi bilinmiyor',
+                            logs: [{ level: 'error', message: error.message || 'Tarama iptal edilemedi.' }],
+                            error: error.message || 'Tarama iptal edilemedi.',
+                        });
+                    } finally {
+                        cancelScanButton.disabled = false;
+                    }
+                });
+            }
+
+            if (retryScanButton) {
+                retryScanButton.addEventListener('click', function () {
+                    if (scanSubmit) {
+                        scanSubmit.disabled = false;
+                        scanSubmit.textContent = 'Taramayi Baslat';
+                    }
+                    if (scanForm) {
+                        scanForm.requestSubmit();
+                    }
+                });
+
+                const shouldAutoStart = {{ 'true' if auto_start and target else 'false' }};
+                if (shouldAutoStart) {
+                    window.setTimeout(function () {
+                        if (scanSubmit && !scanSubmit.disabled) {
+                            scanForm.requestSubmit();
+                        }
+                    }, 250);
+                }
+            }
+        })();
+
+        (function () {
+            const historyToggles = document.querySelectorAll('.history-toggle');
+            historyToggles.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const targetId = button.getAttribute('data-target');
+                    const target = targetId ? document.getElementById(targetId) : null;
+                    if (!target) {
+                        return;
+                    }
+
+                    const willExpand = target.classList.contains('is-collapsed');
+                    target.classList.toggle('is-collapsed', !willExpand);
+                    button.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
+                    button.textContent = willExpand ? 'Arsivi Kapat' : 'Arsivi Ac';
+                });
+            });
         })();
 
         (function () {
